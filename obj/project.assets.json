@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JorvekarS\\TkilWebsite\\TkilWebsite.csproj",
+      "projectUniqueName": "D:\\Project\\TKILWebsite\\TkilWebsite.csproj",
       "projectName": "TkilWebsite",
-      "projectPath": "C:\\Users\\JorvekarS\\TkilWebsite\\TkilWebsite.csproj",
+      "projectPath": "D:\\Project\\TKILWebsite\\TkilWebsite.csproj",
       "packagesPath": "C:\\Users\\JorvekarS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JorvekarS\\TkilWebsite\\obj\\",
+      "outputPath": "D:\\Project\\TKILWebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

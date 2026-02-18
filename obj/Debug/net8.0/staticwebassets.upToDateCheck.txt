@@ -1,4 +1,7 @@
+wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\board\ketan_pendse.jpg
+wwwroot\images\board\vivek_bhatia.jpg
 wwwroot\images\business\battery.jpg
 wwwroot\images\business\biochemicas.jpg
 wwwroot\images\business\cement.jpg
@@ -7,6 +10,7 @@ wwwroot\images\business\green-hydrogen.jpg
 wwwroot\images\business\mining.jpg
 wwwroot\images\business\services.jpg
 wwwroot\images\business\sugar.jpg
+wwwroot\images\company\2.jpg
 wwwroot\images\global-presence.jpg
 wwwroot\images\Slider1.jpg
 wwwroot\images\Slider2.jpg
@@ -72,4 +76,16 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\site.css
+wwwroot\pdf\Equal Opportunity Policy.pdf
+wwwroot\pdf\Press Note_TKIL Industries Partners with Germany-based company 2G Energy International.pdf
+wwwroot\pdf\Press Release Green Hydrogen announcement.pdf
+wwwroot\pdf\Press Release- Odisha Mining.pdf
+wwwroot\pdf\Press Release_ British Council safety.pdf
+wwwroot\pdf\Press Release_ TKIL Industries  KIS Group Association 2025.04.01.pdf
+wwwroot\pdf\Press Release_ TKIL Industries and HOPPECKE Forms Strategic Partnership 2025.05.27.pdf
+wwwroot\pdf\Press Release_Change of tkIL shareholding structure.pdf
+wwwroot\pdf\Press Release_TKIL Industries Demonstrates Advanced MACS at EXCON 2025 (002).pdf
+wwwroot\pdf\Press_Release_Company_name_to_TKIL_Industries.pdf
+wwwroot\pdf\Release_TKIL Industries Achieves Global Milestone.pdf
+wwwroot\pdf\TKIL Hyderabad Five Star OSH Audit 2025.pdf
+wwwroot\videos\Union-budget-CII-Panel.mp4

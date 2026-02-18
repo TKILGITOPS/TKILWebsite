@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TkilWebsite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee63c0faa74b4551b118f748474dc0c81c55e1ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("TkilWebsite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TkilWebsite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

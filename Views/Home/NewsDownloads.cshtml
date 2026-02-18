@@ -1,0 +1,260 @@
+﻿@{
+    ViewData["Title"] = "News & Downloads";
+}
+
+<!-- Hero -->
+<div class="nd-hero">
+    <img src="~/images/company/2.jpg" alt="TKIL" class="nd-hero-img" />
+    <div class="nd-hero-overlay">
+        <div class="tk-container nd-hero-content">
+            <span class="nd-eyebrow">Media Center</span>
+            <h1 class="nd-hero-title">News &amp; Downloads</h1>
+            <p class="nd-hero-sub">Awards · Press Releases · Exhibitions · Brochures · Safety</p>
+        </div>
+    </div>
+</div>
+
+<!-- Full page layout -->
+<div class="nd-page">
+    <div class="tk-container nd-flex">
+
+        <!-- LEFT: Sidebar -->
+        <aside class="nd-sidebar">
+            <p class="nd-sidebar-label">Browse by Category</p>
+            <ul class="nd-sidebar-menu" id="ndMenu">
+                <li class="nd-item active" data-target="awards">
+                    <span class="nd-icon">🏆</span>
+                    <span>Awards</span>
+                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                </li>
+                <li class="nd-item" data-target="press">
+                    <span class="nd-icon">📰</span>
+                    <span>Press Release</span>
+                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                </li>
+                <li class="nd-item" data-target="exhibition">
+                    <span class="nd-icon">🌐</span>
+                    <span>Exhibition</span>
+                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                </li>
+                <li class="nd-item" data-target="brochures">
+                    <span class="nd-icon">📄</span>
+                    <span>Brochures</span>
+                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                </li>
+                <li class="nd-item" data-target="video">
+                    <span class="nd-icon">🎬</span>
+                    <span>Safety Video</span>
+                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- RIGHT: Content -->
+        <main class="nd-content-area" id="ndContent">
+
+            <!-- Awards -->
+            <div class="nd-panel active" data-section="awards">
+                <div class="nd-panel-header">
+                    <span class="nd-panel-tag">Recognition</span>
+                    <h2>Awards &amp; Recognition</h2>
+                    <p>TKIL Industries has been recognized globally for engineering excellence and innovation across multiple decades.</p>
+                </div>
+                <div class="nd-cards">
+                    <div class="nd-card">
+                        <div class="nd-card-year">2025</div>
+                        <h3>Best Engineering Firm</h3>
+                        <p>Awarded for outstanding EPC project delivery in South Asia.</p>
+                    </div>
+                    <div class="nd-card">
+                        <div class="nd-card-year">2024</div>
+                        <h3>Innovation Award</h3>
+                        <p>Recognized for pioneering sustainable bio-chemical plant design.</p>
+                    </div>
+                    <div class="nd-card">
+                        <div class="nd-card-year">2023</div>
+                        <h3>Excellence in Manufacturing</h3>
+                        <p>Felicitated for consistent quality in large-scale manufacturing projects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Press -->
+            <div class="nd-panel" data-section="press">
+                <div class="nd-panel-header">
+                    <span class="nd-panel-tag">Media</span>
+                    <h2>Press Releases</h2>
+                    <p>Latest announcements and media coverage from TKIL Industries.</p>
+                </div>
+
+                <ul class="nd-press-list">
+                    <li>
+                        <a href="~/pdf/Release_TKIL Industries Achieves Global Milestone.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-12-18</span>
+                                <span class="nd-press-title">Press Release: Safety Awards from the British Safety Council</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release_TKIL Industries Demonstrates Advanced MACS at EXCON 2025 (002).pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-12-09</span>
+                                <span class="nd-press-title">Press Release_EXCON 2025</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Note_TKIL Industries Partners with Germany-based company 2G Energy International.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-10-13</span>
+                                <span class="nd-press-title">Press Release_TKIL Industries Partners with Germany-based company 2G Energy International</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release_ TKIL Industries and HOPPECKE Forms Strategic Partnership 2025.05.27.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-05-27</span>
+                                <span class="nd-press-title">Press Release_TKIL Industries and HOPPECKE Forms Strategic Partnership</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release_ TKIL Industries  KIS Group Association 2025.04.01.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-04-01</span>
+                                <span class="nd-press-title">Press Release_TKIL Industries KIS Group Association</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/TKIL Hyderabad Five Star OSH Audit 2025.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">March 2025</span>
+                                <span class="nd-press-title">Press Release_British Council Safety Hyderabad</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release- Odisha Mining.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-03-10</span>
+                                <span class="nd-press-title">Press Release_Odisha Mining Expo 2025</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release_ British Council safety.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2025-01-22</span>
+                                <span class="nd-press-title">Press Release_British Council Safety</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release Green Hydrogen announcement.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2024-12-03</span>
+                                <span class="nd-press-title">Press Release_Green Hydrogen Announcement</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press_Release_Company_name_to_TKIL_Industries.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2024-07-19</span>
+                                <span class="nd-press-title">Press Release_Name Change to TKIL Industries Pvt. Ltd.</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/pdf/Press Release_Change of tkIL shareholding structure.pdf" target="_blank">
+                            <div class="nd-press-item">
+                                <span class="nd-press-date">2024-02-29</span>
+                                <span class="nd-press-title">Press Release_Change of TKIL Shareholding Structure</span>
+                                <span class="nd-press-icon">↗</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Exhibition -->
+            <div class="nd-panel" data-section="exhibition">
+                <div class="nd-panel-header">
+                    <span class="nd-panel-tag">Events</span>
+                    <h2>Exhibitions</h2>
+                    <p>We participate in global industrial exhibitions to showcase TKIL's capabilities.</p>
+                </div>
+                <div class="nd-cards">
+                    <div class="nd-card">
+                        <div class="nd-card-year">2025</div>
+                        <h3>EXCON – Bengaluru</h3>
+                        <p>Showcased latest plant engineering solutions at South Asia's largest construction expo.</p>
+                    </div>
+                    <div class="nd-card">
+                        <div class="nd-card-year">2026</div>
+                        <h3>Hannover Messe</h3>
+                        <p>Presenting TKIL's innovation roadmap at the world's leading industrial trade fair.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brochures -->
+            <div class="nd-panel" data-section="brochures">
+                <div class="nd-panel-header">
+                    <span class="nd-panel-tag">Downloads</span>
+                    <h2>Brochures</h2>
+                    <p>Download our product and company brochures for detailed information.</p>
+                </div>
+                <div class="nd-cards">
+                    <div class="nd-card nd-card-download">
+                        <div class="nd-card-icon">📘</div>
+                        <h3>Company Profile</h3>
+                        <p>Full overview of TKIL's history, capabilities, and global footprint.</p>
+                        <a href="#" class="nd-download-btn">Download PDF</a>
+                    </div>
+                    <div class="nd-card nd-card-download">
+                        <div class="nd-card-icon">📗</div>
+                        <h3>Product Catalogue 2025</h3>
+                        <p>Detailed listing of all engineering products and plant solutions.</p>
+                        <a href="#" class="nd-download-btn">Download PDF</a>
+                    </div>
+                    <div class="nd-card nd-card-download">
+                        <div class="nd-card-icon">📙</div>
+                        <h3>EPC Capabilities</h3>
+                        <p>In-depth brochure on TKIL's end-to-end EPC project delivery model.</p>
+                        <a href="#" class="nd-download-btn">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div class="nd-panel" data-section="video">
+                <div class="nd-panel-header">
+                    <span class="nd-panel-tag">Safety</span>
+                    <h2>Safety Orientation Video</h2>
+                    <p>Mandatory safety training video for all contractors and site personnel visiting TKIL facilities.</p>
+                </div>
+                <div class="nd-video-wrap">
+                    <video controls>
+                        <source src="~/videos/Union-budget-CII-Panel.mp4" type="video/mp4">
+                        Your browser does not support video.
+                    </video>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>

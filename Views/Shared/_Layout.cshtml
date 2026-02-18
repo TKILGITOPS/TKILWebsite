@@ -13,29 +13,29 @@
             <a href="/" class="logo">TKIL Industries</a>
 
             <nav class="main-nav">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#business" class="nav-link">Business</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                <a asp-controller="Home" asp-action="NewsDownloads" class="nav-link">News &amp; Downloads</a>
+                <a asp-controller="Home" asp-action="Enquiry" class="nav-link">Enquiry</a>
+                <a asp-controller="Home" asp-action="Careers" class="nav-link">Careers</a>
+                <a asp-controller="Home" asp-action="Sitemap" class="nav-link">Sitemap</a>
+                <a asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="menu-toggle">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
 
-                <!-- Hamburger Menu -->
-                <div class="menu-toggle">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-
-                    <div class="menu-dropdown">
-                        <ul>
-                            <li><a href="#option1">Company</a></li>
-                            <li><a href="#option2">Divisions</a></li>
-                            <li><a href="#option3">Products</a></li>
-                            <li><a href="#option4">Design</a></li>
-                            <li><a href="#option5">Manufacturing</a></li>
-                            <li><a href="#option6">Erection &amp; Commissioning</a></li>
-                        </ul>
-                    </div>
+                <div class="menu-dropdown">
+                    <ul>
+                        <li><a href="@Url.Action("Company", "Home")">Company</a></li>
+                        <li><a href="@Url.Action("Divisions", "Home")">Divisions</a></li>
+                        <li><a href="@Url.Action("Products", "Home")">Products</a></li>
+                        <li><a href="@Url.Action("Design", "Home")">Design</a></li>
+                        <li><a href="@Url.Action("Manufacturing", "Home")">Manufacturing</a></li>
+                        <li><a href="@Url.Action("ErectionCommissioning", "Home")">Erection &amp; Commissioning</a></li>
+                    </ul>
+                </div>
+            </div>
                 </div>
             </nav>
         </div>

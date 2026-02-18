@@ -210,3 +210,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.nd-item');
+    const panels = document.querySelectorAll('.nd-panel');
+
+    function switchPanel(target) {
+        items.forEach(i => i.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        const activeItem = document.querySelector(`.nd-item[data-target="${target}"]`);
+        const activePanel = document.querySelector(`.nd-panel[data-section="${target}"]`);
+
+        if (activeItem) activeItem.classList.add('active');
+        if (activePanel) activePanel.classList.add('active');
+    }
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            switchPanel(item.dataset.target);
+        });
+    });
+
+    // Set default
+    switchPanel('awards');
+});

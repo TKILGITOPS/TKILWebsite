@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Enquiry";
+}
+
+<!-- Hero — same pattern as ND page -->
+<div class="nd-hero">
+    <img src="~/images/company/2.jpg" alt="Enquiry" class="nd-hero-img" />
+    <div class="nd-hero-overlay">
+        <div class="nd-hero-content">
+            <span class="nd-eyebrow">Get In Touch</span>
+            <h1 class="nd-hero-title">Enquiry</h1>
+            <p class="nd-hero-sub">We'd love to hear from you. Fill in the form below and we'll get back to you.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Form section -->
+<div class="enq-page">
+    <div class="enq-container">
+
+        <div class="enq-form-wrap">
+            <h2 class="enq-form-title">Enquiry Form</h2>
+
+            <form class="enq-form" method="post" asp-action="Enquiry" asp-controller="Home">
+                @Html.AntiForgeryToken()
+
+                <!-- Division + Product -->
+                <div class="enq-row">
+                    <div class="enq-field">
+                        <label for="division">Select Division</label>
+                        <select id="division" name="Division" class="enq-select">
+                            <option value="">-- Select Division --</option>
+                            <option>Sugar & Cogen</option>
+                            <option>Cement</option>
+                            <option>Mining & Material Handling</option>
+                            <option>Power</option>
+                            <option>Bio-chemicals</option>
+                        </select>
+                    </div>
+                    <div class="enq-field">
+                        <label for="product">Select Product</label>
+                        <select id="product" name="Product" class="enq-select">
+                            <option value="">-- Select Product --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div class="enq-field enq-full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="Message" class="enq-textarea" rows="4" placeholder="Enter your message..."></textarea>
+                </div>
+
+                <div class="enq-divider">
+                    <span>Contact Information</span>
+                </div>
+
+                <!-- Name + Address -->
+                <div class="enq-row">
+                    <div class="enq-field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="Name" class="enq-input" placeholder="Your full name" />
+                    </div>
+                    <div class="enq-field">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="Address" class="enq-textarea enq-short" rows="3" placeholder="Your address"></textarea>
+                    </div>
+                </div>
+
+                <!-- Email + Phone -->
+                <div class="enq-row">
+                    <div class="enq-field">
+                        <label for="email">E-mail ID</label>
+                        <input type="email" id="email" name="Email" class="enq-input" placeholder="example@email.com" />
+                    </div>
+                    <div class="enq-field">
+                        <label for="phone">Contact Number</label>
+                        <input type="tel" id="phone" name="Phone" class="enq-input" placeholder="+91 00000 00000" />
+                    </div>
+                </div>
+
+                <!-- City -->
+                <div class="enq-row">
+                    <div class="enq-field">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="City" class="enq-input" placeholder="Your city" />
+                    </div>
+                    <div class="enq-field">
+                        <!-- empty col for balance -->
+                    </div>
+                </div>
+
+                <!-- Consent + Buttons -->
+                <div class="enq-consent">
+                    <input type="checkbox" id="consent" name="Consent" value="true" required />
+                    <label for="consent">I hereby consent to the use of my own personal data.</label>
+                </div>
+
+                <div class="enq-actions">
+                    <button type="submit" class="enq-btn-primary">Submit</button>
+                    <button type="reset" class="enq-btn-secondary">Reset</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

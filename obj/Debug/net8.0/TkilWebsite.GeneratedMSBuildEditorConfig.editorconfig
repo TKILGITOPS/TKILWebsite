@@ -20,8 +20,24 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/Project/TKILWebsite/Views/Home/Careers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJlZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/TKILWebsite/Views/Home/Company.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb21wYW55LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/TKILWebsite/Views/Home/Enquiry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbnF1aXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project/TKILWebsite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/TKILWebsite/Views/Home/NewsDownloads.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdzRG93bmxvYWRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project/TKILWebsite/Views/Home/Privacy.cshtml]

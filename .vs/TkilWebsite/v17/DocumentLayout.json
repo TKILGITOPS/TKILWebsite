@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Project\\TKILWebsite\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}|TkilWebsite.csproj|d:\\project\\tkilwebsite\\views\\home\\company.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}|TkilWebsite.csproj|solutionrelative:views\\home\\company.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}|TkilWebsite.csproj|d:\\project\\tkilwebsite\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}|TkilWebsite.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 334,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -29,15 +38,33 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Project\\TKILWebsite\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Project\\TKILWebsite\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAOwHAAAAAAAAAAAqwA4IAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-18T11:34:16.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Company.cshtml",
+              "DocumentMoniker": "D:\\Project\\TKILWebsite\\Views\\Home\\Company.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Company.cshtml",
+              "ToolTip": "D:\\Project\\TKILWebsite\\Views\\Home\\Company.cshtml",
+              "RelativeToolTip": "Views\\Home\\Company.cshtml",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAAwOAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T11:32:17.307Z",
+              "EditorCaption": ""
             }
           ]
         }
