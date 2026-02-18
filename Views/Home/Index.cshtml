@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "TKIL Industries";
+}
+
+<section class="hero-section">
+    <!-- Your 6 Sliders -->
+    <div class="hero-bg">
+        <div class="bg-slide active" style="background-image: url('/images/Slider1.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('/images/Slider2.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('/images/Slider3.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('/images/Slider4.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('/images/Slider5.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('/images/Slider6.jpg');"></div>
+    </div>
+
+    <!-- Dark Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="hero-layout">
+        <!-- LEFT COLUMN: Text + CTA + Numbers -->
+        <div class="hero-left">
+            <h1 class="hero-title">Engineering Excellence</h1>
+            <h2 class="hero-subtitle">Delivered Globally</h2>
+            <p class="hero-description">Leading EPC for power, industrial, and infrastructure projects worldwide</p>
+
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Explore Services</a>
+                <a href="#contact" class="btn-secondary">Get in Touch</a>
+            </div>
+
+            <!-- 4 NUMBERS BELOW CTA -->
+            <div class="hero-stats-below">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="230">+</span>
+                    <span class="stat-label">EPC Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">+</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2600">+</span>
+                    <span class="stat-label">Employees</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10000">+</span>
+                    <span class="stat-label">Contract Workers</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Visual balance -->
+        <div class="hero-right">
+            <!-- Empty -->
+        </div>
+    </div>
+</section>
+<!-- Business Units Section - Rotating Donut -->
+<section class="business-units-section">
+    <div class="business-container">
+        <!-- LEFT: Rotating Donut -->
+        <div class="donut-wrapper">
+            <div class="donut-container" id="businessWheel">
+                <!-- 1. Sugar, Cogen & Bio-chemicals -->
+                <a href="/business/sugar-cogen" class="unit-item active" data-index="0"
+                   data-title="Sugar, Cogen & Bio-chemicals"
+                   data-description="For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and cogen plants. With a growing commitment to sustainability, we've ventured into the bio-chemicals sector, encompassing distilleries, compressed bio-gas plants, and their associated derivatives.">
+                    <img src="/images/business/sugar.jpg" alt="Sugar, Cogen & Bio-chemicals">
+                  
+                </a>
+
+                <!-- 2. Mining & Material Handling -->
+                <a href="/business/mining" class="unit-item" data-index="1"
+                   data-title="Mining, Material Handling & BOP"
+                   data-description="TKIL Industries is a technologically driven engineering powerhouse, with exceptional contributions in Mining, Bulk Material Handling and Comminution Systems. Powered by world-class technology, we provide end-to-end solutions for core sectors such as mining, power, ports, steel and minerals.">
+                    <img src="/images/business/mining.jpg" alt="Mining & Material Handling">
+                 
+                </a>
+
+                <!-- 3. Cement Plants -->
+                <a href="/business/cement" class="unit-item" data-index="2"
+                   data-title="Cement Plants & Equipment"
+                   data-description="One of the world's leading cement and mining technology companies, manufacturing, supplying, installing and commissioning modern, state-of-art integrated cement plants of capacities ranging between 650 to 10000 tpd for more than 35 years. Our plants run at more than their rated capacities across India.">
+                    <img src="/images/business/cement.jpg" alt="Cement Plants">
+              
+                </a>
+
+                <!-- 4. Energy (Boiler & Power) -->
+                <a href="/business/energy" class="unit-item" data-index="3"
+                   data-title="Energy Business (Boiler & Power Plants)"
+                   data-description="Long established in design, manufacture, supply, installation and commissioning of steam and power generation plants. Leveraging our leadership in CFB Boilers, we provide complete power plants on EPC basis. Our multifuel capable boilers are industry benchmarks for efficiency, reliability and environment friendliness.">
+                    <img src="/images/business/energy.jpg" alt="Energy Business">
+                    
+                </a>
+
+                <!-- 5. Service Business -->
+                <a href="/business/services" class="unit-item" data-index="4"
+                   data-title="Service Business"
+                   data-description="Our 360° service program supports customers throughout the life cycle of their assets - spare parts supply, O&M service and field service ensure assets remain functional and productive. We offer revamps and rejuvenation services to increase operating life with guaranteed output and safety, always helping achieve business goals.">
+                    <img src="/images/business/services.jpg" alt="Service Business">
+                   
+                </a>
+
+                <!-- 6. Green Hydrogen -->
+                <a href="/business/green-hydrogen" class="unit-item" data-index="5"
+                   data-title="Green Hydrogen Business"
+                   data-description="At the forefront of India's green energy transition through strategic partnership with SoHHytec SA, Switzerland. Driving production of clean, renewable hydrogen using solar and wind power to decarbonize key industries. Aligned with India's National Hydrogen Mission, unlocking green hydrogen's potential as a clean energy source for a sustainable tomorrow.">
+                    <img src="/images/business/green-hydrogen.jpg" alt="Green Hydrogen">
+                 
+                </a>
+
+                <!-- 7. Battery & Energy Storage -->
+                <a href="/business/battery-storage" class="unit-item" data-index="6"
+                   data-title="Battery & Energy Storage"
+                   data-description="Strategic partnership with Germany's HOPPECKE Batterie Systeme GmbH - Europe's preeminent industrial battery systems manufacturer. Delivering advanced, sustainable Railway Battery Systems to support the rapid expansion of India's rail transportation sector with cutting-edge energy storage solutions.">
+                    <img src="/images/business/battery.jpg" alt="Battery & Energy Storage">
+                  
+                </a>
+
+                <!-- 8. Infrastructure Solutions -->
+                <a href="/business/infrastructure" class="unit-item" data-index="7"
+                   data-title="Infrastructure Solutions"
+                   data-description="Comprehensive infrastructure development solutions leveraging decades of engineering excellence. From industrial plants to large-scale projects, we deliver turnkey solutions with focus on sustainability, efficiency and innovation across multiple sectors.">
+                    <img src="/images/business/biochemicas.jpg" alt="Infrastructure">
+                
+                </a>
+            </div>
+
+            <!-- Center Hub -->
+            <div class="center-hub">
+                <span>BUSINESS<br>SERVICES</span>
+            </div>
+        </div>
+
+        <!-- RIGHT: Content Display -->
+        <div class="unit-content">
+            <span class="section-tag">OUR EXPERTISE</span>
+            <h2 class="content-title" id="unitTitle">Sugar, Cogen & Bio-chemicals</h2>
+            <p class="content-description" id="unitDescription">
+                For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and cogen plants. With a growing commitment to sustainability, we've ventured into the bio-chemicals sector, encompassing distilleries, compressed bio-gas plants, and their associated derivatives.
+            </p>
+            <!-- REMOVED THE STATS SECTION WITH NUMBERS -->
+        </div>
+    </div>
+</section>
+<!-- Global Presence Section -->
+<section class="global-presence-section">
+    <div class="global-presence-container">
+        <div class="global-presence-header">
+            <h2 class="global-presence-title">Our Global presence</h2>
+        </div>
+        <div class="global-presence-image-wrapper">
+            <img src="~/images/global-presence.jpg" alt="TKIL Global Presence Map" class="global-presence-image" />
+        </div>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TkilWebsite", "TkilWebsite.csproj", "{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34CCF1F9-AADC-4C46-AAF1-A0A602C73F47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBFDC1E4-B41D-4322-9530-46D8F86DACF9}
+	EndGlobalSection
+EndGlobal

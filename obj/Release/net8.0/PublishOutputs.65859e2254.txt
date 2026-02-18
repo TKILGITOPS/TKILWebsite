@@ -1,0 +1,7 @@
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\TkilWebsite.exe
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\TkilWebsite.dll
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\TkilWebsite.deps.json
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\TkilWebsite.runtimeconfig.json
+C:\Users\JorvekarS\TkilWebsite\obj\Release\net8.0\PubTmp\Out\TkilWebsite.pdb
