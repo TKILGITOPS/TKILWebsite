@@ -11,5 +11,5 @@ namespace TkilWebsite.Controllers
             public IActionResult Capabilities() => View();
             public IActionResult Contact() => View();
         }
-    }
+    } 
 
