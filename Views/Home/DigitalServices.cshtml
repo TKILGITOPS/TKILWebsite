@@ -1,0 +1,1005 @@
+﻿@{
+    ViewData["Title"] = "Digital Services";
+}
+<style>
+    /* =============================================
+           DIGITAL SERVICES PAGE — SCOPED TO .ds-page
+           All classes prefixed ds- to avoid conflicts
+           ============================================= */
+
+    .ds-page {
+        --ds-bg: #ffffff;
+        --ds-text-main: #111827;
+        --ds-text-body: #1f2933;
+        --ds-text-muted: #6b7280;
+        --ds-text-soft: #9ca3af;
+        --ds-border-soft: #e5e7eb;
+        --ds-brand-1: #6366f1;
+        --ds-brand-2: #8b5cf6;
+        --ds-brand-3: #ec4899;
+        --ds-radius-lg: 18px;
+        --ds-shadow-soft: 0 1px 3px rgba(15,23,42,0.06), 0 10px 25px rgba(15,23,42,0.08);
+        background: var(--ds-bg);
+        color: var(--ds-text-body);
+        overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .ds-hero-section {
+        height: 100vh;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1.5rem !important;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 55%, rgba(255,255,255,0) 55%, rgba(255,255,255,0) 100%), url('/images/epc-building1.png') no-repeat right center;
+        background-size: auto 100%;
+    }
+
+    .ds-hero-intro-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        background: linear-gradient(120deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.15) 100%), url('/images/epc-building1.png') no-repeat right center;
+        background-size: cover;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(0);
+        transition: opacity 800ms cubic-bezier(0.19,1,0.22,1), transform 800ms cubic-bezier(0.19,1,0.22,1);
+    }
+
+        .ds-hero-intro-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .ds-hero-intro-overlay.slide-out {
+            opacity: 0;
+            transform: translateX(15%);
+        }
+
+    .ds-floating-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+        animation: ds-float 20s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    .ds-orb-1 {
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%);
+        animation-delay: 0s;
+    }
+
+    .ds-orb-2 {
+        bottom: -150px;
+        left: -150px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle,rgba(236,72,153,0.12) 0%,transparent 70%);
+        animation-delay: -7s;
+    }
+
+    .ds-orb-3 {
+        top: 50%;
+        right: 10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle,rgba(139,92,246,0.1) 0%,transparent 70%);
+        animation-delay: -14s;
+    }
+
+    @@keyframes ds-float {
+        0%,100%
+
+    {
+        transform: translate(0,0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px,-30px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px,20px) scale(0.9);
+    }
+
+    }
+
+    .ds-hero-content {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2.5rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .ds-hero-text h1 {
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        line-height: 1.05;
+        margin-bottom: 1.2rem;
+        color: #0f172a;
+        font-weight: 700;
+    }
+
+    #ds-hero-tagline {
+        animation: ds-textGlow 4s ease-in-out infinite;
+        color: #0f172a;
+    }
+    @@keyframes ds-textGlow {
+        0%,100%
+
+    {
+        text-shadow: 0 0 10px rgba(99,102,241,0);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(99,102,241,0.3);
+    }
+
+    }
+
+    .ds-hero-text p {
+        font-size: clamp(0.88rem, 1.6vw, 1rem);
+        line-height: 1.55;
+        margin-bottom: 0.6rem;
+        color: #1e293b;
+    }
+
+    .ds-hero-ctas {
+        display: flex;
+        gap: 0.85rem;
+        margin-top: 1.6rem;
+        flex-wrap: wrap;
+    }
+
+    .ds-btn-primary {
+        padding: 0.9rem 2rem;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--ds-brand-1) 0%, var(--ds-brand-2) 100%);
+        color: #ffffff;
+        box-shadow: 0 8px 30px rgba(99,102,241,0.4);
+        transition: all 400ms cubic-bezier(0.34,1.56,0.64,1);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .ds-btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%,-50%);
+            transition: width 600ms ease, height 600ms ease;
+        }
+
+        .ds-btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .ds-btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(99,102,241,0.5);
+        }
+
+    .ds-btn-secondary {
+        padding: 0.9rem 2rem;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: #ffffff;
+        color: var(--ds-text-muted);
+        border: 2px solid var(--ds-border-soft);
+        transition: all 400ms cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+        .ds-btn-secondary:hover {
+            transform: translateY(-3px) scale(1.05);
+            border-color: var(--ds-brand-1);
+            color: var(--ds-brand-1);
+            box-shadow: 0 10px 30px rgba(99,102,241,0.2);
+        }
+
+    .ds-cursor-glow {
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(circle,rgba(99,102,241,0.03) 0%,transparent 70%);
+        pointer-events: none;
+        transition: transform 200ms ease-out;
+        z-index: 9999;
+        mix-blend-mode: screen;
+    }
+
+    /* ── SOLUTIONS ── */
+    .ds-solutions-section {
+        background: #f8fafc;
+        padding: clamp(4rem,6vw,6rem) 1.4rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ds-solutions-shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .ds-solutions-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+        .ds-solutions-header h2 {
+            font-size: clamp(1.9rem,2.4vw,2.2rem);
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 0.5rem;
+        }
+
+        .ds-solutions-header p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #4b5563;
+        }
+
+    .ds-sol-grid {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 2rem;
+    }
+    @@media (max-width:640px) {
+        .ds-sol-grid
+
+    {
+        grid-template-columns: minmax(0,1fr);
+    }
+
+    }
+
+    .ds-sol-card {
+        background: #ffffff;
+        border-radius: 20px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 8px 32px rgba(15,23,42,0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 360ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 360ms ease, border-color 300ms ease;
+    }
+
+        .ds-sol-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 50px rgba(15,23,42,0.15);
+            border-color: rgba(99,102,241,0.3);
+        }
+
+    .ds-sol-card-top {
+        height: 5px;
+    }
+
+    .ds-sol-card-body {
+        padding: 2rem 2rem 1.75rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ds-sol-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.9rem;
+        display: block;
+    }
+
+    .ds-sol-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        background: #dcfce7;
+        color: #15803d;
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .ds-sol-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #111827;
+        margin: 0 0 0.4rem;
+    }
+
+    .ds-sol-tagline {
+        font-size: 0.85rem;
+        color: #6b7280;
+        font-style: italic;
+        margin: 0 0 1rem;
+    }
+
+    .ds-sol-desc {
+        font-size: 0.9rem;
+        color: #374151;
+        line-height: 1.65;
+        margin: 0 0 1.25rem;
+        flex: 1;
+    }
+
+    .ds-sol-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+        .ds-sol-features li {
+            font-size: 0.83rem;
+            color: #374151;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+            .ds-sol-features li::before {
+                content: '✓';
+                color: #22c55e;
+                font-weight: 700;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+
+    .ds-sol-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #4f46e5;
+        text-decoration: none;
+        padding: 0.6rem 1.25rem;
+        border-radius: 10px;
+        border: 2px solid #e0e7ff;
+        background: #f5f3ff;
+        transition: all 250ms ease;
+        align-self: flex-start;
+    }
+
+        .ds-sol-link:hover {
+            background: #4f46e5;
+            color: #ffffff;
+            border-color: #4f46e5;
+        }
+
+        .ds-sol-link span {
+            transition: transform 200ms ease;
+        }
+
+        .ds-sol-link:hover span {
+            transform: translateX(3px);
+        }
+
+    /* ── PARTNER ── */
+    .ds-partner-section {
+        padding: 3.5rem 1.4rem;
+        background: radial-gradient(circle at top left,#ecfdf5 0%,#ffffff 40%,#eff6ff 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ds-partner-header {
+        max-width: 1100px;
+        margin: 0 auto 2.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2.5rem;
+        justify-content: space-between;
+    }
+
+    .ds-partner-main-title {
+        font-size: clamp(1.8rem,2.5vw,2.2rem);
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.9rem;
+    }
+
+    .ds-partner-sub-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.6rem;
+    }
+
+    .ds-partner-sub-pill-bar {
+        width: 4px;
+        height: 32px;
+        border-radius: 999px;
+        background: linear-gradient(180deg,#22c55e,#0ea5e9);
+    }
+
+    .ds-partner-sub-pill-text {
+        font-size: 0.9rem;
+        color: #4b5563;
+        max-width: 420px;
+        margin: 0;
+    }
+
+    .ds-partner-carousel-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .ds-partner-nav-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        border: none;
+        background: #ffffff;
+        box-shadow: 0 10px 25px rgba(15,23,42,0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: #4b5563;
+        transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease, opacity 200ms ease;
+        z-index: 2;
+        opacity: 0.9;
+    }
+
+        .ds-partner-nav-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 16px 35px rgba(15,23,42,0.26);
+            background: #eef2ff;
+            opacity: 1;
+        }
+
+    .ds-partner-carousel {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        gap: 1.4rem;
+        perspective: 1600px;
+    }
+
+    .ds-partner-card {
+        min-width: 280px;
+        max-width: 320px;
+        flex: 0 0 auto;
+        position: relative;
+        border-radius: 22px;
+        background: #ffffff;
+        padding: 1.25rem 1.25rem 1.35rem;
+        box-shadow: 0 10px 28px rgba(15,23,42,0.10);
+        border: 1px solid rgba(148,163,184,0.18);
+        overflow: hidden;
+        transform: translateY(18px) scale(0.92) translateZ(0);
+        opacity: 0.6;
+        transition: transform 380ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 380ms ease, border-color 380ms ease, opacity 260ms ease, filter 260ms ease;
+    }
+
+        .ds-partner-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left,rgba(59,130,246,0.12),transparent 60%);
+            opacity: 0;
+            transition: opacity 300ms ease;
+            pointer-events: none;
+        }
+
+        .ds-partner-card.active {
+            transform: translateY(-4px) scale(1.05) translateZ(30px);
+            box-shadow: 0 24px 55px rgba(15,23,42,0.24);
+            border-color: rgba(59,130,246,0.45);
+            opacity: 1;
+            filter: saturate(1.05);
+        }
+
+            .ds-partner-card.active::before {
+                opacity: 1;
+            }
+
+            .ds-partner-card.active:hover {
+                transform: translateY(-8px) scale(1.07) translateZ(40px);
+            }
+
+    .ds-partner-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle,rgba(34,197,94,0.16),rgba(59,130,246,0.08));
+        margin-bottom: 0.6rem;
+        font-size: 1.45rem;
+        transform: translateY(4px);
+        transition: transform 300ms cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .ds-partner-card.active .ds-partner-icon {
+        transform: translateY(-2px) scale(1.08);
+    }
+
+    .ds-partner-card-title {
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: #111827;
+        margin: 0 0 0.45rem;
+    }
+
+    .ds-partner-card-text {
+        margin: 0;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: #4b5563;
+    }
+
+    /* slide helper */
+    .ds-partner-card.slide-left {
+        transform: translateX(-18px) translateY(18px) scale(0.9);
+        opacity: 0.55;
+    }
+
+    .ds-partner-card.slide-right {
+        transform: translateX(18px) translateY(18px) scale(0.9);
+        opacity: 0.55;
+    }
+
+    .ds-zoom-in {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        transition: opacity 600ms cubic-bezier(0.34,1.56,0.64,1), transform 600ms cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+        .ds-zoom-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+    @@media (max-width:992px) {
+        .ds-hero-section
+
+    {
+        background: linear-gradient(120deg,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 55%,rgba(255,255,255,0) 55%,rgba(255,255,255,0) 100%), url('/images/epc-building.png') no-repeat right center;
+        background-size: cover;
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    .ds-hero-content {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    }
+    @@media (max-width:768px) {
+        .ds-partner-carousel-wrapper
+
+    {
+        gap: 0.5rem;
+    }
+
+    .ds-partner-nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+
+    .ds-partner-carousel {
+        gap: 0.9rem;
+    }
+
+    .ds-partner-card {
+        min-width: 230px;
+    }
+
+    }
+    @@media (max-width:576px) {
+        .ds-hero-section
+
+    {
+        background: linear-gradient(120deg,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,0) 65%,rgba(255,255,255,0) 100%), url('/images/epc-building.png') no-repeat right center;
+        background-size: cover;
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    }
+</style>
+
+<div class="ds-page">
+
+    <!-- CURSOR GLOW -->
+    <div class="ds-cursor-glow" id="dsCursorGlow"></div>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="ds-hero-section"
+        style="
+        position: relative;
+        overflow: hidden;
+        background:
+        linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 55%, rgba(255,255,255,0) 55%, rgba(255,255,255,0) 100%),
+        url('@Url.Content("~/images/epc-building1.png")') no-repeat right center;
+        background-size: auto 100%;
+        ">
+        <div class="ds-hero-intro-overlay" id="dsHeroIntroOverlay"></div>
+
+        <div class="ds-floating-orb ds-orb-1"></div>
+        <div class="ds-floating-orb ds-orb-2"></div>
+        <div class="ds-floating-orb ds-orb-3"></div>
+
+        <div class="ds-hero-content">
+            <div class="ds-hero-text">
+                <h1 id="ds-hero-tagline">
+                    Purpose-built digital &amp; AI tools for next‑Gen EPC
+                </h1>
+                <p>Built on 75 years of EPC expertise, these solutions deliver comprehensive coverage across project and corporate functions.</p>
+                <p>With intelligent automation, predictive insights, and streamlined workflows, they empower next‑generation execution with unmatched depth and efficiency.</p>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SOLUTIONS
+    ══════════════════════════════════════ -->
+    <section class="ds-solutions-section" id="ds-solutions-page">
+        <div class="ds-solutions-shell">
+
+            <header class="ds-solutions-header">
+                <h2>Our Solutions</h2>
+                <p>Purpose-built digital tools powering the next generation of EPC execution.</p>
+            </header>
+
+            <div class="ds-sol-grid">
+
+                <!-- Unnati CRM -->
+                <div class="ds-sol-card">
+                    <div class="ds-sol-card-top" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);"></div>
+                    <div class="ds-sol-card-body">
+                        <span class="ds-sol-icon">👥</span>
+                        <span class="ds-sol-badge">Live</span>
+                        <h3 class="ds-sol-name">Unnati CRM</h3>
+                        <p class="ds-sol-tagline">End-to-end CRM built for EPC Sales &amp; BD</p>
+                        <p class="ds-sol-desc">Unnati brings structure and discipline to every stage of the EPC sales cycle — from lead to order. Designed for the complexity of capital goods, it delivers pipeline visibility, bid management, and win-loss intelligence in one place.</p>
+                        <ul class="ds-sol-features">
+                            <li>Opportunity &amp; pipeline management</li>
+                            <li>Account &amp; contact intelligence</li>
+                            <li>Bid stage-gate tracking</li>
+                            <li>Win-loss analytics &amp; insights</li>
+                            <li>Competitor &amp; market positioning</li>
+                        </ul>
+                        <!--  <a href="/Solutions/unnati-crm" class="ds-sol-link">View solution <span>→</span></a>-->
+                    </div>
+                </div>
+
+                <!-- Pragati -->
+                <div class="ds-sol-card">
+                    <div class="ds-sol-card-top" style="background:linear-gradient(90deg,#f59e0b,#10b981);"></div>
+                    <div class="ds-sol-card-body">
+                        <span class="ds-sol-icon">⏱️</span>
+                        <span class="ds-sol-badge">Live</span>
+                        <h3 class="ds-sol-name">Pragati</h3>
+                        <p class="ds-sol-tagline">Time booking &amp; labour visibility for construction</p>
+                        <p class="ds-sol-desc">Pragati gives project teams real visibility into where time is actually spent on site. Field-ready and easy to adopt, it transforms time ownership from an afterthought into a culture — enabling tighter plans and sharper accountability.</p>
+                        <ul class="ds-sol-features">
+                            <li>Daily time booking against WBS activities</li>
+                            <li>Multi-project &amp; multi-site support</li>
+                            <li>Labour productivity dashboards</li>
+                            <li>Planned vs actual time analysis</li>
+                            <li>Offline-capable mobile interface</li>
+                        </ul>
+                        <!-- <a href="/Solutions/pragati-time-booking" class="ds-sol-link">View solution <span>→</span></a> -->
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         PARTNER
+    ══════════════════════════════════════ -->
+    <section class="ds-partner-section">
+
+        <div class="ds-floating-orb"
+             style="top:-80px;left:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(56,189,248,0.25) 0%,transparent 70%);animation-delay:-4s;"></div>
+        <div class="ds-floating-orb"
+             style="bottom:-120px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(52,211,153,0.22) 0%,transparent 70%);animation-delay:-10s;"></div>
+
+        <div class="ds-partner-header ds-zoom-in">
+            <div style="flex:1 1 260px;min-width:240px;">
+                <h2 class="ds-partner-main-title">We are the right partner for your digital transformation journey</h2>
+                <div class="ds-partner-sub-pill">
+                    <div class="ds-partner-sub-pill-bar"></div>
+                    <p class="ds-partner-sub-pill-text">What differentiates us?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ds-partner-carousel-wrapper ds-zoom-in">
+            <button class="ds-partner-nav-btn ds-partner-nav-left" type="button" aria-label="Previous">‹</button>
+
+            <div class="ds-partner-carousel" id="dsPartnerCarousel">
+                <article class="ds-partner-card" data-slot="0">
+                    <div class="ds-partner-icon"></div>
+                    <h3 class="ds-partner-card-title"></h3>
+                    <p class="ds-partner-card-text"></p>
+                </article>
+                <article class="ds-partner-card active" data-slot="1">
+                    <div class="ds-partner-icon"></div>
+                    <h3 class="ds-partner-card-title"></h3>
+                    <p class="ds-partner-card-text"></p>
+                </article>
+                <article class="ds-partner-card" data-slot="2">
+                    <div class="ds-partner-icon"></div>
+                    <h3 class="ds-partner-card-title"></h3>
+                    <p class="ds-partner-card-text"></p>
+                </article>
+            </div>
+
+            <button class="ds-partner-nav-btn ds-partner-nav-right" type="button" aria-label="Next">›</button>
+        </div>
+    </section>
+
+</div><!-- /.ds-page -->
+@section Scripts {
+    <script>
+        // ── DATA ──────────────────────────────────────────────
+        const dsLifecycleStages = [
+            { id:'sales', label:'Sales & BD', icon:'👥', accent:'#0ea5e9', solutions:[
+                { name:'Unnati CRM', status:'live', desc:'End-to-end EPC CRM for opportunities, accounts and pipelines.' },
+                { name:'Cost Estimation Tool', status:'soon', desc:'Structured cost libraries and bid estimations for EPC projects.' },
+                { name:'Services Co-pilot', status:'soon', desc:'AI-assisted support for services proposals and renewals.' },
+                { name:'Contract Intelligence', status:'soon', desc:'Extract obligations, risks and key clauses from contracts.' },
+                { name:'Autonomous lead generation', status:'soon', desc:'Continuously scan for new EPC leads across target markets.' }
+            ]},
+            { id:'planning', label:'Planning & PMO', icon:'📊', accent:'#6366f1', solutions:[
+                { name:'Opportunity Prioritizer', status:'live', desc:'Score and rank bids by risk, margin and strategic fit.' },
+                { name:'Stage‑Gate Tracker', status:'live', desc:'Standard stage‑gate reviews from concept to NTP.' },
+                { name:'Portfolio Roadmap', status:'soon', desc:'Multi‑project roadmap with capacity and risk overlays.' }
+            ]},
+            { id:'engineering', label:'Engineering', icon:'📐', accent:'#0f766e', solutions:[
+                { name:'Engg. Document Control', status:'live', desc:'Registers, workflows and revision control for deliverables.' },
+                { name:'Transmittal Manager', status:'live', desc:'Issue, track and acknowledge document transmittals.' },
+                { name:'Model/Drawing Progress', status:'soon', desc:'Progress tracking against drawing and model lists.' }
+            ]},
+            { id:'procurement', label:'Procurement & Logistics', icon:'📦', accent:'#ea580c', solutions:[
+                { name:'Procurement Hub', status:'live', desc:'RFQs, quotes, evaluations and POs in one place.' },
+                { name:'PO Expediting Board', status:'soon', desc:'Visual board for expediting critical POs and deliveries.' },
+                { name:'Logistics Tracker', status:'soon', desc:'Shipment tracking from dispatch to site gate‑in.' }
+            ]},
+            { id:'manufacturing', label:'Manufacturing', icon:'🏭', accent:'#22c55e', solutions:[
+                { name:'Production Scheduler', status:'soon', desc:'Align shop schedules with project milestones.' },
+                { name:'Fabrication Tracker', status:'soon', desc:'Monitor fabrication status for key assemblies.' },
+                { name:'Quality Records Hub', status:'soon', desc:'Digital store for ITPs, NCRs and quality dossiers.' }
+            ]},
+            { id:'construction', label:'Construction', icon:'🏗️', accent:'#16a34a', solutions:[
+                { name:'Site Progress Board', status:'soon', desc:'Daily progress capture mapped to WBS and plan.' },
+                { name:'Pragati – Time Booking', status:'live', desc:'Field‑ready time booking for true labour visibility.' },
+                { name:'Daily Reports', status:'soon', desc:'Standardized site reports with photos and issues.' }
+            ]},
+            { id:'testing', label:'Testing & Handover', icon:'📋', accent:'#0891b2', solutions:[
+                { name:'Punch List Manager', status:'soon', desc:'System‑wise punch creation, assignment and closure.' },
+                { name:'Pre‑commissioning Tracker', status:'soon', desc:'Track loop checks and function tests to completion.' },
+                { name:'Handover Dossier Builder', status:'soon', desc:'Auto‑assemble client handover documentation.' }
+            ]},
+            { id:'operations', label:'Operation & Maintenance', icon:'🛠️', accent:'#7c3aed', solutions:[
+                { name:'Asset Register', status:'soon', desc:'Digital register of installed assets and key attributes.' },
+                { name:'Maintenance Planner', status:'soon', desc:'Preventive and corrective maintenance planning.' },
+                { name:'Shutdown Manager', status:'soon', desc:'Plan and execute shutdowns with integrated time booking.' }
+            ]},
+            { id:'learning', label:'Continuous Learning', icon:'📚', accent:'#0f766e', solutions:[
+                { name:'Lessons Learned Hub', status:'soon', desc:'Capture and reuse lessons across projects.' },
+                { name:'Best Practice Library', status:'soon', desc:'Templates and standards for repeatable excellence.' },
+                { name:'Communities of Practice', status:'soon', desc:'Discipline‑wise communities around key topics.' }
+            ]},
+            { id:'hr', label:'HR', icon:'👤', accent:'#4f46e5', solutions:[
+                { name:'HR Core', status:'live', desc:'Master data, roles and project assignments.' },
+                { name:'Talent & Skills Matrix', status:'soon', desc:'Skills inventory mapped to projects and bids.' },
+                { name:'Training Planner', status:'soon', desc:'Plan and track competency‑based training.' }
+            ]},
+            { id:'admin', label:'Admin', icon:'🏢', accent:'#0891b2', solutions:[
+                { name:'Admin Requests', status:'soon', desc:'Central portal for admin requests and approvals.' },
+                { name:'Travel & Visit Hub', status:'soon', desc:'Manage site visits, travel and approvals.' },
+                { name:'Office Services Tracker', status:'soon', desc:'Track facility issues and service tickets.' }
+            ]},
+            { id:'finance', label:'Finance', icon:'🧮', accent:'#f97316', solutions:[
+                { name:'Project Margin View', status:'soon', desc:'Margin, overhead and recovery views per project.' },
+                { name:'Claims & Variations', status:'soon', desc:'Track commercial claims and client variations.' },
+                { name:'Cash Flow Planner', status:'soon', desc:'Projected inflows/outflows by project and month.' }
+            ]},
+            { id:'safety', label:'Safety', icon:'🦺', accent:'#16a34a', solutions:[
+                { name:'HSE Observations', status:'soon', desc:'Capture and close safety observations in the field.' },
+                { name:'Incident Manager', status:'soon', desc:'Record, investigate and close incidents and near misses.' },
+                { name:'Safety Analytics', status:'soon', desc:'TRIFR, LTIFR and leading indicator dashboards.' }
+            ]}
+        ];
+
+        // ── CURSOR GLOW ──────────────────────────────────────
+        (function(){
+            const g = document.getElementById('dsCursorGlow');
+            if(!g) return;
+            let mx=0,my=0,gx=0,gy=0;
+            document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; });
+            (function tick(){ gx+=(mx-gx)*0.1; gy+=(my-gy)*0.1; g.style.transform=`translate(${gx-150}px,${gy-150}px)`; requestAnimationFrame(tick); })();
+        })();
+
+    
+        // ── HERO CTA SCROLL ──────────────────────────────────
+        document.getElementById('ds-cta-get-started')?.addEventListener('click',()=>{
+            document.getElementById('ds-solutions-page')?.scrollIntoView({behavior:'smooth'});
+        });
+        document.getElementById('ds-cta-contact')?.addEventListener('click',()=>{
+            document.querySelector('.contact-hero')?.scrollIntoView({behavior:'smooth'});
+        });
+
+        // ── ZOOM-IN OBSERVER ─────────────────────────────────
+        const dsZoomObs = new IntersectionObserver(entries=>{
+            entries.forEach(e=>{ e.isIntersecting ? e.target.classList.add('visible') : e.target.classList.remove('visible'); });
+        },{threshold:0.15});
+        document.querySelectorAll('.ds-zoom-in').forEach(el=>dsZoomObs.observe(el));
+
+        // ── SOLUTIONS STAGE ──────────────────────────────────
+        (function(){
+            const strip    = document.getElementById('dsStageStrip');
+            const underline= document.getElementById('dsStageUnderline');
+            const panel    = document.getElementById('dsStagePanel');
+            if(!strip||!underline||!panel) return;
+
+            let activeId = 'sales';
+
+            function buildStrip(){
+                strip.innerHTML='';
+                dsLifecycleStages.forEach(stage=>{
+                    const btn = document.createElement('button');
+                    btn.type='button';
+                    btn.className='ds-stage-link'+(stage.id===activeId?' active':'');
+                    btn.dataset.stageId=stage.id;
+                    btn.innerHTML=`<span class="icon">${stage.icon}</span>${stage.label}`;
+                    btn.addEventListener('click',()=>onStageClick(stage.id));
+                    strip.appendChild(btn);
+                });
+                updateUnderline();
+            }
+
+            function updateUnderline(){
+                const active = strip.querySelector('.ds-stage-link.active');
+                if(!active){ underline.style.width='0px'; underline.style.transform='translateX(0)'; return; }
+                const sr=strip.getBoundingClientRect(), tr=active.getBoundingClientRect();
+                let l=tr.left-sr.left, w=tr.width;
+                if(l<0){w+=l;l=0;} const mx=sr.width-l; if(w>mx)w=mx;
+                underline.style.width=w+'px';
+                underline.style.transform=`translateX(${l}px)`;
+            }
+
+            function renderPanel(stageId){
+                const stage=dsLifecycleStages.find(s=>s.id===stageId);
+                if(!stage) return;
+                panel.classList.remove('open');
+                panel.innerHTML='';
+                stage.solutions.forEach((sol,i)=>{
+                    const card=document.createElement('article');
+                    card.className='ds-tab-card';
+                    card.style.setProperty('--stage-accent', stage.accent||'#6366f1');
+                    card.style.transitionDelay=(80*i)+'ms';
+                    const isLive=sol.status==='live';
+                    const slug=sol.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+                    card.innerHTML=`
+                        <div class="ds-tab-header">
+                            <div class="ds-tab-name">${sol.name}</div>
+                            <span class="ds-tab-badge ${isLive?'live':'soon'}">${isLive?'LIVE':'SOON'}</span>
+                        </div>
+                        <p class="ds-tab-desc">${sol.desc}</p>
+                        <div>${isLive?`<a class="ds-tab-link" href="/Solutions/${slug}">View solution <span>→</span></a>`:'<span style="font-size:0.75rem;color:#9ca3af;">In pipeline</span>'}</div>`;
+                    panel.appendChild(card);
+                    requestAnimationFrame(()=>card.classList.add('visible'));
+                });
+                requestAnimationFrame(()=>panel.classList.add('open'));
+            }
+
+            function onStageClick(id){
+                if(id===activeId) return;
+                activeId=id;
+                strip.querySelectorAll('.ds-stage-link').forEach(l=>l.classList.toggle('active',l.dataset.stageId===id));
+                updateUnderline();
+                renderPanel(id);
+            }
+
+            strip.addEventListener('scroll', updateUnderline);
+            window.addEventListener('resize', updateUnderline);
+            buildStrip();
+            renderPanel(activeId);
+
+            // Arrow buttons
+            const leftBtn  = document.getElementById('dsScrollLeft');
+            const rightBtn = document.getElementById('dsScrollRight');
+            function updateArrows(){
+                leftBtn.classList.toggle('hidden', strip.scrollLeft===0);
+                rightBtn.classList.toggle('hidden', strip.scrollLeft+strip.clientWidth>=strip.scrollWidth);
+            }
+            leftBtn.onclick=()=>strip.scrollBy({left:-200,behavior:'smooth'});
+            rightBtn.onclick=()=>strip.scrollBy({left:200,behavior:'smooth'});
+            strip.addEventListener('scroll', updateArrows);
+            updateArrows();
+        })();
+
+        // ── PARTNER CAROUSEL ─────────────────────────────────
+        (function(){
+            const carousel = document.getElementById('dsPartnerCarousel');
+            if(!carousel) return;
+            const slots   = Array.from(carousel.querySelectorAll('.ds-partner-card'));
+            const prevBtn = document.querySelector('.ds-partner-nav-left');
+            const nextBtn = document.querySelector('.ds-partner-nav-right');
+
+            const items = [
+                { icon:'🚀', title:'Lightning‑Fast\nDeployment', text:'Go live in weeks, not months—thanks to lightweight architecture and purpose‑driven design.' },
+                { icon:'💡', title:'Plug‑and‑Play\nIntelligence', text:'Analytics that work out‑of‑the‑box with minimal customization, powered by decades of EPC know‑how.' },
+                { icon:'🧩', title:'Individually Powerful,\nCollectively Exhaustive', text:'A complete suite of tools covering every stage of the project lifecycle as well as corporate functions.' },
+                { icon:'💰', title:'Lower Ownership Cost,\nFaster ROI', text:'Minimal customization, purpose‑built design and SaaS model make our solutions low‑cost.' },
+                { icon:'👔', title:'By practitioners and\nFor practitioners', text:'Perfectly engineered for EPC needs, tested on real TKIL projects, and designed for effortless adoption.' }
+            ];
+
+            let center=0, busy=false;
+            function wrap(i){ return(i+items.length)%items.length; }
+
+            function render(dir){
+                slots.forEach(s=>{ s.classList.remove('slide-left','slide-right'); if(dir) s.classList.add(dir==='next'?'slide-left':'slide-right'); });
+                [wrap(center-1),wrap(center),wrap(center+1)].forEach((idx,i)=>{
+                    const d=items[idx];
+                    slots[i].querySelector('.ds-partner-icon').textContent=d.icon;
+                    slots[i].querySelector('.ds-partner-card-title').innerHTML=d.title.replace('\n','<br/>');
+                    slots[i].querySelector('.ds-partner-card-text').textContent=d.text;
+                    slots[i].classList.toggle('active',i===1);
+                });
+                setTimeout(()=>{ slots.forEach(s=>s.classList.remove('slide-left','slide-right')); busy=false; }, 320);
+            }
+
+            function goNext(){ if(busy)return; busy=true; center=wrap(center+1); render('next'); }
+            function goPrev(){ if(busy)return; busy=true; center=wrap(center-1); render('prev'); }
+
+            nextBtn?.addEventListener('click', goNext);
+            prevBtn?.addEventListener('click', goPrev);
+
+            let auto=setInterval(goNext,6000);
+            [carousel,prevBtn,nextBtn].forEach(el=>{
+                el?.addEventListener('mouseenter',()=>clearInterval(auto));
+                el?.addEventListener('mouseleave',()=>{ auto=setInterval(goNext,6000); });
+            });
+
+            render();
+        })();
+    </script>
+}

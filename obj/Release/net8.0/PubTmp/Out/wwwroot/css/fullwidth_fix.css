@@ -1,0 +1,208 @@
+/* ============================================================
+   FULL-WIDTH FIX  —  eliminate side gaps at all screen sizes
+   Add this AFTER site.css and responsive.css in _Layout.cshtml
+   
+   Root cause: sections use max-width + 5vw padding which creates
+   visible gutters. These overrides make all full-bleed sections
+   truly full-width while keeping inner content readable.
+============================================================ */
+
+/* ── 1. Kill any accidental body/html margin ─────────────── */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ── 2. Hero section — must be truly full-bleed ─────────── */
+.hero-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
+}
+
+/* The background layer fills the full section */
+.hero-bg,
+.hero-overlay {
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+/* Inner layout: fluid padding that never exceeds 80px per side */
+.hero-layout {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 3. Header — full width, no side gaps ────────────────── */
+.main-header {
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1rem, 4vw, 60px);
+    padding-right: clamp(1rem, 4vw, 60px);
+    box-sizing: border-box;
+}
+
+/* ── 4. Business units section ───────────────────────────── */
+.business-units-section {
+    width: 100%;
+    max-width: 100%;
+}
+
+.business-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 5. Global presence section ─────────────────────────── */
+.global-presence-section {
+    width: 100%;
+    max-width: 100%;
+}
+
+.global-presence-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 6. Inner page hero (nd-hero) ────────────────────────── */
+.nd-hero {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.nd-hero-img {
+    width: 100%;
+}
+
+.nd-hero-content {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 7. ND page layout ───────────────────────────────────── */
+.nd-page {
+    width: 100%;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.nd-flex {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 8. Enquiry page ─────────────────────────────────────── */
+.enq-page {
+    width: 100%;
+}
+
+.enq-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 9. Careers page ─────────────────────────────────────── */
+.car-page {
+    width: 100%;
+}
+
+.car-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 10. Products page ───────────────────────────────────── */
+.prd-hero {
+    width: 100%;
+    max-width: 100%;
+}
+
+.prd-cards-body,
+.prd-detail-inner,
+.prd-subnav-inner {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 11. Footer ──────────────────────────────────────────── */
+.main-footer {
+    width: 100%;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(1.5rem, 5vw, 80px);
+    padding-right: clamp(1.5rem, 5vw, 80px);
+    box-sizing: border-box;
+}
+
+/* ── 12. main role="main" wrapper ────────────────────────── */
+main[role="main"] {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ── 13. Large screen safety net (1600px+) ───────────────── */
+/* Ensure nothing hard-clips to a max-width smaller than viewport */
+@media (min-width: 1600px) {
+    .hero-layout,
+    .header-container,
+    .business-container,
+    .global-presence-container,
+    .nd-hero-content,
+    .nd-flex,
+    .enq-container,
+    .car-container,
+    .prd-cards-body,
+    .prd-detail-inner,
+    .footer-container {
+        max-width: 100%;
+        padding-left: clamp(2rem, 4vw, 100px);
+        padding-right: clamp(2rem, 4vw, 100px);
+    }
+}

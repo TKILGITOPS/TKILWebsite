@@ -1,5 +1,8 @@
+wwwroot\css\fullwidth_fix.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\board\ketan_pendse.jpg
+wwwroot\images\board\vivek_bhatia.jpg
 wwwroot\images\business\battery.jpg
 wwwroot\images\business\biochemicas.jpg
 wwwroot\images\business\cement.jpg
@@ -8,7 +11,169 @@ wwwroot\images\business\green-hydrogen.jpg
 wwwroot\images\business\mining.jpg
 wwwroot\images\business\services.jpg
 wwwroot\images\business\sugar.jpg
+wwwroot\images\company\2.jpg
+wwwroot\images\company\Exports.jpg
+wwwroot\images\Design\1.jpg
+wwwroot\images\divisions\battery-energy.jpg
+wwwroot\images\divisions\energy.jpg
+wwwroot\images\divisions\energy.png
+wwwroot\images\divisions\green-hydrogen.png
+wwwroot\images\divisions\icon-Asset-Managements.jpg
+wwwroot\images\divisions\icon-field-workshop-service.jpg
+wwwroot\images\divisions\icon-parts-supply-management.jpg
+wwwroot\images\divisions\icon-revamp-outages.jpg
+wwwroot\images\divisions\MHE.jpg
+wwwroot\images\divisions\Mining - IEW.jpg
+wwwroot\images\divisions\Semi-Mobile-Primary-Crushing-Unit.jpg
+wwwroot\images\divisions\service-1.jpg
+wwwroot\images\divisions\standard-machine-business.jpg
+wwwroot\images\divisions\sugar.jpg
+wwwroot\images\divisions\TKIL_Services_page.jpg
+wwwroot\images\divisions\wonder-cement-new.jpg
+wwwroot\images\epc-building1.jpg
+wwwroot\images\epc-building1.png
+wwwroot\images\ErectionCommissioning\2.jpg
+wwwroot\images\fssc\Coal-Bunker-RAV-and-Hopper-Dismantling-Work.JPG
+wwwroot\images\fssc\POLYCOM-Welding.jpg
+wwwroot\images\fssc\Reconditioning-of-Heavy-Equipment.jpg
+wwwroot\images\fssc\Welding-of-Kiln-Shell.jpg
 wwwroot\images\global-presence.jpg
+wwwroot\images\Manufacturing\3.jpg
+wwwroot\images\products\energy\Biomass-fired-boilers-1-old.jpg
+wwwroot\images\products\energy\Biomass-fired-boilers-1.jpg
+wwwroot\images\products\energy\Biomass-fired-boilers-old.jpg
+wwwroot\images\products\energy\Biomass-fired-boilers.jpg
+wwwroot\images\products\energy\boiler-main.jpg
+wwwroot\images\products\energy\CFBC-1.jpg
+wwwroot\images\products\energy\CFBC-2.jpg
+wwwroot\images\products\energy\Heat-recovery-potential.jpg
+wwwroot\images\products\energy\industrial-automization-control-room.png
+wwwroot\images\products\energy\oil-and-gas-fired.jpg
+wwwroot\images\products\energy\oil-and-gas-fired_old.jpg
+wwwroot\images\products\energy\Stoker-fired-boilers-2.jpg
+wwwroot\images\products\energy\Stoker-fired-boilers.jpg
+wwwroot\images\products\energy\waste-heat_recovery-boiler-2.jpg
+wwwroot\images\products\energy\waste-heat_recovery-boiler.jpg
+wwwroot\images\products\mhe\Aggregate-crushing-and-screening-plant-1.jpg
+wwwroot\images\products\mhe\Aggregate-crushing-and-screening-plant.jpg
+wwwroot\images\products\mhe\bridgr-type-bw-recliamer.jpg
+wwwroot\images\products\mhe\Bucket-Wheel-Excavator-1.jpg
+wwwroot\images\products\mhe\Bucket-Wheel-Excavator-2.jpg
+wwwroot\images\products\mhe\Bucket-Wheel-Reclaimers-1.jpg
+wwwroot\images\products\mhe\Bucket-Wheel-Reclaimers.jpg
+wwwroot\images\products\mhe\CMT-(Tripper-Car)-2.jpg
+wwwroot\images\products\mhe\CMT-(Tripper-Car).jpg
+wwwroot\images\products\mhe\continious-ship-unloader-2.jpg
+wwwroot\images\products\mhe\Continuous-Ship-Unloader.jpg
+wwwroot\images\products\mhe\Crushers-1.jpg
+wwwroot\images\products\mhe\Crushers-1_old.jpg
+wwwroot\images\products\mhe\Crushers.jpg
+wwwroot\images\products\mhe\drum-recliamer.jpg
+wwwroot\images\products\mhe\Feeders-1.jpg
+wwwroot\images\products\mhe\feeders.jpg
+wwwroot\images\products\mhe\FGD-WBM.jpg
+wwwroot\images\products\mhe\grab-type-ship-unlaoder-1.jpg
+wwwroot\images\products\mhe\grab-type-ship-unlaoder-2.jpg
+wwwroot\images\products\mhe\Grab-Type-Shipunloader.jpg
+wwwroot\images\products\mhe\Idler-Rollers.jpg
+wwwroot\images\products\mhe\Mobile-Transfer-Conveyor-1.jpg
+wwwroot\images\products\mhe\Mobile-Transfer-Conveyor.jpg
+wwwroot\images\products\mhe\mobile.jpg
+wwwroot\images\products\mhe\MULTIROAD-FM90-CK804.jpg
+wwwroot\images\products\mhe\MULTIROAD-G90-CK803.jpg
+wwwroot\images\products\mhe\Other-Stockyard-Equipment-1.jpg
+wwwroot\images\products\mhe\Other-Stockyard-Equipment.jpg
+wwwroot\images\products\mhe\overland-conveyor-1.jpg
+wwwroot\images\products\mhe\overland-conveyor.jpg
+wwwroot\images\products\mhe\paddle-feeder-1.jpg
+wwwroot\images\products\mhe\paddle-feeders.jpg
+wwwroot\images\products\mhe\paddle-feedersX.jpg
+wwwroot\images\products\mhe\pipe-conveyor-2.jpg
+wwwroot\images\products\mhe\pipe-conveyor.jpg
+wwwroot\images\products\mhe\Pulleys.jpg
+wwwroot\images\products\mhe\Roller-Screen.jpg
+wwwroot\images\products\mhe\Screen-feeders-1.jpg
+wwwroot\images\products\mhe\Semi-Mobile-Crushing-Plant-1.jpg
+wwwroot\images\products\mhe\Semi-Mobile-Crushing-Plant.jpg
+wwwroot\images\products\mhe\shiftable-belt-conveyor-1.jpg
+wwwroot\images\products\mhe\shiftable-conveyor.jpg
+wwwroot\images\products\mhe\Ship-Loader-1.jpg
+wwwroot\images\products\mhe\Ship-Loader.jpg
+wwwroot\images\products\mhe\Spreaders-1.jpg
+wwwroot\images\products\mhe\Spreaders.jpg
+wwwroot\images\products\mhe\stacker-1.jpg
+wwwroot\images\products\mhe\stacker-cum-reclaimer3.jpg
+wwwroot\images\products\mhe\stacker-cum-reclaimer4.jpg
+wwwroot\images\products\mhe\stacker.jpg
+wwwroot\images\products\mhe\transport-crawler-1.jpg
+wwwroot\images\products\mhe\transport-crawler.jpg
+wwwroot\images\products\mhe\vaccume-belt-filration.jpg
+wwwroot\images\products\mhe\wagon-loader1.jpg
+wwwroot\images\products\mhe\wagon-tippler.jpg
+wwwroot\images\products\mhe\wagon-tippler1.jpg
+wwwroot\images\products\mhe\wagon-tippler1_old.jpg
+wwwroot\images\products\mhe\WBM-3D-GA.jpg
+wwwroot\images\products\mhe\wet-ball-mill.jpg
+wwwroot\images\products\sugar\Batch-Type-Discontinuous-1.jpg
+wwwroot\images\products\sugar\Batch-Type-Discontinuous-1_old.jpg
+wwwroot\images\products\sugar\Batch-Type-Discontinuous-2.jpg
+wwwroot\images\products\sugar\Batch-Type-Discontinuous-2_old.jpg
+wwwroot\images\products\sugar\Cane-Fibrizer-1.jpg
+wwwroot\images\products\sugar\Cane-Shredder-2.jpg
+wwwroot\images\products\sugar\CONTINUOUS-CENTRIFUGAL-1.jpg
+wwwroot\images\products\sugar\CONTINUOUS-CENTRIFUGAL-1_old.jpg
+wwwroot\images\products\sugar\CONTINUOUS-CENTRIFUGAL-2.jpg
+wwwroot\images\products\sugar\continuous-centrifugal.JPG
+wwwroot\images\products\sugar\Digitalisation.jpg
+wwwroot\images\products\sugar\falling-film-evaporator-1.jpg
+wwwroot\images\products\sugar\falling-film-evaporator-2.jpg
+wwwroot\images\products\sugar\four-roller-mill.JPG
+wwwroot\images\products\sugar\juice-heater-1.jpg
+wwwroot\images\products\sugar\juice-heater-2.jpg
+wwwroot\images\products\sugar\Pressure-Feeders-1.jpg
+wwwroot\images\products\sugar\Pressure-Feeders-1_old.jpg
+wwwroot\images\products\sugar\Pressure-Feeders-2.jpg
+wwwroot\images\products\sugar\rising-film-evaporator.jpg
+wwwroot\images\products\sugar\Rotary-Juice-Screen-1.jpg
+wwwroot\images\products\sugar\Rotary-Juice-Screen-2.jpg
+wwwroot\images\products\sugar\shredder.jpg
+wwwroot\images\products\sugar\Sugar-Refinery-1.jpg
+wwwroot\images\products\sugar\Sugar-Refinery-2.jpg
+wwwroot\images\products\sugar\Three-Roller-Mill-1.jpg
+wwwroot\images\products\sugar\Three-Roller-Mill.jpg
+wwwroot\images\products\sugar\two-roller-mill-1.jpg
+wwwroot\images\products\sugar\two-roller-mill-with-under-feed-roller.JPG
+wwwroot\images\products\sugar\Vacuum-Pan-1.jpg
+wwwroot\images\products\sugar\Vacuum-Pan-2.jpg
+wwwroot\images\products\sugar\Vertical-Continuous-Pan-1.jpg
+wwwroot\images\products\sugar\vertical-crystallizer.JPG
+wwwroot\images\psm\Boiler-Spares--PA-Nozzles.jpg
+wwwroot\images\psm\Boiler-Spares--Spray-Attemperator.jpg
+wwwroot\images\psm\Boiler-Spares--Thermal-Expansion-Bellow-(Metallic).JPG
+wwwroot\images\psm\Boiler-Spares--Thermal-Expansion-Bellow.jpg
+wwwroot\images\psm\Cement-Spares--Burner-Tip.jpg
+wwwroot\images\psm\Cement-Spares--Dynamic-Separator-Rotating-Assembly.jpg
+wwwroot\images\psm\Cement-Spares--Flap-valve.JPG
+wwwroot\images\psm\Cement-Spares--Kiln-Tyre-Shell.JPG
+wwwroot\images\psm\Cement-Spares--Polycom-Roller.jpg
+wwwroot\images\psm\Cement-Spares--Polycom-with-Shaft.jpg
+wwwroot\images\psm\Cement-Spares--Support-Roller.JPG
+wwwroot\images\psm\MHE-Spares--Bogie-Wheels.jpg
+wwwroot\images\psm\MHE-Spares--Crusher-Rotor.jpg
+wwwroot\images\psm\MHE-Spares--Pinion-Shaft-Assembly.jpg
+wwwroot\images\psm\MHE-Spares--Pulley-with-Lagging.jpg
+wwwroot\images\psm\MHE-Spares--Ring-Granulator-Segment.jpg
+wwwroot\images\psm\MHE-Spares--Slew-Bearing-Toothed-Segment.jpg
+wwwroot\images\psm\Sugar-Spares--Chopper.jpg
+wwwroot\images\psm\Sugar-Spares--Mill-Headstock.jpg
+wwwroot\images\psm\Sugar-Spares--Shredder-Hammer-Tip.jpg
+wwwroot\images\psm\Sugar-Spares--Shredder-Rotor-Assembly.jpg
+wwwroot\images\rr\Boiler-Rejuvenation--Bagasse-Extractor-(After).JPG
+wwwroot\images\rr\Boiler-Rejuvenation--Bagasse-Extractor-(Before).jpg
+wwwroot\images\rr\Cement-Rejuvenation--Girth-Gear-Replacement.jpg
+wwwroot\images\rr\MHE-Rejuvenation--Bucket-Wheel-Excavator-(After).jpg
+wwwroot\images\rr\MHE-Rejuvenation--Bucket-Wheel-Excavator-(Before).jpg
+wwwroot\images\rr\MHE-Rejuvenation--Bucket-Wheel-Excavator-(Rejuvenation-work-being-carried-out).JPG
 wwwroot\images\Slider1.jpg
 wwwroot\images\Slider2.jpg
 wwwroot\images\Slider3.jpg
@@ -73,3 +238,29 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\pdf\Biomedical Waste Annual Report_Hyderabad.pdf
+wwwroot\pdf\BMW Annual Return_ 2023.pdf
+wwwroot\pdf\Equal Opportunity Policy.pdf
+wwwroot\pdf\Press Note_TKIL Industries Partners with Germany-based company 2G Energy International.pdf
+wwwroot\pdf\Press Release Green Hydrogen announcement.pdf
+wwwroot\pdf\Press Release- Odisha Mining.pdf
+wwwroot\pdf\Press Release_ British Council safety.pdf
+wwwroot\pdf\Press Release_ TKIL Industries  KIS Group Association 2025.04.01.pdf
+wwwroot\pdf\Press Release_ TKIL Industries and HOPPECKE Forms Strategic Partnership 2025.05.27.pdf
+wwwroot\pdf\Press Release_Change of tkIL shareholding structure.pdf
+wwwroot\pdf\Press Release_TKIL Industries Demonstrates Advanced MACS at EXCON 2025 (002).pdf
+wwwroot\pdf\Press_Release_Company_name_to_TKIL_Industries.pdf
+wwwroot\pdf\Release_TKIL Industries Achieves Global Milestone.pdf
+wwwroot\pdf\statutory\Appointment Letter of Mr. Keval Doshi.pdf
+wwwroot\pdf\statutory\Appointment Letter of Mr. Pradip Shah.pdf
+wwwroot\pdf\statutory\MGT-7 Annual Return March 2024.pdf
+wwwroot\pdf\statutory\Nomination and Remuneration Policy.pdf
+wwwroot\pdf\statutory\Notice of AGM 21.08.2024.pdf
+wwwroot\pdf\statutory\Notice of AGM 23.07.2025.pdf
+wwwroot\pdf\statutory\Notice of EGM 09.05.2024.pdf
+wwwroot\pdf\statutory\Notice of EGM 12.11.2025.pdf
+wwwroot\pdf\statutory\Notice of EGM 25.02.2025.pdf
+wwwroot\pdf\statutory\Notice under section 160 of Mr. Keval Doshi.pdf
+wwwroot\pdf\statutory\Notice under section 160 of Mr. Pradip Shah.pdf
+wwwroot\pdf\TKIL Hyderabad Five Star OSH Audit 2025.pdf
+wwwroot\videos\Union-budget-CII-Panel.mp4

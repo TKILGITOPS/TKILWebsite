@@ -5,49 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TKIL Industries</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fullwidth_fix.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-    <!-- FIXED HEADER: White BG + Black Text -->
+    <!-- FIXED HEADER -->
     <header class="main-header">
         <div class="header-container">
             <a href="/" class="logo">TKIL Industries</a>
 
             <nav class="main-nav">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#business" class="nav-link">Business</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-
-                <!-- Hamburger Menu -->
-                <div class="menu-toggle">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-
-                    <div class="menu-dropdown">
-                        <ul>
-                            <li><a href="#option1">Company</a></li>
-                            <li><a href="#option2">Divisions</a></li>
-                            <li><a href="#option3">Products</a></li>
-                            <li><a href="#option4">Design</a></li>
-                            <li><a href="#option5">Manufacturing</a></li>
-                            <li><a href="#option6">Erection &amp; Commissioning</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                <a asp-controller="Home" asp-action="NewsDownloads" class="nav-link">News &amp; Downloads</a>
+                <a asp-controller="Home" asp-action="Enquiry" class="nav-link">Enquiry</a>
+                <a asp-controller="Home" asp-action="Careers" class="nav-link">Careers</a>
+                <a asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a>
             </nav>
+
+            <div class="menu-toggle">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+
+                <div class="menu-dropdown">
+                    <ul>
+                        <li><a href="@Url.Action("Company", "Home")">Company</a></li>
+                        <li><a href="@Url.Action("Divisions", "Home")">Our Business</a></li>
+                        <li><a href="@Url.Action("Products", "Home")">Products</a></li>
+                        <li><a href="@Url.Action("Design", "Home")">Design</a></li>
+                        <li><a href="@Url.Action("Manufacturing", "Home")">Manufacturing</a></li>
+                        <li><a href="@Url.Action("ErectionCommissioning", "Home")">Erection &amp; Commissioning</a></li>
+                        <li><a href="@Url.Action("DigitalServices", "Home")">Digital Services</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </header>
-
 
     <!-- Main Content -->
     <main role="main">
         @RenderBody()
     </main>
 
-    <!-- Footer -->
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-container">
@@ -56,11 +56,11 @@
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="#divisions">Divisions</a></li>
+                        <li><a href="#Divisions">Divisions</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#design">Design</a></li>
                         <li><a href="#manufacturing">Manufacturing</a></li>
-                        <li><a href="#erection">Erection & Commissioning</a></li>
+                        <li><a href="#erection">Erection &amp; Commissioning</a></li>
                         <li><a href="#service">Service</a></li>
                     </ul>
                 </div>
@@ -70,12 +70,13 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#news">News & Downloads</a></li>
+                        <li><a href="#news">News &amp; Downloads</a></li>
                         <li><a href="#enquiry">Enquiry</a></li>
                         <li><a href="#career">Career</a></li>
                         <li><a href="#sitemap">Sitemap</a></li>
                         <li><a href="#feedback">Customer Feedback Survey</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/Home/Contact">Contact</a></li>
+                        <li><a href="/Home/Legal">Legal Notes</a></li>
                     </ul>
                 </div>
 
@@ -87,19 +88,19 @@
                     <p>Leading EPC for power, industrial, and infrastructure projects worldwide</p>
 
                     <div class="footer-social">
-                        <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/tkil-industries/posts/?feedView=all" target="_blank" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                        <a href="https://www.instagram.com/tkil_industries?igsh=eDgzOW9sNm95dWdo" target="_blank" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                        <a href="https://www.facebook.com/TKILIndustriesPvtLtd" target="_blank" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+                        <a href="https://x.com/TKILindustries" target="_blank" aria-label="Twitter">
                             <i class="fab fa-x-twitter"></i>
                         </a>
-                        <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">
+                        <a href="https://www.youtube.com/@@TKILindustries" target="_blank" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
@@ -111,7 +112,6 @@
             </div>
         </div>
     </footer>
-
 
     <!-- Scripts -->
     <script src="~/js/site.js" asp-append-version="true"></script>

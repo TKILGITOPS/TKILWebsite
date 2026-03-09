@@ -1,5 +1,5 @@
-﻿@{
-    ViewData["Title"] = "TKIL Industries";
+﻿﻿@{
+ViewData["Title"] = "TKIL Industries";
 }
 
 <section class="hero-section">
@@ -25,8 +25,8 @@
             <p class="hero-description">Leading EPC for power, industrial, and infrastructure projects worldwide</p>
 
             <div class="hero-buttons">
-                <a href="#services" class="btn-primary">Explore Services</a>
-                <a href="#contact" class="btn-secondary">Get in Touch</a>
+                <a href="/Home/Products" class="btn-primary">Explore Products</a>
+                <a href="/Home/Contact" class="btn-secondary">Get in Touch</a>
             </div>
 
             <!-- 4 NUMBERS BELOW CTA -->
@@ -63,69 +63,63 @@
         <!-- LEFT: Rotating Donut -->
         <div class="donut-wrapper">
             <div class="donut-container" id="businessWheel">
-                <!-- 1. Sugar, Cogen & Bio-chemicals -->
-                <a href="/business/sugar-cogen" class="unit-item active" data-index="0"
-                   data-title="Sugar, Cogen & Bio-chemicals"
-                   data-description="For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and cogen plants. With a growing commitment to sustainability, we've ventured into the bio-chemicals sector, encompassing distilleries, compressed bio-gas plants, and their associated derivatives.">
+
+                <div class="unit-item active" data-index="0"
+                     data-title="Sugar, Cogen & Bio-chemicals"
+                     data-description="For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and cogen plants."
+                     data-link="/Home/Divisions#sugar">
                     <img src="/images/business/sugar.jpg" alt="Sugar, Cogen & Bio-chemicals">
-                  
-                </a>
+                </div>
 
-                <!-- 2. Mining & Material Handling -->
-                <a href="/business/mining" class="unit-item" data-index="1"
-                   data-title="Mining, Material Handling & BOP"
-                   data-description="TKIL Industries is a technologically driven engineering powerhouse, with exceptional contributions in Mining, Bulk Material Handling and Comminution Systems. Powered by world-class technology, we provide end-to-end solutions for core sectors such as mining, power, ports, steel and minerals.">
+                <div class="unit-item" data-index="1"
+                     data-title="Mining, Material Handling & BOP"
+                     data-description="TKIL Industries is a technologically driven engineering powerhouse, with exceptional contributions in Mining, Bulk Material Handling and Comminution Systems."
+                     data-link="/Home/Divisions#mining">
                     <img src="/images/business/mining.jpg" alt="Mining & Material Handling">
-                 
-                </a>
+                </div>
 
-                <!-- 3. Cement Plants -->
-                <a href="/business/cement" class="unit-item" data-index="2"
-                   data-title="Cement Plants & Equipment"
-                   data-description="One of the world's leading cement and mining technology companies, manufacturing, supplying, installing and commissioning modern, state-of-art integrated cement plants of capacities ranging between 650 to 10000 tpd for more than 35 years. Our plants run at more than their rated capacities across India.">
+                <div class="unit-item" data-index="2"
+                     data-title="Cement Plants & Equipment"
+                     data-description="One of the world's leading cement and mining technology companies, manufacturing and commissioning integrated cement plants for more than 35 years."
+                     data-link="/Home/Divisions#cement">
                     <img src="/images/business/cement.jpg" alt="Cement Plants">
-              
-                </a>
+                </div>
 
-                <!-- 4. Energy (Boiler & Power) -->
-                <a href="/business/energy" class="unit-item" data-index="3"
-                   data-title="Energy Business (Boiler & Power Plants)"
-                   data-description="Long established in design, manufacture, supply, installation and commissioning of steam and power generation plants. Leveraging our leadership in CFB Boilers, we provide complete power plants on EPC basis. Our multifuel capable boilers are industry benchmarks for efficiency, reliability and environment friendliness.">
+                <div class="unit-item" data-index="3"
+                     data-title="Energy Business (Boiler & Power Plants)"
+                     data-description="Long established in design, manufacture, supply, installation and commissioning of steam and power generation plants."
+                     data-link="/Home/Divisions#energy">
                     <img src="/images/business/energy.jpg" alt="Energy Business">
-                    
-                </a>
+                </div>
 
-                <!-- 5. Service Business -->
-                <a href="/business/services" class="unit-item" data-index="4"
-                   data-title="Service Business"
-                   data-description="Our 360° service program supports customers throughout the life cycle of their assets - spare parts supply, O&M service and field service ensure assets remain functional and productive. We offer revamps and rejuvenation services to increase operating life with guaranteed output and safety, always helping achieve business goals.">
+                <div class="unit-item" data-index="4"
+                     data-title="Service Business"
+                     data-description="Our 360° service program supports customers throughout the life cycle of their assets — spare parts, O&M, field service, revamps and rejuvenation."
+                     data-link="/Home/Divisions#service">
                     <img src="/images/business/services.jpg" alt="Service Business">
-                   
-                </a>
+                </div>
 
-                <!-- 6. Green Hydrogen -->
-                <a href="/business/green-hydrogen" class="unit-item" data-index="5"
-                   data-title="Green Hydrogen Business"
-                   data-description="At the forefront of India's green energy transition through strategic partnership with SoHHytec SA, Switzerland. Driving production of clean, renewable hydrogen using solar and wind power to decarbonize key industries. Aligned with India's National Hydrogen Mission, unlocking green hydrogen's potential as a clean energy source for a sustainable tomorrow.">
+                <div class="unit-item" data-index="5"
+                     data-title="Green Hydrogen Business"
+                     data-description="At the forefront of India's green energy transition through strategic partnership with SoHHytec SA, Switzerland."
+                     data-link="/Home/Divisions#green-hydrogen">
                     <img src="/images/business/green-hydrogen.jpg" alt="Green Hydrogen">
-                 
-                </a>
+                </div>
 
-                <!-- 7. Battery & Energy Storage -->
-                <a href="/business/battery-storage" class="unit-item" data-index="6"
-                   data-title="Battery & Energy Storage"
-                   data-description="Strategic partnership with Germany's HOPPECKE Batterie Systeme GmbH - Europe's preeminent industrial battery systems manufacturer. Delivering advanced, sustainable Railway Battery Systems to support the rapid expansion of India's rail transportation sector with cutting-edge energy storage solutions.">
+                <div class="unit-item" data-index="6"
+                     data-title="Battery & Energy Storage"
+                     data-description="Strategic partnership with Germany's HOPPECKE Batterie Systeme GmbH delivering advanced Railway Battery Systems for India's rail sector."
+                     data-link="/Home/Divisions#battery">
                     <img src="/images/business/battery.jpg" alt="Battery & Energy Storage">
-                  
-                </a>
+                </div>
 
-                <!-- 8. Infrastructure Solutions -->
-                <a href="/business/infrastructure" class="unit-item" data-index="7"
-                   data-title="Infrastructure Solutions"
-                   data-description="Comprehensive infrastructure development solutions leveraging decades of engineering excellence. From industrial plants to large-scale projects, we deliver turnkey solutions with focus on sustainability, efficiency and innovation across multiple sectors.">
+                <div class="unit-item" data-index="7"
+                     data-title="Infrastructure Solutions"
+                     data-description="Comprehensive infrastructure development solutions leveraging decades of engineering excellence."
+                     data-link="/Home/Divisions">
                     <img src="/images/business/biochemicas.jpg" alt="Infrastructure">
-                
-                </a>
+                </div>
+
             </div>
 
             <!-- Center Hub -->
@@ -139,9 +133,9 @@
             <span class="section-tag">OUR EXPERTISE</span>
             <h2 class="content-title" id="unitTitle">Sugar, Cogen & Bio-chemicals</h2>
             <p class="content-description" id="unitDescription">
-                For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and cogen plants. With a growing commitment to sustainability, we've ventured into the bio-chemicals sector, encompassing distilleries, compressed bio-gas plants, and their associated derivatives.
+                For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry...
             </p>
-            <!-- REMOVED THE STATS SECTION WITH NUMBERS -->
+            <a href="/Home/Divisions#sugar" class="know-more-btn" id="unitLink">Know More</a>
         </div>
     </div>
 </section>
@@ -156,3 +150,14 @@
         </div>
     </div>
 </section>
+<script>
+         document.querySelectorAll('.unit-item').forEach(item => {
+        item.addEventListener('click', () => {
+            document.querySelectorAll('.unit-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            document.getElementById('unitTitle').textContent = item.dataset.title;
+            document.getElementById('unitDescription').textContent = item.dataset.description;
+            document.getElementById('unitLink').href = item.dataset.link;
+        });
+    });
+</script>
