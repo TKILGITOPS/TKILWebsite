@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TkilWebsite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73d524b33548e134c4dd794cb7ab544b80424e3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+674da45a409f254f15dcfe2173c8ad0954d2b67c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TkilWebsite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TkilWebsite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
