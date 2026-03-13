@@ -2,726 +2,1767 @@
     ViewData["Title"] = "Divisions";
 }
 
-<!-- Hero -->
-<div class="nd-hero">
-    <img src="~/images/company/2.jpg" alt="Divisions" class="nd-hero-img" />
+<style>
+    /* ── Card Grid Page ── */
+    .div-grid-page {
+        background: #f4f6f9;
+        padding: 2rem 5vw 2.5rem;
+    }
+
+    .div-card-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    /* ── Division Card ── */
+
+    .div-card {
+        position: relative;
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        border: 1.5px solid #e8edf4;
+        padding-bottom: 1rem;
+    }
+
+        .div-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(0,80,200,0.13);
+            border-color: #1a6abf;
+        }
+
+    .div-card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        filter: blur(1px);
+    }
+
+    .div-card:hover .div-card-bg {
+        opacity: 1;
+    }
+
+    .div-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(160deg, rgba(10,50,120,0.82) 0%, rgba(0,110,200,0.70) 100%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+    }
+
+    .div-card:hover .div-card-overlay {
+        opacity: 0.72;
+    }
+
+    .div-card-body {
+        position: relative;
+        z-index: 2;
+        padding: 1.25rem 1.25rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1;
+    }
+
+    .div-card-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #111827;
+        line-height: 1.35;
+        margin: 0 0 0.75rem;
+        transition: color 0.3s ease;
+    }
+
+    .div-card:hover .div-card-title {
+        color: #fff;
+    }
+
+    .div-card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #0079A7;
+        margin-top: 0.25rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .div-card:hover .div-card-cta {
+        color: rgba(255,255,255,0.85);
+    }
+
+    .div-card-cta svg {
+        transition: transform 0.25s ease;
+    }
+
+    .div-card:hover .div-card-cta svg {
+        transform: translateX(4px);
+    }
+
+    .div-card-desc {
+        font-size: 0.78rem;
+        color: #374151;
+        line-height: 1.5;
+        margin-top: 0.35rem;
+        flex: 1;
+    }
+
+    .div-card:hover .div-card-desc {
+        color: rgba(255,255,255,0.88);
+    }
+
+    /* ── Division Detail Hero ── */
+    .div-hero-split {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 500px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+        .div-hero-split .div-back-btn {
+            position: absolute;
+            z-index: 10;
+            top: 1.5rem;
+            left: 5vw;
+            color: #fff;
+        }
+
+            .div-hero-split .div-back-btn:hover {
+                color: rgba(255,255,255,0.75);
+            }
+
+    .div-hero-split-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.55);
+    }
+
+    .div-hero-split-card {
+        position: relative;
+        z-index: 2;
+        margin-left: 5vw;
+        margin-top: 4rem;
+        background: rgba(255,255,255,0.96);
+        border-radius: 16px;
+        padding: 2.25rem 2rem;
+        max-width: 680px;
+        width: 58%;
+        box-shadow: 0 16px 60px rgba(0,0,0,0.35);
+        overflow-y: auto;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .div-split-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #1a2332;
+        margin: 0 0 0.75rem;
+    }
+
+    .div-split-desc {
+        font-size: 0.88rem;
+        color: #444;
+        line-height: 1.7;
+        margin: 0 0 0.6rem;
+    }
+
+    .div-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #1a6abf;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+        .div-back-btn:hover {
+            gap: 0.65rem;
+            color: #0d4fa0;
+        }
+
+        .div-back-btn svg {
+            transition: transform 0.2s ease;
+        }
+
+        .div-back-btn:hover svg {
+            transform: translateX(-3px);
+        }
+        .div-back-btn svg {
+            transition: transform 0.2s ease;
+        }
+
+        .div-back-btn:hover svg {
+            transform: translateX(-3px);
+        }
+
+    /* ── Division Product Cards Grid (level 2) ── */
+    /* Push product detail hero below navbar */
+    .div-prd-detail-hero {
+        padding-top: 5rem;
+    }
+
+    .div-back-btn {
+        padding-top: 5rem;
+    }
+
+    /* Product title in black */
+    .div-prd-detail-left h1 {
+        color: #111827 !important;
+    }
+    .div-prd-cards-section {
+        padding: 6rem 5vw 4rem;
+        background: #f7f9fc;
+    }
+
+    .div-prd-cards-heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a6abf;
+        text-align: center;
+        margin: 0 0 2rem;
+    }
+
+    .div-prd-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .div-prd-card {
+        position: relative;
+        background: #fff;
+        border: 1.5px solid #dde5f0;
+        border-radius: 14px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        cursor: pointer;
+        transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+        .div-prd-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 40px rgba(0,80,200,0.15);
+            border-color: #1a6abf;
+        }
+
+        .div-prd-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--bg);
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            filter: blur(1px);
+        }
+
+        .div-prd-card:hover::before {
+            opacity: 1;
+        }
+
+    .div-prd-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(150deg, rgba(8,45,110,0.80) 0%, rgba(0,110,210,0.68) 100%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        z-index: 1;
+    }
+
+    .div-prd-card:hover .div-prd-card-overlay {
+        opacity: 1;
+    }
+
+    .div-prd-card-title {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        padding: 0 1.25rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a6abf;
+        text-align: center;
+        line-height: 1.35;
+        transition: color 0.3s ease;
+    }
+
+    .div-prd-card:hover .div-prd-card-title {
+        color: #fff;
+    }
+
+    /* ── Product Detail View (level 3) ── */
+    .div-prd-detail-wrap {
+        background: #fff;
+    }
+
+    .div-prd-detail-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 8rem 7vw 2.5rem;
+        max-width: 1300px;
+        margin: 0 auto;
+        align-items: start;
+    }
+    .div-prd-detail-left h1 {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: #111827;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+    }
+
+    .div-prd-detail-left .prd-content p {
+        font-size: 0.875rem;
+        color: #374151;
+        line-height: 1.75;
+        margin: 0 0 0.85rem;
+    }
+
+    .div-prd-detail-left .prd-content ul {
+        font-size: 0.875rem;
+        color: #374151;
+        line-height: 1.75;
+        padding-left: 1.25rem;
+        margin: 0 0 0.85rem;
+    }
+
+    .div-prd-detail-left .prd-content li {
+        margin-bottom: 0.25rem;
+    }
+
+    .div-prd-detail-left .prd-content h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #111827;
+        margin: 1rem 0 0.4rem;
+    }
+
+    .div-prd-detail-left .prd-content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.78rem;
+        margin-top: 0.5rem;
+    }
+
+        .div-prd-detail-left .prd-content table th,
+        .div-prd-detail-left .prd-content table td {
+            border: 1px solid #e5e7eb;
+            padding: 0.4rem 0.6rem;
+            text-align: center;
+        }
+
+        .div-prd-detail-left .prd-content table th {
+            background: #f3f4f6;
+            font-weight: 700;
+        }
+    /* Hide inline media in left — shown on right */
+    .div-prd-detail-left .prd-inline-media {
+        display: none;
+    }
+
+    .div-prd-detail-right {
+        position: sticky;
+        top: 80px;
+    }
+
+        .div-prd-detail-right img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+    /* Prev / Next nav for sub-products */
+    .div-prd-subnav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 5vw;
+        max-width: 1300px;
+        margin: 0 auto;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .div-prd-subnav-info {
+        font-size: 0.8rem;
+        color: #6b7280;
+        font-weight: 600;
+    }
+
+    .div-prd-subnav-btns {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .div-prd-subnav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
+        border: 1.5px solid #dde5f0;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #374151;
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+        .div-prd-subnav-btn:hover:not(:disabled) {
+            background: #eff6ff;
+            border-color: #1a6abf;
+            color: #1a6abf;
+        }
+
+        .div-prd-subnav-btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+    /* Sub-product label above title */
+    .div-prd-parent-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #1a6abf;
+        margin: 0 0 0.5rem;
+    }
+
+    /* Accordion */
+    .prd-accordion {
+        margin-top: 12px;
+    }
+
+    .prd-acc-item {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .prd-acc-btn {
+        width: 100%;
+        background: none;
+        border: none;
+        text-align: left;
+        padding: 0.75rem 0;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #111827;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .prd-acc-btn:hover {
+            color: #1a6abf;
+        }
+
+        .prd-acc-btn span {
+            font-size: 1.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+    .prd-acc-body {
+        display: none;
+        padding: 0 0 0.75rem;
+        font-size: 0.83rem;
+        color: #374151;
+        line-height: 1.7;
+    }
+
+        .prd-acc-body.open {
+            display: block;
+        }
+   
+    /* ── Responsive ── */
+    @@media (max-width: 1024px) {
+        .div-card-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .div-card-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 420px) {
+        .div-card-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 960px) {
+        .div-hero-split-card {
+            width: 70%;
+        }
+    }
+
+    @@media (max-width: 620px) {
+        .div-hero-split {
+            height: auto;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .div-hero-split-img {
+            position: static;
+            height: 260px;
+            width: 100%;
+            filter: brightness(1);
+        }
+
+        .div-hero-split-card {
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+            border-top: 3px solid #1a6abf;
+            max-height: none;
+        }
+
+        .div-prod-hero {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .div-prod-hero-right {
+            display: none;
+        }
+    }
+
+    @@media (max-width: 960px) {
+        .div-prd-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 560px) {
+        .div-prd-cards-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .div-prd-detail-hero {
+            grid-template-columns: 1fr;
+        }
+
+        .div-prd-detail-right {
+            display: none;
+        }
+    }
+    /* ── Thumbnail strip ── */
+    .prd-thumb-strip {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-top: 1.25rem;
+    }
+
+    .prd-thumb {
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.2s ease, opacity 0.2s ease;
+        opacity: 0.65;
+    }
+
+        .prd-thumb:hover {
+            opacity: 1;
+        }
+
+        .prd-thumb.active {
+            border-color: #1a6abf;
+            opacity: 1;
+        }
+
+    /* ── Fullscreen lightbox ── */
+    #imgLightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+    }
+
+    #imgLightboxImg {
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 8px;
+        cursor: default;
+    }
+
+    #imgLightboxClose {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: rgba(255,255,255,0.15);
+        border: none;
+        color: #fff;
+        font-size: 1.4rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    }
+
+        #imgLightboxClose:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+    .prd-thumb-strip {
+        display: none !important;
+    }
+
+    body.on-detail-page .nd-nav a,
+    body.on-detail-page .nd-nav-link,
+    body.on-detail-page .navbar a,
+    body.on-detail-page nav a,
+    body.on-detail-page .nav-link,
+    body.on-detail-page header a {
+        color: #111827 !important;
+    }
+
+    body.on-detail-page .nd-logo,
+    body.on-detail-page .navbar-brand {
+        color: #111827 !important;
+    }
+</style>
+
+<!-- ═══ PAGE HERO ═══ -->
+<div class="nd-hero" id="pageHero">
+    <img src="~/images/DivisionsBanner1.png" alt="Divisions" class="nd-hero-img" />
     <div class="nd-hero-overlay">
-        <div class="nd-hero-content">
-            <span class="nd-eyebrow">Our Business</span>
+        <div class="tk-container nd-hero-content">
+          
             <h1 class="nd-hero-title">Our Business</h1>
             <p class="nd-hero-sub">Engineering solutions across industries — delivered globally.</p>
         </div>
     </div>
 </div>
 
-<!-- Page body with sidebar -->
-<div class="nd-page">
-    <div class="nd-flex" style="max-width:1400px; margin:0 auto; padding:0 5vw;">
+<!-- ═══ GRID OVERVIEW ═══ -->
+<div id="divGrid" class="div-grid-page">
+    <div class="div-card-grid">
 
-        <!-- Sidebar — NO item is active by default -->
-        <div class="nd-sidebar">
-            <p class="nd-sidebar-label">Browse by Section</p>
-            <ul class="nd-sidebar-menu">
-                <li class="nd-item" data-target="sugar">
-                  
-                    <span>Sugar, Cogen &amp; Bio-chemicals</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-                <li class="nd-item" data-target="mining">
-                   
-                    <span>Mining, Material Handling &amp; BOP</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-                <li class="nd-item" data-target="cement">
-                   
-                    <span>Cement Plants &amp; Equipment</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-                <li class="nd-item" data-target="energy">
-                  
-                    <span>Energy Business</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-                <li class="nd-item" data-target="service">
-                  
-                    <span>Service Business</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-                <li class="nd-item" data-target="green-hydrogen">
-                  
-                    <span>Green Hydrogen Business</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-                <li class="nd-item" data-target="battery">
-                  
-                    <span>Battery &amp; Energy Storage</span>
-                    <svg class="nd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Content panels -->
-        <!-- ══════════════════════════════════
-             DEFAULT INTRO — shown on page load
-             No sidebar item linked to this
-        ══════════════════════════════════ -->
-        <div class="nd-panel active" data-section="intro">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Overview</span>
-                <h2>Divisions</h2>
-            </div>
-            <div class="comp-body">
-
-                <h3>Sugar, Cogen &amp; Bio-chemicals Business</h3>
-                <p>For over seventy years, TKIL Industries has been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and cogen plants. With a growing commitment to sustainability, TKIL Industries recently ventured into the bio-chemicals sector, encompassing distilleries, compressed bio-gas plants, and their associated derivatives. This legacy of excellence has firmly established us as a trusted leader in delivering sustainable energy solutions to the global sugar, cogen, and bio-chemicals industries.</p>
-
-                <h3>Mining, Material Handling and BOP Business</h3>
-                <p>TKIL Industries is a technologically driven engineering powerhouse, with exceptional contributions in the areas of Mining, Bulk Material Handling and Comminution (Crushing and Grinding) System and Equipment. Powered by world class technology, TKIL Industries has proven itself as the most reliable and versatile solution provider in this field, for everything from concept to commissioning. TKIL Industries provides end-to-end solutions for core sectors such as mining, power, ports, steel and minerals.</p>
-
-                <h3>Cement Plants and Equipment Business</h3>
-                <p>TKIL Industries, one of the world's leading cement and mining technology companies, has been manufacturing, supplying, installing and commissioning modern, state-of-art and most efficient integrated cement plants of capacities ranging between 650 to 10000 tpd, as well as split location grinding units in India and overseas for more than 35 years.</p>
-                <p>TKIL Industries also provides comprehensive service activities for complete cement production line, individual products, plant upgrades and conversions, and undertakes O&amp;M activities.</p>
-                <p>TKIL Industries plants are in operation across the length and breadth of India, running at more than their rated capacities, and are distinct on account of their sustained efficiency and output levels.</p>
-
-                <h3>Energy Business (Boiler and Power Plants)</h3>
-                <p>TKIL Industries has long established itself in the field of design, manufacture, supply, installation and commissioning of a wide range of steam and power generation plants for a host of industrial applications.</p>
-                <p>Leveraging its leadership position in Circulating Fluidized Combustion Bed Boilers, the company has expanded its range of offerings to provide complete power plants on EPC basis.</p>
-                <p>A comprehensive range of steam generating plants including solid fuel fired boilers (coal, lignite, pet coke, bagasse, biomass and others), waste heat recovery boilers and oil/gas fired boilers form the backbone of these power plants. These steam generating plants are available on standalone basis and are the industry benchmark for their multifuel capability, high efficiency, reliability and environment friendliness.</p>
-
-                <h3>Service Business</h3>
-                <p>360° service program supports our customer throughout the life cycle of their assets i.e. spare parts supply, O&amp;M service and field service ensure that the assets are functional and producing required results throughout its operations life. For assets closing to the end of their life cycle, we offer revamps and rejuvenation service to further increase the operating life with guaranteed output and safety. With our service portfolio, we are always with our customers and are helping them in achieving their business goals.</p>
-
-                <h3>Green Hydrogen Business</h3>
-                <p>TKIL Industries is at the forefront of India's green energy transition with its foray into the green hydrogen sector. Through a strategic partnership with SoHHytec SA, based in Lausanne, Switzerland, whose novel green hydrogen technology operates directly sun to hydrogen production with a &gt;2x solar to hydrogen efficiency while 1/3rd land use compared with a solar PV+Electrolyser combination unit. SoHHytec is a cutting-edge innovator and solutions provider in the green hydrogen field using its proprietary artificial photosynthesis (photo-electrolysis) technology. We aim to drive the production of clean, renewable hydrogen using solar and wind power. Green hydrogen is set to play a pivotal role in decarbonizing key industries, including fertilizers, oil and gas, steel, cement, and mobility.</p>
-                <p>By aligning with India's National Hydrogen Mission, we are committed to becoming a leader in the green hydrogen revolution, contributing to the nation's energy security and supporting its path to net-zero emissions. Our innovative solutions focus on sustainability, energy efficiency, and scalability, ensuring that the transition to green hydrogen benefits both industry and the environment.</p>
-                <p>At TKIL Industries, we are committed to unlocking the full potential of green hydrogen as a clean energy source for a sustainable tomorrow.</p>
-
-                <h3>Battery and Energy Storage Business</h3>
-                <p>TKIL Industries, a distinguished leader in industrial engineering and manufacturing, has entered into an exclusive strategic agreement with Germany's HOPPECKE Batterie Systeme GmbH — Europe's preeminent industrial battery systems manufacturer. This collaboration is dedicated to delivering advanced, sustainable Railway Battery Systems to support the rapid expansion of India's rail transportation sector.</p>
-
+        <div class="div-card" data-target="sugar">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/SugarOverview.jpg')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Sugar, Cogen &amp; Bio-chemicals</p>
+                <p class="div-card-desc">Competitive solutions through sustainable innovation. Powering a greener world with bio-innovation and trusted excellence.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </div>
         </div>
 
-            <!-- ══════════════════════════════════
-                 SIDEBAR PANELS — detailed content
-                 Fill these with more content later
-            ══════════════════════════════════ -->
-            <!-- Sugar -->
-        <!-- Sugar, Cogen & Bio-chemicals -->
-        <div class="nd-panel" data-section="sugar">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Divisions</span>
-                <h2>Sugar, Cogen &amp; Bio-chemicals Business</h2>
-            </div>
-
-            <!-- Division Banner Image -->
-            <div class="div-banner">
-                <img src="~/images/Divisions/sugar.jpg" alt="Sugar, Cogen & Bio-chemicals" class="div-banner-img" />
-            </div>
-
-            <div class="comp-body">
-
-                <p>Over the last seven decades, TKIL Industries Pvt. Ltd. has grown to become one of the most trusted names in the field of sugar plant and machinery. The manufacturing unit in Pune was set up in 1957 and since then the company has served the sugar industry as the most trusted technology partner all along the various phases and challenges the sugar industry has faced over the years.</p>
-
-                <p>TKIL Industries Pvt. Ltd. is one of the original equipment manufacturers of sugar plant machinery and have successfully supplied and commissioned plants of varied capacities ranging from 800 TCD to 18,000 TCD and have capability to design as well as supply sugar plant up to 20,000 TCD.</p>
-
-                <p>We have a proven track record for supplying turnkey sugar and cogeneration power plants and have till date successfully supplied and commissioned over 135 sugar plants with major expansions including more than 550 sugar cane mills, more than 5400 batch and continuous centrifugal machines and more than 200 boilers.</p>
-
-                <p>TKIL Industries Pvt. Ltd. went global in the year 1975 after supplying a 3500 TCD sugar plant expandable to 6000 TCD along with the sugar refinery to Malaysia. Ever since, TKIL Industries Pvt. Ltd. has exported full plants and other major equipment to more than 35 countries including Algeria, Australia, Austria, Bangladesh, Burundi, Czech Republic, El-Salvador, Ecuador, Ethiopia, Fiji, Germany, Greece, Indonesia, India, Iran, Kenya, Mauritius, Malaysia, Malawi, Myanmar, Nigeria, Nepal, Pakistan, Poland, Philippines, Rwanda, Russia, Spain, Senegal, Sudan, Thailand, Uganda, Ukraine, Vietnam, Zambia. The fact that the company has exported large number of Batch &amp; Continuous Centrifugal machines to European market, meeting stringent quality norms and also competing with established European manufacturers, which is a testimony to the success of the company in export business all over the globe.</p>
-
-                <p>TKIL Industries Pvt. Ltd. has a proud tradition of innovation and ever since its inception has consistently brought state-of-the-art solutions to the Sugar industry with steady innovations and new sophisticated cutting edge technologies. We have developed and supplied large number of highly efficient falling film evaporators, continuous vacuum pans for improved steam economy, batch centrifugal machines from 750 kg/charge to 2250 kg/charge and continuous centrifugal machines of 1100 mm and 1500 mm diameter respectively. We have also developed 2-Roller mill having unique features combining advantages of power saving, lower bagasse moisture as well as higher pol extraction.</p>
-
-                <p>To cater to the trend of higher capacity sugar plants, TKIL Industries Pvt. Ltd. introduced the largest capacity equipment viz. 2-Roller mill of 1440 mm × 2800 mm (55 inch × 110 inch) size, batch centrifugal machine of 2250 kg/charge and falling film evaporator of 7000 sq. m heating surface.</p>
-
-                <p>TKIL Industries Pvt. Ltd. is also credited for engineering skills par excellence, for up gradation, modernization and expansion of the sugar plants and over the years have worked closely with many of the sugar factories to enhance their capacities and performance. Our company is well known for their project management skills and helped the investors by offering complete plants on turn-key basis including civil works. Timely delivery, execution and erection of the projects and also after sales service have always been strengths of the company.</p>
-
-                <p>TKIL Industries Pvt. Ltd. is equipped with the most modern, highly developed industrial manufacturing amenities at Pune as well as at Hyderabad and are supported by a group of service facilities.</p>
-
-                <p>To cater to the needs of customers through a single window, TKIL Industries Pvt. Ltd. have a dedicated team for customer solutions to offer services from concept stage to feasibility study, bankable detailed project report, cane development, process selection, operation support, maintenance support, etc.</p>
-
+        <div class="div-card" data-target="mining">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/MiningOverview.jpg')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Mining, Material Handling &amp; BOP</p>
+                <p class="div-card-desc">Turning complex industrial challenges into smarter, seamless, high-impact solutions.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </div>
         </div>
 
-           <!-- Mining, Material Handling & BOP -->
-<div class="nd-panel" data-section="mining">
-    <div class="nd-panel-header">
-        <span class="nd-panel-tag">Divisions</span>
-        <h2>Mining, Material Handling and BOP Business</h2>
-    </div>
+        <div class="div-card" data-target="cement">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/Cementoverview.jpg')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Cement Plants &amp; Equipment</p>
+                <p class="div-card-desc">A legacy spanning over four decades — building state-of-the-art cement plants ranging from 650TPD to 12000TPD.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+            </div>
+        </div>
 
-    <!-- Division Banner Image -->
-    <div class="div-banner">
-        <img src="~/images/Divisions/MHE.jpg" alt="Mining, Material Handling and BOP" class="div-banner-img" />
-    </div>
+        <div class="div-card" data-target="energy">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/EnergyOverview.png')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Energy Business</p>
+                <p class="div-card-desc">Solutions dedicated to energy excellence and sustainability.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+            </div>
+        </div>
 
-    <div class="comp-body">
+        <div class="div-card" data-target="service">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/ServiceOverview.jpg')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Service Business</p>
+                <p class="div-card-desc">Complete plant care with 360° service and cutting-edge digitalization.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+            </div>
+        </div>
 
-        <p>The Mining and Bulk Material Handling Division of TKIL Industries Pvt. Ltd. started its journey in 1976, and since then we haven't looked back. Over time we have moulded and shaped the Mining, Bulk Material Handling and Comminution (Crushing &amp; Grinding) sectors of the country with cutting edge technology and time-tested, sustainable solutions that have delivered nothing but excellence.</p>
+        <div class="div-card" data-target="green-hydrogen">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/GreenHydroOverview.png')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Green Hydrogen Business</p>
+                <p class="div-card-desc">Powering tomorrow with green hydrogen – driving the energy transition today.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+            </div>
+        </div>
 
-        <p>Powered by world class technology, tried, tested and proven many times over, we have executed countless projects on EP/EPC basis covering the entire spectrum from concept to commissioning in the core sectors of Open Cast Mining, Power, Ports, Steel, Fertilizers and Minerals and have established ourselves as the Go-To partner for our customers.</p>
-
-        <p>Our resolute pursuit of customer satisfaction and commitment towards bringing value to our customers means our customers are at the centre of everything that we do. Our network of branch offices ensures that we cater to our customer needs on time, every time.</p>
-
-        <p>We have had the privilege to render our services to PSU giants like NLC, NTPC, BHEL, DVC, NALCO, NMDC, IOCL, VSP and almost every state electricity board across the country. We also have the privilege to work with large private conglomerate like Reliance, Adani, Tata, Shapoorji, Doosan, GE and many more, thus having to our account execution of more than 100 major projects across India.</p>
-
-        <p>We are the Mining and Bulk Material Handling Division .....</p>
-
-        <p><em>Driven by technology ........Powered by experience.......Building Core Sectors</em></p>
-
-                <!-- MACS Section -->
-                <h3>MACS</h3>
-
-                <!-- Two images side by side -->
-                <div class="div-img-row">
-                    <div class="div-img-col">
-                        <img src="~/images/Divisions/standard-machine-business.jpg" alt="MACS Equipment 1" class="div-img-thumb" />
-                    </div>
-                    <div class="div-img-col">
-                        <img src="~/images/Divisions/Semi-Mobile-Primary-Crushing-Unit.jpg" alt="MACS Equipment 2" class="div-img-thumb" />
-                    </div>
-                </div>
-
-                <p>TKIL Industries Pvt. Ltd. portfolio contains Jaw crusher, Cone crusher, Vertical Shaft Impactor popularly known as VSI, Roll Sizer, Horizontal Shaft Impactor (HSI), Hammer Mills, Circular Motion Vibrating Screens which are proven in mining and crushing industry segment all over the world. All these machines based on German design are now completely manufactured in India to offer to Indian market in mining and aggregate crushing segment. TKIL Industries Pvt. Ltd. is already manufacturing and exporting these crushers and plants – wheel mounted as well as skid mounted – to the global requirements and have exported these machines to various countries like Mexico, Germany, Africa, Brazil, USA etc.</p>
-
-
+        <div class="div-card" data-target="battery">
+            <div class="div-card-bg" style="background-image:url('/images/divisions/BatteryOverview.jpg')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Battery &amp; Energy Storage</p>
+                <p class="div-card-desc">Innovating beyond boundaries to power tomorrow's mobility and infrastructure.</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+            </div>
+        </div>
+        <a href="/Home/DigitalServices" class="div-card">
+            <div class="div-card-bg" style="background-image:url('/images/epc-building1.png')"></div>
+            <div class="div-card-overlay"></div>
+            <div class="div-card-body">
+                <p class="div-card-title">Digital Solutions</p>
+                <p class="div-card-desc"> Purpose-built digital &amp; AI tools for next‑Gen EPC</p>
+                <span class="div-card-cta">Click to know more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
+            </div>
+        </a>
     </div>
 </div>
 
-        <!-- Cement Plants & Equipment -->
-        <div class="nd-panel" data-section="cement">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Divisions</span>
-                <h2>Cement Plants and Equipment Business</h2>
-            </div>
+<!-- ═══ DETAIL VIEW ═══ -->
+<!-- ═══ DETAIL VIEW ═══ -->
+<div id="divDetail" style="display:none;">
 
-            <!-- Cement Sub-Nav Tabs -->
-            <div class="cement-subnav">
-                <button class="cement-tab active" data-cement="cement-overview">Cement Overview</button>
-                <button class="cement-tab" data-cement="cement-products">Products Cement</button>
-                <button class="cement-tab" data-cement="cement-minerals">Products Minerals</button>
-            </div>
+    <!-- Back button — label changes based on level -->
+  
 
-            <!-- ── Cement Overview (default) ── -->
-            <div class="cement-panel active" id="cement-overview">
+    <!-- ══ LEVEL 2: Division panels (hero + product cards) ══ -->
+    <div id="divisionPanels">
 
-                <div class="div-banner">
-                    <img src="~/images/Divisions/wonder-cement-new.jpg" alt="Cement Plants and Equipment" class="div-banner-img" />
-                </div>
-
-                <div class="comp-body">
-                    <p>TKIL Industries Pvt. Ltd., has built cement plants that are fuel and energy efficient and also environment friendly. Its sustained success in winning repeated new orders has established it as one of the leading cement plant making companies in India. TKIL Industries Pvt. Ltd. has designed, manufactured, supplied, installed and commissioned large capacity sophisticated cement plants for more than three decades in association with thyssenkrupp Polysius GmbH (tk Polysius), Germany.</p>
-
-                    <p>tk Polysius is one of the world's leading engineering firms specializing in plant and equipment for the cement and mineral processing industry. tk Polysius plant and equipment with a brand name "POLYSIUS" are at the forefront of the technology and are available for comminution, pyro-processing, material handling and automation.</p>
-
-                    <p>The efficient production of high grade cement products demands far more than combining individual machines or even ideal partial process steps. The required success can only be achieved by considering the entire production process and optimizing it as a whole, taking due account of capital cost and operating expenses.</p>
-
-                    <p>For this reason, tk Polysius systematically consolidates process and plant knowhow to create innovative concepts for the process sectors of raw material preparation, clinker manufacturing and cement manufacturing, which are in turn incorporated into economical overall solutions for the complete cement production process.</p>
-
-                    <p>As one of the world's leading companies in the plant engineering field, tk Polysius has the comprehensive know-how that is needed in order to supply the mining, metallurgical, refractories, lime and chemical industries with innovative but tried and tested processes, plants and system configurations. Repeatedly, tk Polysius has been successful in producing convincing solutions for pyro-processing and grinding applications, proving itself a reliable partner in all regions of the world.</p>
-
-                    <p>Increasing the size of production units and improving the operating economy of production plants by reducing their power requirement and boosting their availability are main development priorities. tk Polysius has taken on these challenges and is pushing back the technological frontiers through specifically directed research and development strategies.</p>
-
-                    <p>We have supplied and successfully commissioned several integrated cement plants of capacities ranging from 650 to 10,000 tons per day in India and overseas. In addition, split location clinker grinding units and various equipment and machinery have also been supplied by us. Cement plants with modern and up-to-date technology from tk Polysius are in operation across the length and breadth of India, running at more than their rated capacities and are distinct on account of their sustained efficiency and output levels.</p>
-
-                    <p>Our references include the star performers in the Indian Cement Industry like Ambuja Cements and ACC Ltd. (Adani group), UltraTech Cement (Aditya Birla group), The India Cements Ltd. (ICL group), Vasavadatta Cement and Mangalam Cement (B.K. Birla group), Jaiprakash Associates Ltd. (Jaypee group), JK Cement, Birla Corporation, Wonder Cement, Penna Cement, Dalmia Cement, Trumboo Cement, Shree Cement, Star Cement (Meghalaya), etc. Overseas projects include projects in Bharain, Bangladesh, Benin, Cameroon, Cote D'Ivoire, Ghana, Indonesia, Kenya, Liberia, Malawi, Mali, Mozambique, Nepal, South Africa, Sri Lanka, Sudan, Togo, UAE and Uganda.</p>
-                </div>
-            </div>
-
-            <!-- ── Products Cement (placeholder) ── -->
-            <div class="cement-panel" id="cement-products">
-                <div class="comp-body">
-                    <p>Products Cement content coming soon.</p>
-                </div>
-            </div>
-
-            <!-- ── Products Minerals (placeholder) ── -->
-            <div class="cement-panel" id="cement-minerals">
-                <div class="comp-body">
-                    <p>Products Minerals content coming soon.</p>
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- Energy Business -->
-        <div class="nd-panel" data-section="energy">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Divisions</span>
-                <h2>Energy Business (Boiler and Power Plants)</h2>
-            </div>
-
-            <!-- Division Banner Image -->
-            <div class="div-banner">
-                <img src="~/images/Divisions/energy.jpg" alt="Energy Business - Boiler and Power Plants" class="div-banner-img" />
-            </div>
-
-            <div class="comp-body">
-
-                <p>Established in 1976, TKIL Industries Pvt. Ltd. Energy division has been one of the prime business verticals of TKIL Industries Pvt. Ltd.</p>
-
-                <p>TKIL Industries Pvt. Ltd. been in the business of large capacity boilers since 1970s, making its beginning by developing boilers for the Sugar industry. The Boiler and Power Plant division grew up to become one of company's prime business verticals and today offers complete turnkey solutions for thermal power plants.</p>
-
-                <p>The offerings include tried and tested boiler technologies for a wide variety of solid, liquid and gaseous fuels along with waste heat recovery (WHR)/ HRSG Systems. The state of the art manufacturing facilities at Pune and Hyderabad assist in manufacturing some of the most critical and key boiler components and thus we ensure that the quality of steam generators manufactured by TKIL Industries Pvt. Ltd. is nothing but just perfect!</p>
-
-                <h3>Our Key Products &amp; Range includes:</h3>
-                <ul class="div-list">
-                    <li>Circulating Fluidized Bed Combustion (CFBC) boilers for a variety of fuels (Also available in multiples of single units of 300 MWe)</li>
-                    <li>Biomass boilers (up to 250 TPH)</li>
-                    <li>Oil &amp; Gas fired boilers (up to 300 TPH)</li>
-                    <li>Waste Heat Recovery boilers (up to 500 TPH)</li>
-                    <li>HRSGs (suitable up to frame size 9FA)</li>
-                </ul>
-                <p class="div-footnote">*TPH – Tons of steam production per hour</p>
-
-                <h3>Key References:</h3>
-                <ul class="div-list">
-                    <li>More than 250 references in India and Overseas for power generation and combined Heat and Power (Co-generation) applications for a variety of industries.</li>
-                </ul>
-
-                <p>Boiler and Power Plant has well established itself in the field of engineering, design, manufacture, supply, installation and commissioning of a wide range of steam and power generation unit's plants for various industrial and utility applications. Boiler package offerings, BTG offerings and turnkey power plant offerings are available.</p>
-
-                <p>The experienced and qualified team of power professionals headed by a competent and senior management team of energy professionals from the industry, has been the key driver for Boiler and Power Plant's success and makes us one of India's most trusted brand for Boilers &amp; Power Plants.</p>
-
-            </div>
-        </div>
-
-
-        <!-- Service Business -->
-        <div class="nd-panel" data-section="service">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Divisions</span>
-                <h2>Service Business</h2>
-            </div>
-
-            <!-- Service Sub-Nav Tabs -->
-            <div class="cement-subnav">
-                <button class="cement-tab active" data-cement="svc-overview">Service Overview</button>
-                <button class="cement-tab" data-cement="svc-asset">Asset Management</button>
-                <button class="cement-tab" data-cement="svc-parts">Parts Supply &amp; Management</button>
-                <button class="cement-tab" data-cement="svc-revamps">Revamps &amp; Refurbishments</button>
-                <button class="cement-tab" data-cement="svc-field">Field Services &amp; Service Centers</button>
-            </div>
-
-            <!-- ── Service Overview (default) ── -->
-            <div class="cement-panel active" id="svc-overview">
-
-                <!-- Two images side by side -->
-                <div class="div-img-row" style="margin-bottom:1.5rem;">
-                    <div class="div-img-col">
-                        <img src="~/images/Divisions/service-1.jpg" alt="Service Business" class="div-img-thumb" />
-                    </div>
-                </div>
-
-                <div class="comp-body">
-                    <p>All operating plants deliver the best when monitored closely and maintained optimally. At TKIL Industries Pvt. Ltd., we understand the intricacies involved in these aspects and are committed to provide an all-round 360° service to customers.</p>
-
-                    <!-- 360° Service diagram image -->
-                    <div class="svc-diagram">
-                        <img src="~/images/Divisions/TKIL_Services_page.jpg" alt="360° Service Diagram" class="svc-diagram-img" />
-                    </div>
-
-                    <p>To cater to all possible requirements in the entire life cycle of assets, TKIL Industries Pvt. Ltd. service division offers the following solutions:</p>
-                    <p><em>(Click on the icons below to know more)</em></p>
-
-                    <!-- 4 icon cards linking to sub-panels -->
-                    <div class="svc-card-row">
-                        <button class="svc-card" data-svc="svc-asset">
-                            <div class="svc-card-icon">
-                                <img src="~/images/Divisions/icon-Asset-Managements.jpg" alt="Asset Management" class="svc-icon-img" />
-                            </div>
-                            <span>Asset Management</span>
-                        </button>
-                        <button class="svc-card" data-svc="svc-parts">
-                            <div class="svc-card-icon">
-                                <img src="~/images/Divisions/icon-parts-supply-management.jpg" alt="Parts Supply & Management" class="svc-icon-img" />
-                            </div>
-                            <span>Parts Supply &amp; Management</span>
-                        </button>
-                        <button class="svc-card" data-svc="svc-revamps">
-                            <div class="svc-card-icon">
-                                <img src="~/images/Divisions/icon-revamp-outages.jpg" alt="Revamps & Refurbishments" class="svc-icon-img" />
-                            </div>
-                            <span>Revamps &amp; Refurbishments</span>
-                        </button>
-                        <button class="svc-card" data-svc="svc-field">
-                            <div class="svc-card-icon">
-                                <img src="~/images/Divisions/icon-field-workshop-service.jpg" alt="Field Services & Service Centers" class="svc-icon-img" />
-                            </div>
-                            <span>Field Services &amp; Service Centers</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Asset Management ── -->
-            <div class="cement-panel" id="svc-asset">
-                <div class="comp-body">
-
-                    <h3>Asset Management</h3>
-
-                    <p>Our Asset Management (operation and maintenance) service is a customized solution which we provide to our customers as per their specific business requirements. With this solution, we unlock the untapped value through better performance, life enhancement and O&amp;M cost optimization. We can also offer spare parts, maintenance consumables, over hauls and third part services etc as a part of these services.</p>
-
-                    <p>Our engagement with customer starts with initial meeting with customer to define / understand their requirement on scope of work and responsibility distribution. It is followed by plant visit and technical discussions, after technical alignment and KPIs finalisation, commercial discussions are concluded followed by the conclusion of contract.</p>
-
-                    <p>In these contracts, TKIL Industries Pvt. Ltd. takes over the full responsibility for the plant and ensures committed output by implementing its asset management system covering 7 dimensions:</p>
-
-                    <ul class="div-list">
-                        <li>Health, safety, environment and statutory management</li>
-                        <li>Operations management</li>
-                        <li>Maintenance management</li>
-                        <li>Materials and services management</li>
-                        <li>Performance improvement</li>
-                        <li>Management information system (MIS) and visibility</li>
-                        <li>People management</li>
-                    </ul>
-
-                    <p>TKIL Industries Pvt. Ltd. has experience in operation and maintenance in wide range of industries including captive power plants, mining systems, coal handling plants, waste heat recovery power plant, cement plant and dry bulk cargo handling system at port.</p>
-
-                    <p>The key advantages for customers are service advantages:</p>
-
-                    <ul class="div-list">
-                        <li>Tailor made solution to cater to customer's specific requirement</li>
-                        <li>Better performance and longer life at optimum costs</li>
-                        <li>Improved safety, reliability, availability, productivity, life and efficiency of physical assets</li>
-                        <li>Leverage of our engineering knowhow in operation and maintenance</li>
-                        <li>World class operation and maintenance practices</li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <!-- ── Parts Supply & Management ── -->
-            <div class="cement-panel" id="svc-parts">
-                <div class="comp-body">
-
-                    <h3>Parts Supply &amp; Management</h3>
-
-                    <p>Timely availability of genuine and quality spare parts is essential for an operating plant's uptime, productivity &amp; performance.</p>
-                    <p>At TKIL Industries Pvt. Ltd., we strive to proactively ensure availability of the apt spares at customers' plants at all times.</p>
-                    <p>We are also focussed on innovative solutions aimed at reducing downtimes and improving plant performance. Spare parts are a crucial component of this endeavour.</p>
-                    <p>With years of experience with inspections, evaluations, troubleshooting, our specialists closely study the equipment and parts behaviour under actual duty conditions and develop enhanced propositions, harnessing latest technological developments, which are also imbibed in the spare parts supplied for already supplied equipment, from time to time. This enables the existing operating equipment to derive benefits from the continuous product improvement program.</p>
-                    <p>The parts supply and management segment caters to equipment in cement plants, boilers and power plants, open cast mining and bulk material handling and sugar plants.</p>
-                    <!-- Image Carousel -->
-                    <div class="psm-carousel">
-
-                        <div class="psm-carousel-inner">
-                            <button class="psm-car-btn psm-car-prev" id="psmCarPrev">&#8249;</button>
-
-                            <div class="psm-car-stage">
-                                <div class="psm-car-track" id="psmCarTrack">
-
-                                    <div class="psm-car-slide"><img src="~/images/psm/MHE-Spares--Bogie-Wheels.jpg" alt="Bogie Wheels" loading="lazy" /><span class="psm-car-caption">Bogie Wheels</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/MHE-Spares--Crusher-Rotor.jpg" alt="Crusher Rotor" loading="lazy" /><span class="psm-car-caption">Crusher Rotor</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/MHE-Spares--Pinion-Shaft-Assembly.jpg" alt="Pinion Shaft Assembly" loading="lazy" /><span class="psm-car-caption">Pinion Shaft Assembly</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/MHE-Spares--Pulley-with-Lagging.jpg" alt="Pulley with Lagging" loading="lazy" /><span class="psm-car-caption">Pulley with Lagging</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/MHE-Spares--Ring-Granulator-Segment.jpg" alt="Ring Granulator Segment" loading="lazy" /><span class="psm-car-caption">Ring Granulator Segment</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/MHE-Spares--Slew-Bearing-Toothed-Segment.jpg" alt="Slew Bearing Toothed Segment" loading="lazy" /><span class="psm-car-caption">Slew Bearing Toothed Segment</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Burner-Tip.jpg" alt="Burner Tip" loading="lazy" /><span class="psm-car-caption">Burner Tip</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Dynamic-Separator-Rotating-Assembly.jpg" alt="Dynamic Separator Rotating" loading="lazy" /><span class="psm-car-caption">Dynamic Separator Rotating</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Flap-valve.jpg" alt="Flap Valve" loading="lazy" /><span class="psm-car-caption">Flap Valve</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Kiln-Tyre-Shell.jpg" alt="Kiln Tyre Shell" loading="lazy" /><span class="psm-car-caption">Kiln Tyre Shell</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Polycom-Roller.jpg" alt="Polycom Roller" loading="lazy" /><span class="psm-car-caption">Polycom Roller</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Polycom-with-Shaft.jpg" alt="Polycom with Shaft" loading="lazy" /><span class="psm-car-caption">Polycom with Shaft</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Cement-Spares--Support-Roller.jpg" alt="Support Roller" loading="lazy" /><span class="psm-car-caption">Support Roller</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Boiler-Spares--PA-Nozzles.jpg" alt="PA Nozzles" loading="lazy" /><span class="psm-car-caption">PA Nozzles</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Boiler-Spares--Spray-Attemperator.jpg" alt="Spray Attemperator" loading="lazy" /><span class="psm-car-caption">Spray Attemperator</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Boiler-Spares--Thermal-Expansion-Bellow-(Metallic).jpg" alt="Boiler-Spares--Thermal-Expansion-Bellow-(Metallic)" loading="lazy" /><span class="psm-car-caption">Boiler-Spares--Thermal-Expansion-Bellow-(Metallic)</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Boiler-Spares--Thermal-Expansion-Bellow.jpg" alt="Thermal Expansion Bellow" loading="lazy" /><span class="psm-car-caption">Thermal Expansion Bellow</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Sugar-Spares--Chopper.jpg" alt="Chopper" loading="lazy" /><span class="psm-car-caption">Chopper</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Sugar-Spares--Mill-Headstock.jpg" alt="Mill Headstock" loading="lazy" /><span class="psm-car-caption">Mill Headstock</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Sugar-Spares--Shredder-Hammer-Tip.jpg" alt="Shredder Hammer Tip" loading="lazy" /><span class="psm-car-caption">Shredder Hammer Tip</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/psm/Sugar-Spares--Shredder-Rotor-Assembly.jpg" alt="Shredder Rotor Assembly" loading="lazy" /><span class="psm-car-caption">Shredder Rotor Assembly</span></div>
-
-                                </div>
-                            </div>
-
-                            <button class="psm-car-btn psm-car-next" id="psmCarNext">&#8250;</button>
-                        </div>
-
-                        <!-- Counter + Dots -->
-                        <div class="psm-car-footer">
-                            <span class="psm-car-counter" id="psmCarCounter">1 / 21</span>
-                            <div class="psm-car-dots" id="psmCarDots"></div>
-                        </div>
-
-                    </div>
+        <div class="nd-panel" data-section="sugar" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/Divisions/SugarOverview.jpg" alt="Sugar" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
                    
+                    <h2 class="div-split-title">Sugar &amp; Cogen</h2>
+                    <p class="div-split-desc">The Sugar, Cogen & Bio-Chemicals business vertical of TKIL Industries has, for over seventy years, been a pioneer in providing innovative, turnkey solutions to the sugar industry, including sugar refineries and co-gen plants. With a growing commitment to sustainability, TKIL Industries recently ventured into the bio-chemicals sector, encompassing distilleries, compressed biogas plants, and their associated derivatives. This legacy of excellence has firmly established us as a trusted leader in delivering sustainable energy solutions to the global sugar, co-gen, and bio-chemicals industries.</p>
+                    <p class="div-split-desc">At TKIL Industries, we remain dedicated to innovation, efficiency, and sustainability. We continue to drive progress in industries that are vital to both economic growth and environmental preservation. Our focus on superior product quality, adherence to international standards, timely project delivery, hassle-free operation, low maintenance, and prompt technical support ensure that we meet the highest expectations of our clients while strengthening our capabilities to help them operate with greater reliability, sustainability, and long-term value.</p>
                 </div>
             </div>
-     
-                  
-                    <!-- ── Revamps & Refurbishments ── -->
-        <div class="cement-panel" id="svc-revamps">
-                   <div class="comp-body">
+            <div class="div-prd-cards-section" id="sugar-cards"></div>
+        </div>
 
-                            <h3>Revamps &amp; Refurbishments</h3>
-
-                            <p>Operating units are subjected to numerous changes that are triggered by a variety of factors. Consequently, over a period of time, the compounded effect hampers performance, reliability, availability and profitability of the unit, resulting in an under-performing asset.</p>
-
-                            <p>An appropriate revamp or rejuvenation program bridges such gaps between initial, present and future performance, using optimal resources &amp; time.</p>
-
-                            <p>At TKIL Industries Pvt. Ltd., we adopt a total solutions approach from concept to implementation by a combination of innovative engineering, quality deliverables and time-bound execution, to ensure that the unit is revitalized for decades to come.</p>
-
-                            <p>Because of continuous operation, plants generally decrease in their efficiency — subsequently reducing the profit for the plant owners. To counter this effect and to make our customers more profitable, we provide innovative engineering solutions with cutting-edge technology.</p>
-
-                            <!-- Revamps Image Carousel -->
-                            <div class="psm-carousel">
-                                <div class="psm-carousel-inner">
-                                    <button class="psm-car-btn psm-car-prev" id="rrCarPrev">&#8249;</button>
-                                    <div class="psm-car-stage">
-                                        <div class="psm-car-track" id="rrCarTrack">
-                                            <div class="psm-car-slide"><img src="~/images/rr/MHE-Rejuvenation--Bucket-Wheel-Excavator-(Before).jpg" alt="Bucket Wheel Excavator Before" loading="lazy" /><span class="psm-car-caption">MHE Rejuvenation – Bucket Wheel Excavator (Before)</span></div>
-                                            <div class="psm-car-slide"><img src="~/images/rr/MHE-Rejuvenation--Bucket-Wheel-Excavator-(After).jpg" alt="Bucket Wheel Excavator After" loading="lazy" /><span class="psm-car-caption">MHE Rejuvenation – Bucket Wheel Excavator (After)</span></div>
-                                            <div class="psm-car-slide"><img src="~/images/rr/MHE-Rejuvenation--Bucket-Wheel-Excavator-(Rejuvenation-work-being-carried-out).jpg" alt="Bucket Wheel Excavator Work in Progress" loading="lazy" /><span class="psm-car-caption">MHE Rejuvenation – Work Being Carried Out</span></div>
-                                            <div class="psm-car-slide"><img src="~/images/rr/Boiler-Rejuvenation--Bagasse-Extractor-(Before).jpg" alt="Bagasse Extractor Before" loading="lazy" /><span class="psm-car-caption">Boiler Rejuvenation – Bagasse Extractor (Before)</span></div>
-                                            <div class="psm-car-slide"><img src="~/images/rr/Boiler-Rejuvenation--Bagasse-Extractor-(After).jpg" alt="Bagasse Extractor After" loading="lazy" /><span class="psm-car-caption">Boiler Rejuvenation – Bagasse Extractor (After)</span></div>
-                                            <div class="psm-car-slide"><img src="~/images/rr/Cement-Rejuvenation--Girth-Gear-Replacement.jpg" alt="Girth Gear Replacement" loading="lazy" /><span class="psm-car-caption">Cement Rejuvenation – Girth Gear Replacement</span></div>
-                                        </div>
-                                    </div>
-                                    <button class="psm-car-btn psm-car-next" id="rrCarNext">&#8250;</button>
-                                </div>
-                                <div class="psm-car-footer">
-                                    <span class="psm-car-counter" id="rrCarCounter">1 / 6</span>
-                                    <div class="psm-car-dots" id="rrCarDots"></div>
-                                </div>
-                            </div>
-
-                            <p>With the aid of state-of-the-art technology, we can achieve the following:</p>
-
-                            <ul class="div-list">
-                                <li>Capacity restoration / enhancement</li>
-                                <li>Relocation, redesign and reconstruction</li>
-                                <li>Efficiency restoration and upgrade</li>
-                                <li>Low / ultra low NOx, SOx and SPM solutions</li>
-                                <li>Eliminate production bottlenecks (debottlenecking)</li>
-                                <li>Instrumentation and control system upgrade</li>
-                                <li>Reconfiguration for alternative fuel(s)</li>
-                                <li>Fuel system / firing technology upgrade</li>
-                            </ul>
-
-                            <p>At TKIL Industries, we provide revamps and refurbishments for cement plants, mining units, boilers and power plants, etc.</p>
-
-                        </div>
-                    </div>
-            <!-- ── Field Services & Service Centers ── -->
-            <div class="cement-panel" id="svc-field">
-                <div class="comp-body">
-
-                    <h3>Field Services &amp; Service Centers</h3>
-
-                    <p>We strive to engage closely with plant users through an array of value-added field services to achieve prompt response, closer monitoring of the equipment, assistance in corrective &amp; preventive actions developed from a data base of analyzed information by our team of experts.</p>
-
-                    <p>This approach is instrumental to ensure that the plant is well supported for its needs, at any point in time while maximizing unit uptime, performance &amp; safety.</p>
-
-                    <!-- Field Services Image Carousel -->
-                    <div class="psm-carousel">
-                        <div class="psm-carousel-inner">
-                            <button class="psm-car-btn psm-car-prev" id="fsCarPrev">&#8249;</button>
-                            <div class="psm-car-stage">
-                                <div class="psm-car-track" id="fsCarTrack">
-                                    <div class="psm-car-slide"><img src="~/images/fssc/Coal-Bunker-RAV-and-Hopper-Dismantling-Work.jpg" alt="Coal Bunker RAV and Hopper Dismantling Work" loading="lazy" /><span class="psm-car-caption">Coal Bunker RAV and Hopper Dismantling Work</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/fssc/POLYCOM-Welding.jpg" alt="POLYCOM Welding" loading="lazy" /><span class="psm-car-caption">POLYCOM Welding</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/fssc/Reconditioning-of-Heavy-Equipment.jpg" alt="Reconditioning of Heavy Equipment" loading="lazy" /><span class="psm-car-caption">Reconditioning of Heavy Equipment</span></div>
-                                    <div class="psm-car-slide"><img src="~/images/fssc/Welding-of-Kiln-Shell.jpg" alt="Welding of Kiln Shell" loading="lazy" /><span class="psm-car-caption">Welding of Kiln Shell</span></div>
-                                </div>
-                            </div>
-                            <button class="psm-car-btn psm-car-next" id="fsCarNext">&#8250;</button>
-                        </div>
-                        <div class="psm-car-footer">
-                            <span class="psm-car-counter" id="fsCarCounter">1 / 4</span>
-                            <div class="psm-car-dots" id="fsCarDots"></div>
-                        </div>
-                    </div>
-
-                    <p>Our repair centres are sophisticated workshops with facilities available for complex operations of large parts backed-up by global know-how on the latest technologies in this sphere which all put together enable us to provide state-of-the-art quality solutions and components to customers.</p>
-
-                    <p>From the services we offer, customers benefit from decades of our experience gained in the industry verticals we specialize in.</p>
-
-                    <p>We provide a large array of advantages with our services:</p>
-
-                    <ul class="div-list">
-                        <li>Increase performance</li>
-                        <li>Increase lifetime</li>
-                        <li>Modernization of the system</li>
-                        <li>Automation of existing plants</li>
-                        <li>Adapting of existing installations to current safety- and emission control standards</li>
-                        <li>Troubleshooting services</li>
-                    </ul>
-
+        <div class="nd-panel" data-section="mining" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/divisions/MiningOverview.jpg" alt="Mining" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
+                    <h2 class="div-split-title">Mining, Material Handling, Processing &amp; Balance of Plant</h2>
+                    <p class="div-split-desc">Established in 1976, the Mining, Material Handling and Processing Business Vertical of TKIL Industries has been at the forefront of transforming the mining, material handling, and comminution (crushing and grinding) sectors in India. Over the years, we have built a strong reputation for delivering innovative and sustainable solutions to industries such as open cast mining, power, ports, steel, fertilizers, and minerals.</p>
+                    <p class="div-split-desc">Leveraging world-class technology, our extensive portfolio includes advanced conveyor systems, comprehensive stockyard equipment — stackers, reclaimers, and stacker-cum-reclaimers — a broad range of crushers, screens, and feeders including our MACS vertical, and wet ball mill systems for FGD applications. We have also established a strong presence in the Balance of Plant (BoP) segment of the thermal power industry, extending our global footprint through strategic collaborations with leading international technology partners.</p>
+                    <p class="div-split-desc">With nearly five decades of experience, we continue to push the boundaries of innovation and engineering excellence — committed to creating long-term value through strategic partnerships and sustainable practices that drive India's industrial growth.</p>
                 </div>
             </div>
-        </div>
-        <!-- Green Hydrogen Business -->
-        <div class="nd-panel" data-section="green-hydrogen">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Divisions</span>
-                <h2>Green Hydrogen Business</h2>
-            </div>
-
-            <!-- Banner Image -->
-            <div class="div-banner">
-                <img src="~/images/Divisions/green-hydrogen.jpg" alt="Green Hydrogen Business" class="div-banner-img" />
-            </div>
-
-            <div class="comp-body">
-
-                <p>As the global energy landscape undergoes rapid transformation, industries face an imperative to reduce reliance on fossil fuels and adopt cleaner, more sustainable solutions. TKIL Industries Pvt. Ltd. recognizes this critical juncture as an opportunity to lead and enable the transition toward green energy systems that not only meet today's demands but also prepare industries for a sustainable future. By integrating innovative technologies, fostering strategic partnerships, and leveraging our expertise in EPC solutions, we are committed to helping industries achieve energy independence, reduce carbon footprints, and align with international climate goals. Our green hydrogen initiative symbolizes this commitment, offering industries a viable pathway to a cleaner and greener tomorrow.</p>
-
-                <p><strong>Partnership with SoHHytec:</strong> To revolutionize the energy transition, TKIL Industries has forged a strategic partnership with SoHHytec, a global innovator in green hydrogen technology. This collaboration combines TKIL's legacy of engineering excellence with SoHHytec's state-of-the-art advancements in artificial photosynthesis, ensuring groundbreaking solutions for industries transitioning to renewable energy. Together, we aim to:</p>
-
-                <ul class="div-list">
-                    <li><strong>Decarbonize Industries:</strong> Provide sustainable, zero-carbon energy solutions.</li>
-                    <li><strong>Ensure Energy Independence:</strong> Empower industries to generate energy on-site, minimizing reliance on external sources.</li>
-                    <li><strong>Promote Scalable Solutions:</strong> Deliver modular systems that grow alongside industry needs.</li>
-                </ul>
-
-                <p><strong>About SoHHytec:</strong> SoHHytec is at the forefront of green hydrogen innovation, transforming how energy is produced and consumed. Their proprietary Arb system is a technological marvel designed to address the challenges of traditional energy sources while opening up new possibilities for decentralized and efficient energy production.</p>
-
-                <h3>Key Features of SoHHytec:</h3>
-
-                <ol class="div-list gh-feature-list">
-                    <li>
-                        <strong>ARB System Innovation:</strong>
-                        <ul class="div-list gh-sublist">
-                            <li>A modular, scalable solution capable of producing hydrogen, oxygen, and heat simultaneously.</li>
-                            <li>Powered solely by sunlight and water, ensuring a 100% renewable process.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Decades of Research Excellence:</strong>
-                        <ul class="div-list gh-sublist">
-                            <li>Technology rooted in more than 10 years of R&amp;D conducted at the prestigious Swiss Federal Institute of Technology (EPFL) in Lausanne, Switzerland.</li>
-                            <li>World-record efficiency in solar-to-hydrogen conversion, making it a leader in the renewable energy space.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Decentralization Focus:</strong>
-                        <ul class="div-list gh-sublist">
-                            <li>Enables on-site energy generation, eliminating the high costs of hydrogen transportation.</li>
-                            <li>Ideal for industries and regions aiming for energy independence and sustainability.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>High Efficiency and Sustainability:</strong>
-                        <ul class="div-list gh-sublist">
-                            <li>Arb systems achieve a total efficiency of ~80%, with significant solar-to-hydrogen (~25%) and solar-to-electricity (~36%) conversion rates.</li>
-                            <li>Medical-grade oxygen and useful heat are valuable by-products, adding economic and functional benefits for industrial operations.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Scalability for Any Industry:</strong>
-                        <ul class="div-list gh-sublist">
-                            <li>Whether for small-scale operations or large industrial setups, SoHHytec's technology is adaptable and designed for seamless expansion.</li>
-                        </ul>
-                    </li>
-                </ol>
-
-                <h3>Product Offering Range:</h3>
-
-                <ul class="div-list">
-                    <li>Hydrogen Generation System up to ~ 100 MW</li>
-                    <li>Hydrogen Refueling Station up to 700 bar</li>
-                    <li>Hydrogen Blending Station upto ~ 20%</li>
-                    <li>H2 based Power Generation engine upto ~1 MW</li>
-                    <li>Hydrogen Fuel cell based Microgrid</li>
-                    <li>Hydrogen Bottling Station</li>
-                    <li>BOP Manufacturing</li>
-                </ul>
-
-            </div>
+            <div class="div-prd-cards-section" id="mining-cards"></div>
         </div>
 
-
-        <!-- Battery & Energy Storage Business -->
-        <div class="nd-panel" data-section="battery">
-            <div class="nd-panel-header">
-                <span class="nd-panel-tag">Divisions</span>
-                <h2>Battery and Energy Storage Business</h2>
+        <div class="nd-panel" data-section="cement" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/divisions/Cementoverview.jpg" alt="Cement" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
+                    <h2 class="div-split-title">Cement Plants &amp; Equipment</h2>
+                    <p class="div-split-desc">The Cement business vertical of TKIL Industries carries a rich legacy of delivering engineering solutions, high-performance equipment, and systems for cement plants — spanning raw grinding, pyro processing, cement grinding, and automation, all the way to complete plant machinery through thyssenkrupp Polysius technology. This association with a leading global technology provider ensures superior productivity, optimum plant availability, and reduced energy consumption for our customers.</p>
+                    <p class="div-split-desc">With a proven global project footprint across Bahrain, Bangladesh, Benin, Burkina Faso, Côte d'Ivoire, Ghana, Indonesia, Kenya, Malawi, Mozambique, Nepal, Sri Lanka, Sudan, Togo, UAE, and Uganda, TKIL Industries is a trusted partner to leading cement manufacturers worldwide — focused on energy-efficient and sustainable solutions.</p>
+                    <p class="div-split-desc">Our Cement Services vertical delivers comprehensive aftermarket support across the full equipment lifecycle — covering spares, upgrades, and turnkey solutions for Kilns, Coolers, VRMs, Ball Mills, and POLYCOMs, alongside in-house expertise in Hot Kiln Alignment, In-Situ Grinding, Condition Monitoring, process audits, and plant optimization aimed at reducing emissions and improving long-term performance.</p>
+                </div>
             </div>
+            <div class="div-prd-cards-section" id="cement-cards"></div>
+        </div>
 
-            <!-- Banner Image -->
-            <div class="div-banner">
-                <img src="~/images/Divisions/battery-energy.jpg" alt="Battery and Energy Storage Business" class="div-banner-img" />
+        <div class="nd-panel" data-section="energy" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/divisions/EnergyOverview.png" alt="Energy" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
+                    <h2 class="div-split-title">Energy Business</h2>
+                    <p class="div-split-desc">The Energy business vertical of TKIL Industries specializes in large-capacity boilers, thermal power plants, and waste heat recovery systems — delivering high-quality, integrated turnkey solutions across power generation and co-generation. From sugar plants to diverse industrial applications, our solutions optimize energy usage, reduce emissions, and enhance operational efficiency, backed by advanced manufacturing facilities and a team of seasoned engineers.</p>
+                    <p class="div-split-desc">Whether coal, biomass, oil &amp; gas, or waste heat-based, we tailor energy solutions to each client's specific needs while aligning with sustainability goals. Our offerings also include a future-ready automation platform through the TKIL Industries–Valmet DNA automation system, addressing comprehensive process automation needs across industries.</p>
+                    <p class="div-split-desc">By continually innovating and evolving, TKIL Industries remains at the forefront of the energy sector — empowering industries to harness cleaner, more efficient energy and explore smarter, more resilient, future-ready systems.</p>
+                </div>
             </div>
+            <div class="div-prd-cards-section" id="energy-cards"></div>
+        </div>
 
-            <div class="comp-body">
+        <div class="nd-panel" data-section="service" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/divisions/ServiceOverview.jpg" alt="Service" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
+                    <h2 class="div-split-title">Service Business</h2>
+                    <p class="div-split-desc">The Service business vertical of TKIL Industries doesn't just maintain operations — it elevates them. Our 360° service solutions are engineered to maximize industrial efficiency, reliability, and sustainability across power plants, mining operations, cement plants, and material handling systems — ensuring peak performance, extended asset life, and zero tolerance for downtime.</p>
+                    <p class="div-split-desc">With over 40 years of expertise, we deliver cutting-edge spare part management, rigorous technical inspections, precision repairs, and elite operator training to guarantee seamless plant availability. Our future-ready offerings extend further into high-impact revamps, modernizations, capacity upgrades, debottlenecking strategies, and flawless shutdown management.</p>
+                    <p class="div-split-desc">By fusing innovation with deep industry expertise, TKIL Industries drives higher productivity, mitigates risks, and enables sustainable growth — cementing our position as a trusted partner in reliable, efficient, and future-ready service excellence.</p>
+                </div>
+            </div>
+            <div class="div-prd-cards-section" id="service-cards"></div>
+        </div>
 
-                <p>TKIL Industries, a distinguished leader in industrial engineering and manufacturing, has entered into an exclusive strategic agreement with Germany's HOPPECKE Batterie Systeme GmbH – Europe's preeminent industrial battery systems manufacturer. This collaboration is dedicated to delivering advanced, sustainable Railway Battery Systems to support the rapid expansion of India's rail transportation sector.</p>
+        <div class="nd-panel" data-section="green-hydrogen" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/divisions/GreenHydroOverview.png" alt="Green Hydrogen" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
+                    <h2 class="div-split-title">Green Hydrogen</h2>
+                    <p class="div-split-desc">The Green Hydrogen business vertical of TKIL Industries is at the forefront of India's green energy transition. Through a strategic partnership with SoHHytec SA, Lausanne, we bring a groundbreaking artificial-photosynthesis (photo-electrolysis) technology to India — delivering over 2x solar-to-hydrogen efficiency with just one-third the land requirement of conventional PV-electrolyser systems, redefining efficiency, sustainability, and scalability in renewable fuel production.</p>
+                    <p class="div-split-desc">Aligned with the National Green Hydrogen Mission, TKIL Industries is enabling clean energy pathways for hard-to-abate sectors — fertilizers, steel, cement, oil &amp; gas, and mobility — strengthening India's energy security and accelerating progress toward net-zero emissions.</p>
+                    <p class="div-split-desc">Our comprehensive green hydrogen solution suite spans Hydrogen Production Plants, Refueling Stations, Blending Stations, Fuel Cell-Based Microgrids, and Bottling Stations — unlocking the full potential of green hydrogen and shaping a cleaner energy landscape for generations to come.</p>
+                </div>
+            </div>
+            <div class="div-prd-cards-section" id="green-hydrogen-cards"></div>
+        </div>
 
-                <h3>Partnership Highlights</h3>
-                <ul class="div-list">
-                    <li><strong>Exclusive Collaboration:</strong> TKIL Industries is the exclusive supplier of HOPPECKE's Railway Battery Systems within the Indian rail market.</li>
-                    <li><strong>Joint Development:</strong> Both entities will jointly design, manufacture, and integrate nickel-cadmium (NiCd) battery systems, inclusive of cells, containers, and accessories, across a spectrum of rail applications such as metros, regional trains, and locomotives.</li>
-                    <li><strong>Initial Project:</strong> The first joint initiative under this partnership is scheduled for deployment in 2025.</li>
-                </ul>
+        <div class="nd-panel" data-section="battery" style="display:none;">
+            <div class="div-hero-split">
+                <img src="~/images/divisions/BatteryOverview.jpg" alt="Battery" class="div-hero-split-img" />
+                <button class="div-back-btn js-div-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    <span id="divBackLabel">Back to Divisions</span>
+                </button>
+                <div class="div-hero-split-card">
+                    <h2 class="div-split-title">Battery &amp; Energy Storage</h2>
+                    <p class="div-split-desc">The Battery &amp; Energy Storage (BES) business vertical of TKIL Industries has strategically expanded into the rail segment — metros and locomotives — through a strong partnership with Hoppecke Battery Systems GmbH, a global leader in industrial energy solutions. This collaboration reinforces our commitment to delivering world-class, reliable, and sustainable battery technologies to the rail mobility sector.</p>
+                    <p class="div-split-desc">Our BES vertical focuses on the development, engineering, and integration of advanced Ni-Cd and Li-ion battery systems tailored for rolling stock, power backup, and stationary storage applications. With robust in-house capabilities spanning battery box fabrication, assembly, testing, and validation, TKIL Industries supports end-to-end execution of battery management systems for both domestic and international markets.</p>
+                    <p class="div-split-desc">We are steadily building our presence in Battery Energy Storage Systems (BESS) — focused on technology partnerships, system integration, and turnkey EPC delivery — supporting renewable energy integration and evolving energy storage applications as we advance toward a smarter, more sustainable energy future.</p>
+                </div>
+            </div>
+            <div class="div-prd-cards-section" id="battery-cards"></div>
+        </div>
 
-                <h3>Strategic Significance</h3>
-                <ul class="div-list">
-                    <li>India aims to double its electric locomotive capacity by 2030.</li>
-                    <li>The number of operational metro cities is projected to rise from 23 in FY25 to 31 by FY30, driving demand for over 20,000 electric locomotives.</li>
-                    <li>Approximately 900 kilometres of metro rail projects are underway, supported by investments exceeding INR 600 crore.</li>
-                </ul>
+    </div><!-- end divisionPanels -->
+    <!-- ══ LEVEL 3: Product detail view ══ -->
+    <!-- ══ LEVEL 3: Product detail view ══ -->
+    <div id="prdDetailView" style="display:none;" class="div-prd-detail-wrap">
 
-                <h3>Combined Expertise</h3>
-                <ul class="div-list">
-                    <li><strong>TKIL Industries:</strong> Renowned for its engineering excellence, manufacturing capabilities, and comprehensive project management in large-scale industrial ventures.</li>
-                    <li><strong>HOPPECKE Batterie Systeme GmbH:</strong> A global leader with over 95 years of expertise in industrial energy storage and railway battery technologies.</li>
-                </ul>
-
-                <h3>Technology and Product Portfolio</h3>
-                <ul class="div-list">
-                    <li><strong>Nickel-Cadmium (NiCd) Railway Battery Systems:</strong> Exclusively supplied through this collaboration.</li>
-                    <li><strong>Battery Energy Storage Systems (BESS):</strong> Currently under joint development for next-generation rail applications.</li>
-                    <li><strong>Core Offerings:</strong> Advanced battery systems tailored to meet the specific demands of metro and railway transport.</li>
-                </ul>
-
-                <h3>About HOPPECKE Batterie Systeme GmbH</h3>
-                <p>Established in 1927 and headquartered in Brilon, Germany, HOPPECKE is the largest independent manufacturer of industrial battery systems in Europe. With a global presence comprising 22 subsidiaries and a workforce exceeding 2,000 employees, the company records annual revenues surpassing €600 million. HOPPECKE's solutions enable emission-free mobility for industrial vehicles and rail applications and provide reliable energy storage for renewable energy sources. In 2025, HOPPECKE was recognized as one of the top 500 global market leaders in railway battery technology.</p>
-
+        <div class="div-prd-detail-hero">
+            <div class="div-prd-detail-left">
+                <p class="div-prd-parent-label" id="prdParentLabel"></p>
+                <h1 id="prdDetailTitle"></h1>
+                <div class="prd-content" id="prdDetailContent"></div>
+                <!-- Thumbnail strip (shown when content has multiple images) -->
+                <div id="prdThumbStrip" class="prd-thumb-strip" style="display:none;"></div>
+            </div>
+            <div class="div-prd-detail-right">
+                <img id="prdDetailImg" src="" alt="" style="cursor:zoom-in;" />
             </div>
         </div>
 
+        <div class="div-prd-subnav" id="prdSubnav" style="display:none;">
+            <span class="div-prd-subnav-info" id="prdSubnavInfo"></span>
+            <div class="div-prd-subnav-btns">
+                <button class="div-prd-subnav-btn" id="prdPrevBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
+                    Previous
+                </button>
+                <button class="div-prd-subnav-btn" id="prdNextBtn">
+                    Next
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </div>
 
-        </div><!-- end nd-content-area -->
-    </div><!-- end nd-flex -->
-</div><!-- end nd-page -->
+        <div class="div-prd-cards-section" id="prdDetailCardsRepeat"></div>
+    </div>
+
+    <!-- ══ FULLSCREEN LIGHTBOX ══ -->
+    <!-- ══ FULLSCREEN LIGHTBOX ══ -->
+    <div id="imgLightbox" style="display:none;">
+        <button id="imgLightboxClose" onclick="closeLightbox()">&#x2715;</button>
+        <img id="imgLightboxImg" src="" alt="" />
+    </div>
+
+</div><!-- end divDetail -->
 @section Scripts {
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('.nd-item[data-target]');
-            const panels = document.querySelectorAll('.nd-panel');
+        const prdData = {
+            sugar: {
+                items: [
+                    {
+                        id: "sugar-digitalisation",
+                        title: "Digitalisation in Sugar Industry",
+                        content: `
+                            <div class="prd-inline-media">
+                            <img src="/images/products/sugar/Digitalisation.jpg" alt="Digitalisation in Sugar Industry" loading="lazy" />
+                            </div>
+                            <p>Technology of sugar manufacturing has transformed progressively over the past 100 years — from steam engines to hydraulic drives, from open pan boiling to vertical continuous pans, and from manual operation to automation. To gain competitive advantage in the global market, factories need to focus on targeting low cost of production and improving product quality.</p>
+                            <p>Most factories presently operate with a DCS control system, which captures a lot of information from the operating plant — however, the information collected is not used extensively. Digitalisation enables use of such data, captured from the plant, effectively by analysing and developing a smart solution, which will add value to the customer by enhancing efficiency, effectiveness and consistency thereby reducing net operating cost and improving product quality.</p>
+                            <p>TKIL Industries Pvt. Ltd. started a technology centre in India in 2018 for analytics and software engineering. Combination of expert know-how on sugar technologies and digital competence is a key differentiator offered by TKIL Industries Pvt. Ltd.</p>
+                            <p>Digitalisation modules like condition monitoring system for cane handling and milling, smart-crystallization AI module for pan boiling, self-learning module for centrifugal station have been introduced to the industry and are in different stages of implementation.</p>
+                        `
+                    },
+                    {
+                        id: "sugar-cane-prep",
+                        title: "Cane Preparation & Cane Milling",
+                        children: [
+                            {
+                                id: "sugar-cane-prep-fibrizer",
+                                title: "Cane Fibrizer and Shredder",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/Cane-Fibrizer-1.jpg" alt="Cane Fibrizer" loading="lazy" style="width:48%;border-radius:6px;" />
+                                        <img src="/images/products/sugar/Cane-Shredder-2.jpg" alt="Cane Shredder" loading="lazy" style="width:48%;border-radius:6px;" />
+                                    </div>
+                                    <h4>Heavy Duty Cane Fibrizer and Cane Shredder</h4>
+                                    <ul>
+                                        <li>Cane preparation index between 86 to 92%.</li>
+                                        <li>Increase in throughput capacity of plant.</li>
+                                        <li>Adjustable anvil.</li>
+                                        <li>Specially designed rotor discs to avoid shocks.</li>
+                                        <li>Hammers are provided with hard facing or with replaceable tips (domite or carbide).</li>
+                                        <li>Swing hammer - the hammers are hinged on rotor disc with stainless steel axle and engineering plastic bushes.</li>
+                                        <li>Rotor assembly supported on heavy duty double row spherical roller bearing and housed in solid cast steel plummer blocks with water cooling jacket.</li>
+                                        <li>Bearing lubrication - grease / forced lubrication system.</li>
+                                        <li>Anvil: Pocketed type or replaceable grid bar type. Wrap Angle – 140 to 160 Deg (for fibrizer) and 90 deg (for shredder).</li>
+                                    </ul>
+                                    <ul><li>Hydraulically operated "hammer exchange device" can be provided for quick exchange of hammers (Optional).</li></ul>
+                                `
+                            },
+                            {
+                                id: "sugar-cane-prep-two-roller",
+                                title: "Energy-Efficient Two Roller Mill",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/two-roller-mill-with-under-feed-roller.jpg" alt="Two Roller Mill" loading="lazy" style="width:48%;border-radius:6px;" />
+                                        <img src="/images/products/sugar/two-roller-mill-1.jpg" alt="Two Roller Mill" loading="lazy" style="width:48%;border-radius:6px;" />
+                                    </div>
+                                    <p>Energy efficient two roller mill equipped with re-absorption limiting (RAL) device allows following advantages when compared to conventional three roller mill.</p>
+                                    <ul>
+                                        <li>25% reduction in consumed power.</li>
+                                        <li>Higher pol extraction.</li>
+                                        <li>Better moisture control using re-absorption limiting (RAL) device to achieve 48% to 50% moisture.</li>
+                                        <li>Less mill parts – no third roller, no trash plate: thus less maintenance cost and time.</li>
+                                    </ul>
+                                    <h4>Salient Features</h4>
+                                    <ul>
+                                        <li>Robust heavy-duty design for improved rigidity and stability to handle higher throughput.</li>
+                                        <li>Individual fine mill setting and speed control on each crushing.</li>
+                                        <li>Provision to install pressure feeder.</li>
+                                        <li>Top and bottom roller axis are near vertical; 100% hydraulic load is directly transferred to bottom roller through single pressure point.</li>
+                                        <li>Rollers are provided with deep messchaert grooves in bottom roller for better juice drainage.</li>
+                                        <li>Self-adjusting roller scrappers according to capacity and roller wear.</li>
+                                    </ul>
+                                    <p>Product range: mill size from 24"x56" to 55"x110" and any intermediate size.</p>
+                                `
+                            },
+                            {
+                                id: "sugar-cane-prep-three-roller",
+                                title: "Three Roller Mill with Under Feed Roller",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/Three-Roller-Mill.jpg" alt="Three Roller Mill" loading="lazy" style="width:48%;border-radius:6px;" />
+                                        <img src="/images/products/sugar/Three-Roller-Mill-1.jpg" alt="Three Roller Mill" loading="lazy" style="width:48%;border-radius:6px;" />
+                                    </div>
+                                    <h4>Features</h4>
+                                    <ul>
+                                        <li>Robust heavy-duty design for improved rigidity and stability to handle higher throughput.</li>
+                                        <li>Pin-type construction makes it easy to assemble and dismantle.</li>
+                                        <li>Lower mill apex angle, of the range of 72 to 75 deg.</li>
+                                        <li>Headstock has provision for installing pressure feeder.</li>
+                                        <li>Scrapers for top and discharge rollers are provided with renewable cast iron tips for easy replacement.</li>
+                                        <li>Underfeed roller shall be provided as grooved or toothed type.</li>
+                                    </ul>
+                                    <h4>Product Range: Standard Mill Sizes</h4>
+                                    <ul>
+                                        <li>20 inch x 40 inch</li><li>30 inch x 60 inch</li><li>33 inch x 66 inch</li>
+                                        <li>36 inch x 78 inch</li><li>40 inch x 80 inch</li><li>42 inch x 84 inch</li>
+                                        <li>45 inch x 90 inch</li><li>50 inch x 100 inch</li>
+                                        <li>OR any intermediate and custom sized mill</li>
+                                    </ul>
+                                `
+                            },
+                            {
+                                id: "sugar-cane-prep-pressure-feeders",
+                                title: "Pressure Feeders",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/Pressure-Feeders-1.jpg" alt="Pressure Feeders" loading="lazy" style="width:48%;border-radius:6px;" />
+                                        <img src="/images/products/sugar/Pressure-Feeders-2.jpg" alt="Pressure Feeders" loading="lazy" style="width:48%;border-radius:6px;" />
+                                    </div>
+                                    <p>Toothed Roller Pressure Feeder (TRPF) &amp; Grooved Roller Pressure Feeder (GRPF)</p>
+                                    <ul>
+                                        <li>Increases throughput and performance.</li>
+                                        <li>Easily adaptable on conventional 3R and energy efficient 2R mills.</li>
+                                        <li>Lotus type grooved rollers for optimum juice drainage.</li>
+                                        <li>Hard facing for toothed rollers for better gripping and longer life.</li>
+                                        <li>Hinged housing for easy maintenance without disturbing the original alignment.</li>
+                                    </ul>
+                                `
+                            },
+                            {
+                                id: "sugar-cane-prep-rotary-screen",
+                                title: "Rotary Juice Screen",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/Rotary-Juice-Screen-1.jpg" alt="Rotary Juice Screen" loading="lazy" style="width:48%;border-radius:6px;" />
+                                        <img src="/images/products/sugar/Rotary-Juice-Screen-2.jpg" alt="Rotary Juice Screen" loading="lazy" style="width:48%;border-radius:6px;" />
+                                    </div>
+                                    <ul>
+                                        <li>Stainless Steel construction for juice contact parts.</li>
+                                        <li>Sizes available from 1000 mm dia. x 2400 mm length to 2400 mm dia. x 6000 mm length.</li>
+                                        <li>Slot sizes 0.35, 0.4, 0.45, 0.5 mm.</li>
+                                    </ul>
+                                `
+                            }
+                        ]
+                    },
+                    {
+                        id: "sugar-process-house",
+                        title: "Process House / Boiling House",
+                        children: [
+                            {
+                                id: "sugar-process-juice-heater",
+                                title: "Juice Heater",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/juice-heater-1.jpg" alt="Juice Heater" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                        <img src="/images/products/sugar/juice-heater-2.jpg" alt="Juice Heater" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                    </div>
+                                    <h4>Types</h4>
+                                    <ul>
+                                        <li>High velocity vertical tubular juice heater.</li>
+                                        <li>Dynamic type tubular juice heater.</li>
+                                        <li>Vapour line tubular juice heater.</li>
+                                        <li>Condensate tubular juice heater.</li>
+                                        <li>Duplex juice heaters.</li>
+                                        <li>Direct contact juice heaters.</li>
+                                    </ul>
+                                    <p>Combination of juice heaters and bleeding scheme is selected to achieve steam consumption at 32% and lower.</p>
+                                `
+                            },
+                            {
+                                id: "sugar-process-rising-film",
+                                title: "Rising Film Evaporator",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/rising-film-evaporator.jpg" alt="Rising Film Evaporator" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                    </div>
+                                    <ul>
+                                        <li>Natural circulation.</li>
+                                        <li>Efficient distribution of steam with baffle plates.</li>
+                                        <li>Effective internal separator of centrifugal type for juice and vapour separation.</li>
+                                        <li>Access doors for easy maintenance.</li>
+                                        <li>High rate of evaporation.</li>
+                                    </ul>
+                                `
+                            },
+                            {
+                                id: "sugar-process-falling-film",
+                                title: "Falling Film Evaporator",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/falling-film-evaporator-1.jpg" alt="Falling Film Evaporator" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                        <img src="/images/products/sugar/falling-film-evaporator-2.jpg" alt="Falling Film Evaporator" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                    </div>
+                                    <ul>
+                                        <li>Operates at low exhaust pressure and temperature.</li>
+                                        <li>Short retention time, minimizing inversion losses and colour formation.</li>
+                                        <li>Higher heat transfer co-efficient.</li>
+                                        <li>Less floor space and can be installed in open (no building required).</li>
+                                    </ul>
+                                    <p>Product range: 900 m2 up to 7000 m2 heating surface area.</p>
+                                `
+                            },
+                            {
+                                id: "sugar-process-vacuum-pan",
+                                title: "Vacuum Pan",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/Vacuum-Pan-1.jpg" alt="Vacuum Pan" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                        <img src="/images/products/sugar/Vacuum-Pan-2.jpg" alt="Vacuum Pan" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                    </div>
+                                    <h4>Continuous Type Vacuum Pan</h4>
+                                    <ul>
+                                        <li>Straight plug flow pattern.</li>
+                                        <li>Optimum heating surface to volume ratio.</li>
+                                        <li>Steam and power saving.</li>
+                                        <li>Production of better quality sugar in terms of uniform crystals size and improvement in colour.</li>
+                                        <li>Automation for feeding of grain, syrup and molasses.</li>
+                                    </ul>
+                                    <p>Product range: 15 m3 up to 120 m3</p>
+                                    <h4>Batch Type Vacuum Pan</h4>
+                                    <ul>
+                                        <li>Rapid boiling.</li>
+                                        <li>Uniform grain, free from conglomerations.</li>
+                                        <li>Suitable for complete automation.</li>
+                                    </ul>
+                                `
+                            },
+                            {
+                                id: "sugar-process-tkcvp",
+                                title: "Vertical Continuous Pan (tkCVP)",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/Vertical-Continuous-Pan-1.jpg" alt="Vertical Continuous Pan" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                    </div>
+                                    <ul>
+                                        <li>High efficiency due to all stages being performed in more vessels.</li>
+                                        <li>Low energy consumption.</li>
+                                        <li>Less floor space required.</li>
+                                        <li>Fully automatic operation.</li>
+                                    </ul>
+                                    <p>Range – Custom made solution to handle A, B &amp; C massecuite.</p>
+                                `
+                            },
+                            {
+                                id: "sugar-process-crystalliser",
+                                title: "Crystalliser",
+                                content: `
+                                    <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                        <img src="/images/products/sugar/vertical-crystallizer.jpg" alt="Crystalliser" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                    </div>
+                                    <h4>Vertical Crystalliser (Water Cooled)</h4>
+                                    <ul>
+                                        <li>Compact layout, self-supporting and ease in operation.</li>
+                                        <li>High heat transfer coefficient.</li>
+                                        <li>Large cooling area.</li>
+                                        <li>Maximum exhaustion of massecuite by control of massecuite shear rate and cooling.</li>
+                                    </ul>
+                                    <p>Product Range – Mono type or twin type of suitable capacity to the process requirement.</p>
+                                `
+                            }
+                        ]
+                    },
+                    {
+                        id: "sugar-batch-centrifugal",
+                        title: "Batch (Discontinuous) Centrifugal Machine",
+                        content: `
+                            <h4>Features</h4>
+                            <ul>
+                                <li>Basket material is a special quality duplex stainless steel having high corrosion resistance and long working life.</li>
+                                <li>Lighter construction of basket requires lower driving power.</li>
+                                <li>Oscillation control unit surrounds spindle 360 degrees and prevents basket from wobbling during ploughing.</li>
+                                <li>Air scavenging arrangement provided on the scraper blade for removal of residual sugar.</li>
+                                <li>Operational interlocks and safety devices ensure smooth and reliable operation.</li>
+                            </ul>
+                            <h4>Advantages</h4>
+                            <ul>
+                                <li>Compact and modular design can be customized for suitable mounting.</li>
+                                <li>High gravity factor ensures effective purging of massecuite.</li>
+                                <li>Uniform and better quality of dry sugar.</li>
+                                <li>Energy saving per ton of massecuite.</li>
+                            </ul>
+                            <div style="overflow-x:auto;margin-top:16px;">
+                                <table class="prd-table">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2"></th>
+                                            <th colspan="5">KB Series</th>
+                                            <th colspan="2">TKB Series</th>
+                                        </tr>
+                                        <tr>
+                                            <th>KB 750</th><th>KB 1250</th><th>KB 1500</th><th>KB 1750</th><th>KB 2250</th>
+                                            <th>TKB 1750</th><th>TKB 2000</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Nominal Filling capacity (kg/ch)</td><td>750</td><td>1250</td><td>1500</td><td>1750</td><td>2250</td><td>1750</td><td>2000</td></tr>
+                                        <tr><td>Basket inside dia. (mm)</td><td>1220</td><td>1260</td><td>1350</td><td>1550</td><td>1720</td><td>1585</td><td>1595</td></tr>
+                                        <tr><td>Spinning speed (rpm) - max</td><td>1350</td><td>1300</td><td>1250</td><td>1100</td><td>1020</td><td>1100</td><td>1100/1150</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        `
+                    },
+                    {
+                        id: "sugar-continuous-centrifugal",
+                        title: "Continuous Centrifugal Machine",
+                        content: `
+                            <h4>Salient Features</h4>
+                            <ul>
+                                <li>Duplex steel separation ring, fabricated out of single piece construction ensures higher strength and life.</li>
+                                <li>Specially designed perforations having unique slit with elliptical ends.</li>
+                                <li>Auto-feed control system depending on drive motor consumed power ensures uniform loading and quality of sugar.</li>
+                                <li>Centrally located feed pipe with a steam jacket for heating of low-grade massecuite.</li>
+                            </ul>
+                            <div style="overflow-x:auto;margin-top:16px;">
+                                <table class="prd-table">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">Parameter</th>
+                                            <th colspan="2">KC Series</th>
+                                            <th>TKC Series</th>
+                                        </tr>
+                                        <tr>
+                                            <th>KC 1100</th><th>KC 1500</th><th>TKC 1500</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Top diameter of basket (mm)</td><td>1100</td><td>1500</td><td>1500</td></tr>
+                                        <tr><td>Basket inclination (deg.)</td><td>30</td><td>30</td><td>30</td></tr>
+                                        <tr><td>Basket speed (rpm)</td><td>2000/1800</td><td>1680/1550</td><td>1680/1550</td></tr>
+                                        <tr><td>Motor rating (kw)</td><td>55</td><td>110</td><td>110</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        `
+                    },
+                    {
+                        id: "sugar-refinery",
+                        title: "Sugar Refinery",
+                        content: `
+                            <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                <img src="/images/products/sugar/Sugar-Refinery-1.jpg" alt="Sugar Refinery" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                <img src="/images/products/sugar/Sugar-Refinery-2.jpg" alt="Sugar Refinery" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                            </div>
+                            <p>TKIL Industries Pvt. Ltd. supplies both Integrated and stand alone refineries consisting of Raw Sugar Handling and Conveying, Affination, Melting, Clarification, Filtration, Decolorisation, Crystallization, Recovery, Sugar drying and bagging, Steam and Power generating plants.</p>
+                            <p>Clarification processes: Melt phosphitation, Melt carbonation</p>
+                            <p>Decolorization processes: Powder activated carbon (PAC), Granular activated carbon (GAC)</p>
+                            <p>Ion Exchange Resins (IER)</p>
+                        `
+                    }
+                ]
+            },
+            mining: {
+                items: [
+                    {
+                        id: "mining-equip",
+                        title: "Equipment and Systems for Material Handling Plant",
+                        children: [
+                            { id: "mining-stackers", title: "Stackers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/stacker-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/stacker.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>In any large scale stockyard operation, one of the major functions is stacking the material. TKIL Industries manufactures Rail Mounted Stackers in a variety of configurations. These rugged, operator friendly stackers are designed after carefully taking into consideration functional requirements like throughput, mobility and automation (semi or fully automatic) as well as operational requirements like luffing and slewing.</p>` },
+                            { id: "mining-bucket-wheel", title: "Bucket Wheel Reclaimers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/Bucket-Wheel-Reclaimers.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/Bucket-Wheel-Reclaimers-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries manufactures the whole range of stacking and reclaiming machines for stockyards. Available with either fully or semi-automatic control systems, these machines guarantee uniform reclaiming of stockpile and the highest degree of economy and efficiency.</p>` },
+                            { id: "mining-combined-stacker", title: "Combined Stacker Reclaimers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/stacker-cum-reclaimer3.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/stacker-cum-reclaimer4.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>Combined Stacker-Reclaimers are single unit machines which can operate in both stacking and reclaiming modes separately. They also permit a high degree of automation in both modes of operation. Can be used for blending / mixing different types of coal for power plant applications.</p>` },
+                            { id: "mining-stockyard", title: "Other Stockyard Equipment", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/Other-Stockyard-Equipment.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/Other-Stockyard-Equipment-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries designs, manufactures and supplies stockyard machines like Bridge-Type Scraper Reclaimers, Portal and Semi-Portal Scraper Reclaimers, Circular Stacker Reclaimers and Side Scraper Reclaimers.</p>` },
+                            { id: "mining-feeders", title: "Feeders", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/feeders.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/Feeders-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries offers Apron Feeders in different sizes and capacities for a wide range of applications.</p><h4>Product Range</h4><ul><li>Apron Feeders</li><li>Chain Feeders</li><li>Reciprocating Feeders</li><li>Vibrating Feeders</li></ul>` },
+                            { id: "mining-paddle-feeders", title: "Paddle Feeders", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/paddle-feeders.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/paddle-feeder-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries Paddle Feeders ensure high reliability, compactness in design, low power consumption, operational simplicity and ease in capacity variation.</p>` },
+                            { id: "mining-screens", title: "Screens", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/Screen-feeders-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/Roller-Screen.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>A range of high efficiency Screens for screening before or after crushing.</p><h4>Product Range</h4><ul><li>Vibrating Screens (Circular and Linear)</li><li>Roller Screens</li><li>Grizzly Screens</li><li>Wobbler Feeders</li></ul>` },
+                            { id: "mining-crushers", title: "Crushers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/Crushers.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries offers a wide range of Crushers designed to take on any crushing job.</p><h4>Product Range</h4><ul><li>Double Roll Crushers</li><li>Ring Hammer Mill / Ring Granulator</li><li>Rotary Breakers</li><li>Jaw Crushers</li><li>Hammer Mills</li><li>Cone Crushers</li></ul>` },
+                            { id: "mining-wagon-tipplers", title: "Wagon Tipplers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/wagon-tippler.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/wagon-tippler1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries manufactures a wide range of Tipplers, including Side Discharge Tipplers and Rotary Tipplers for railway wagons as per revised RDSO G33 (Rev-1) guidelines.</p>` },
+                            { id: "mining-curved-conveyors", title: "Long-Distance Curved Conveyors", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/overland-conveyor-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/overland-conveyor.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries Pvt. Ltd. has a large presence in the field of Cross Country Conveyors and Pipe Conveyors, manufacturing critical components like idlers and pulleys in its own facilities.</p>` },
+                            { id: "mining-idler-rollers", title: "Idler Rollers and Pulleys", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/Idler-Rollers.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/Pulleys.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries precision idler rollers are the product of choice for high-speed and pipe conveyors. Every single idler roller undergoes a freewheel test before delivery.</p><h4>Pulleys</h4><p>TKIL Industries conveyor pulleys feature keyless connection between hub and end disc, post-weld heat treatment, balance to ISO 1940 grade G40, and stress analysis using FEM software.</p>` },
+                            { id: "mining-pipe-conveyors", title: "Pipe Conveyors", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/pipe-conveyor.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/pipe-conveyor-2.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries Pipe Conveyors are manufactured from high-grade materials and proven components to give maximum reliability.</p><h4>Advantages</h4><ul><li>Ability to negotiate 3-D curves, resulting in minimum requirement of transfer points.</li><li>Material being transported is protected from wind, rain and other environmental hazards.</li><li>Dust and air-borne emission is avoided.</li></ul>` }
+                        ]
+                    },
+                    {
+                        id: "mining-special",
+                        title: "Specialty Equipment",
+                        content: `
+                            <div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;">
+                                <img src="/images/products/mhe/FGD-WBM.jpg" alt="FGD-WBM" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                                <img src="/images/products/mhe/WBM-3D-GA.jpg" alt="WBM-3D-GA" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" />
+                            </div>
+                            <p>Apart from crushing &amp; screening we are providing machinery &amp; equipment for grinding system for wet limestone used in Flue Gas Desulphurization.</p>
+                            <p><strong>GRINDING SYSTEM</strong></p>
+                            <p>The system is designed to grind the limestone to fineness of up to 325 mesh for FGD application. The system comprises of feeders, grinding mill, hydro-cyclones &amp; slurry pumps for product separation and slurry handling unit.</p>
+                        `
+                    },
+                    {
+                        id: "mining-macs",
+                        title: "MACS",
+                        children: [
+                            { id: "mining-macs-jaw", title: "Jaw Crushers", content: `<p><b>Proven quality – great flexibility – easy operation</b></p><p>TKIL Industries Jaw Crushers are used for Primary Crushing. The material is crushed by compressive &amp; shear forces. Flywheels with high moment of Inertia are generating high crushing energy &amp; compensate crusher peak loads.</p>` },
+                            { id: "mining-macs-cone", title: "Cone Crushers", content: `<p><b>Proven quality – great flexibility – easy operation</b></p><p>In the Cone Crusher the material is crushed by compressive forces between the Crusher shell &amp; mantle. Cone Crusher are used for Secondary &amp; Tertiary Crushing.</p>` },
+                            { id: "mining-macs-vsi", title: "VSI (Vertical Shaft Impactor)", content: `<p><b>Proven quality – great flexibility – easy operation</b></p><p>Vertical Shaft Impactors are tertiary crushers for the production of high-grade chippings or crushed sand from hard rock such as basalt, granite, diorite, andesite and gravel.</p>` },
+                            { id: "mining-macs-screen", title: "Vibrating Screen", content: `<p><b>Proven quality – great flexibility – easy operation</b></p><p>Circular Motion Vibrating Screens are used for screening of rock, ore, coal and similar bulk materials as well as in recycling and waste disposal.</p>` },
+                            {
+                                id: "mining-macs-aggregate",
+                                title: "Aggregate Crushing and Screening Plants",
+                                children: [
+                                    { id: "mining-macs-aggregate-stationary", title: "Stationary / Skid Mounted Crushing & Screening Plant", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/Aggregate-crushing-and-screening-plant.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/Aggregate-crushing-and-screening-plant-1.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>We offer a comprehensive range of equipment and services for Stationary / skid mounted two-stage, three-stage and four-stage configurations with processing capacities ranging from 150 TPH to 300 TPH.</p>` },
+                                    { id: "mining-macs-aggregate-semi", title: "Semi Mobile Crushing & Screening Plant", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/mhe/MULTIROAD-FM90-CK804.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /><img src="/images/products/mhe/MULTIROAD-G90-CK803.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>We offer a comprehensive range of equipment and services for Semi mobile two-stage and three-stage configurations with processing capacities ranging from 150 TPH to 250 TPH.</p>` }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            cement: {
+                items: [
+                    { id: "cement-raw-material", title: "Raw Material Preparation", content: `<p>Cement manufacturing begins with the extraction and preparation of the raw material – a process section covering all activities from quarrying of limestone to the feeding of raw meal into preheater.</p><ul><li>Crushing</li><li>Bulk material storage/Blending</li><li>Conveying/Metered feeding</li><li>Grinding/Drying</li><li>Separating/Collecting</li><li>Material analysis/Raw material</li><li>Blending/Storing</li><li>Coal grinding/Fuel preparation</li></ul>` },
+                    { id: "cement-clinker", title: "Clinker Production", content: `<p>In modern cement plants, the burning process is performed in a chain of three systems. In the multistage cyclone preheater with calciner, the raw meal is preheated to about 800 to 900°C and decarbonated by kiln exhaust gases. In the rotary kiln itself, a temperature of approx. 1450°C causes sintering.</p><ul><li>Material Analysis / Upstream of Kiln feed</li><li>Preheating</li><li>Calcining</li><li>Material analysis/Hot meal</li><li>Burning</li><li>Cooling</li><li>Material analysis/Clinker</li></ul>` },
+                    { id: "cement-manufacturing", title: "Cement Manufacturing", content: `<p>In the final process stage of cement manufacturing, the cement clinker is extracted from the clinker stockpiles or silos and finely ground together with gypsum as a setting regulator.</p><ul><li>Storing</li><li>Grinding</li><li>Conveying/ Metered feeding</li><li>Material analysis/ Finished product after separation</li><li>Storing/ Silos</li><li>Material analysis/ Finished product for dispatch</li></ul>` },
+                    { id: "cement-factory-auto", title: "Factory Automation (Products Cement)", content: `<p>Due to the outstanding properties of cement as a building material, this demands production plants with excellent quality assurance systems and a high degree of automation. The range of products supplied include –</p><ul><li>Master process control system POLCID</li><li>AQCnet software package for POLAB laboratory automation</li><li>Laboratory automation system POLAB shuttle</li><li>Laboratory automatisation system POLAB ACT</li><li>Laboratory automation system POLAB AMT</li><li>Automatic sample preparation module POLAB APM</li><li>Adaptive mixture control</li><li>Sampling systems</li><li>Kiln temperature scanner KTS</li><li>Information management system IMS</li></ul>` },
+                    { id: "cement-grinding", title: "Grinding Plants for Ores and Minerals", content: `<p>Grinding plants can be supplied for any diverse ores – whether it is gold, diamond, copper, platinum, nickel or iron ore. The process-wise sub-division is –</p><ul><li>Wet grinding plants</li><li>Dry grinding plant</li></ul>` },
+                    { id: "cement-pyro", title: "Pyroprocessing Systems", content: `<p>Pyro-processing systems offered to the minerals industry include drying, preheating and cooling powdery and lumpy bulk materials, pre-reducing of ores, direct reducing of ores, calcining and burning lime, dolomite, magnesite, gypsum, clay, alumina, bauxite, kaolin, titanium oxide, soda, chrome ore, phosphate, metallic hydroxides, chemical products, coke, coal and oil shale.</p><ul><li>Lime burning</li><li>Drums</li><li>Rotary Kilns</li><li>Single stage cyclone systems</li><li>Multistage cyclone systems</li><li>High Temperature Technology</li><li>Additional systems</li></ul>` },
+                    { id: "cement-factory-minerals", title: "Factory Automation (Products Minerals)", content: `<p>Today's strict demands on product quality and operating economy necessitate a high degree of plant automation. Our scope covers systems for monitoring, control, regulation and optimization of the process.</p><ul><li>POLAB APM</li><li>POLCID NT</li></ul>` },
+                    { id: "cement-lime-kiln", title: "Lime Kiln Plants", content: `<p>Content coming soon.</p>` }
+                ]
+            },
+            energy: {
+                items: [
+                    { id: "energy-thermal-epc", title: "Thermal Power Plants on EPC Basis", content: `<div class="prd-inline-media" style="margin-bottom:20px;"><img src="/images/products/energy/boiler-main.jpg" alt="Thermal Power Plants" loading="lazy" style="width:100%;border-radius:6px;" /></div><h4>Power Plants on EPC Basis</h4><p>At TKIL Industries Pvt. Ltd., we deliver not just a power plant, but a powerful solution! We take pleasure to deliver End-to-End solutions for all your power and steam requirements by offering turnkey solutions for captive, co-generation, waste heat recovery based and independent (utility) power plants.</p><p>We are equipped with the required skill set, experience, organizational capabilities and resources to design, engineer, manufacture, procure, supply, erect and commission power plants on turnkey EPC basis.</p><p>We have a well-established design and engineering set up for:</p><ul><li>Systems engineering for complete power plant.</li><li>Mechanical systems including boilers, balance of plant packages, auxiliaries, structural, piping, etc.</li><li>Electrical systems design and engineering of electrical equipment.</li><li>Instrumentation and control systems for field and control room.</li><li>Civil design engineering and work.</li></ul>` },
+                    { id: "energy-cfbc", title: "CFBC Boilers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/energy/CFBC-1.jpg" loading="lazy" style="width:48%;border-radius:6px;" /><img src="/images/products/energy/CFBC-2.jpg" loading="lazy" style="width:48%;border-radius:6px;" /></div><h4>Type</h4><p>Circulating fluidized bed combustion boiler with in-house cold cyclone technology, have no dependence on licensors like other competitors. TKIL Industries offers a wide range of CFBC boilers with reheat and non-reheat designs for capacities from 50 TPH upto 1000 TPH.</p><h4>Description</h4><p>Water tube, tower type, natural circulation, single-drum, top supported, balanced draft, equipped with economiser / air heater as backend heat traps.</p><h4>Highlights</h4><ul><li>More than 70 boilers commissioned and operating successfully in India and across the world.</li><li>Boilers operating on a variety of fuels like coal, lignite, pet coke, washery rejects, char etc.</li><li>Repeat orders from all existing customers.</li></ul><h4>Features</h4><ul><li>Multi-fuel firing ability – proven for inferior quality fuels.</li><li>Reliable operation year after year – With high availability.</li><li>High thermal efficiency – low operation cost.</li><li>Low emission levels.</li></ul>` },
+                    { id: "energy-stoker", title: "Stoker fired boilers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/energy/Stoker-fired-boilers.jpg" loading="lazy" style="width:48%;border-radius:6px;" /><img src="/images/products/energy/Stoker-fired-boilers-2.jpg" loading="lazy" style="width:48%;border-radius:6px;" /></div><p>TKIL Industries Pvt. Ltd. covers a wide range of water tube boilers for different applications. These boilers are most efficient in normal range as well as co-generation systems in biomass and sugar industry.</p><h4>Features</h4><ul><li>More than 130 boiler installations in India and across the World.</li><li>Steam generation capacity: 20TPH and above.</li><li>Steam pressure: 21 to 145 bar.</li><li>Steam temperature: 340 to 545 Deg C.</li><li>Multifuel firing: biomass / bagasse / coal.</li></ul><h4>The Spreader Stoker Firing System</h4><ul><li>Self-tensioning grate with catenary design.</li><li>The combustion efficiency for this system is far higher than the normal firing system.</li></ul><h4>Dumping Grate Features</h4><ul><li>Pneumatic spreading with pulsation spreads bagasse uniformly over grate surface.</li><li>Unburnt losses are low.</li></ul>` },
+                    { id: "energy-whr", title: "Waste Heat Recovery Boilers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/energy/waste-heat_recovery-boiler.jpg" loading="lazy" style="width:48%;border-radius:6px;" /><img src="/images/products/energy/waste-heat_recovery-boiler-2.jpg" loading="lazy" style="width:48%;border-radius:6px;" /></div><h4>Waste Heat Recovery Boilers System Description</h4><p>TKIL Industries offers a customised one stop solution by offering complete waste heat recovery (WHR) power solutions for cement plants. These power plants utilise the waste heat emerging from the cement manufacturing process i.e., from pre-heater section and cooler section of the cement plant.</p><p>The WHR boilers supplied by TKIL Industries is a natural circulation boiler well proven in many plants and under difficult conditions. WHR boilers are designed and built for low maintenance and high reliability.</p><h4>Features</h4><ul><li>Cross flow design.</li><li>Tailor-made optimized design ensuring maximum output.</li><li>Low pressure variations at turndown.</li><li>Good fit to space requirements.</li></ul><h4>Reference</h4><p>TKIL Industries has executed various capacity WHR based Power Plant from 5 MW to 33 MW.</p>` },
+                    { id: "energy-oil-gas", title: "Oil / Gas Fired Boilers", content: `<div class="prd-inline-media" style="margin-bottom:20px;"><img src="/images/products/energy/oil-and-gas-fired.jpg" loading="lazy" style="width:220px;height:160px;object-fit:cover;border-radius:6px;" /></div><p>TKIL Industries Pvt. Ltd. has expertise in design, engineering and manufacturing of Oil and Gas fired boilers and Heat Recovery Steam Generators for petroleum refineries, petrochemical, chemical, oil &amp; gas, metal, desalination plants, pulp and paper, textile and food industries.</p><p>Technology Support - TERMOTECNICA INDUSTRIALE S.r.L. Italy (STF BOILERS &amp; HRSG)</p><p>Product Range: from approx 40 t/h to 400 t/h upto 110 bar, 530 Deg C</p><h4>HEAT RECOVERY STEAM GENERATORS</h4><p>Product Range: Cover a very wide range of sizes, from HRSG behind small gas turbines of few MW up to the largest 500 MW units, firing gas or fuel oil.</p><ul><li>Horizontal or vertical exhaust gas path</li><li>Natural or assisted circulation</li><li>One, two or three pressure levels with or without reheating</li><li>Advanced steam parameters</li><li>Drum-type or once-through type HRSGs</li><li>Design for base load or cycling operation and fast start up</li></ul>` },
+                    { id: "energy-biomass", title: "Biomass Fired Boilers", content: `<div class="prd-inline-media" style="display:flex;gap:12px;margin-bottom:20px;"><img src="/images/products/energy/Biomass-fired-boilers.jpg" loading="lazy" style="width:48%;border-radius:6px;" /><img src="/images/products/energy/Biomass-fired-boilers-1.jpg" loading="lazy" style="width:48%;border-radius:6px;" /></div><p>TKIL Industries Pvt. Ltd. offers vibrating grate boilers based on technology from Babcock &amp; Wilcox Volund (B&amp;W Volund) suitable for firing wide range of critical biomass fuels such as <strong>paddy straw, wheat straw, cane trash, napier grass, empty fruit bunch, palm kernel shell etc.</strong></p><h4>Range:</h4><ul><li>Steam generation capacity: 50 to 250 TPH.</li><li>Steam pressure: up to 110 bar.</li><li>Steam temperature: up to 540 Deg C.</li><li>Fuel firing System: vibrating grate (water cooled).</li></ul><h4>Key Advantages</h4><ul><li>Well suited for Higher pressure (up to 110 bar) and temperature (up to 540 Deg C) cycle.</li><li>State of art European technology.</li><li>High availability, low maintenance costs and a low consumption of spare parts.</li></ul><h4>Constructional Features</h4><ul><li>Water cooled furnace with 3/2 pass design.</li><li>Water cooled vibrating grate connected to the radiant part making it an evaporative surface.</li><li>Robust feeding system includes equipment such as twin screw and tapering screw arrangements.</li></ul>` },
+                    {
+                        id: "energy-industrial-auto",
+                        title: "Industrial Automation",
+                        content: `
+                            <div class="prd-inline-media" style="margin-bottom:20px;">
+                                <img src="/images/products/energy/industrial-automization-control-room.png" alt="Industrial Automation" loading="lazy" style="width:100%;border-radius:6px;" />
+                            </div>
+                            <p><strong>TKIL Industries</strong> has partnered with global leader in automation solutions, <strong>Valmet Automation, Finland</strong> in May 2023. With this Cooperation Agreement, <strong>TKIL Industries</strong> now offers <strong>Valmet's DNA Distributed Control System</strong> technologies and various software solutions to effectively manage Plant O&amp;M, reduce operational costs and enhance operational efficiency.</p>
+                            <p>With decades of experience in plant building and process automation field, <strong>TKIL Industries</strong> is well-equipped to offer range of automation solutions to various industries on turnkey basis. <strong>TKIL Industries-Valmet's DNA DCS System</strong> streamlines all process automation needs into one system.</p>
+                            <h4>Key Features of TKIL Industries-Valmet's DNA DCS / DDCMIS System</h4>
+                            <div class="prd-accordion">
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">1. Enhanced User Experience &amp; Built-in Control &amp; Optimization <span>+</span></button>
+                                    <div class="prd-acc-body"><p>TKIL Industries-Valmet DNA DCS streamlines all your process automation needs in one system. From design to installation to operation &amp; maintenance, it offers a user-friendly approach.</p></div>
+                                </div>
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">2. Advanced Reliable Controllers &amp; I/O Capabilities <span>+</span></button>
+                                    <div class="prd-acc-body"><p>TKIL Industries-Valmet DNA future-proof Controllers and I/O family offers a reliable foundation for all controls and external connections and ensure seamless connectivity with third-party systems.</p></div>
+                                </div>
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">3. Certified Cybersecurity <span>+</span></button>
+                                    <div class="prd-acc-body"><p>TKIL Industries-Valmet DNA leads in cybersecurity, with ISO 27001 and IEC 62443-4-1 (SDLA) certifications.</p></div>
+                                </div>
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">4. Information Management &amp; History Databases <span>+</span></button>
+                                    <div class="prd-acc-body"><p>TKIL Industries-Valmet DNA Information Management unifies process interfaces, calculations and databases into one solution.</p></div>
+                                </div>
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">5. Engineering &amp; Maintenance Tools <span>+</span></button>
+                                    <div class="prd-acc-body"><p>TKIL Industries-Valmet DNA Engineering offers versatile tools for scalable, multiuser environments in various processes.</p></div>
+                                </div>
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">6. Plant Information System <span>+</span></button>
+                                    <div class="prd-acc-body"><p>Plant Information Systems software solutions add a layer of applications for representing data in graphical manner with trends, graphs, pie-charts, meters, and dashboards.</p></div>
+                                </div>
+                                <div class="prd-acc-item">
+                                    <button class="prd-acc-btn">7. Highly Experienced Team for Engineering &amp; Commissioning Support <span>+</span></button>
+                                    <div class="prd-acc-body"><p>TKIL Industries experienced and trained pool of engineers ensures flawless software development owing to their in-depth process knowledge.</p></div>
+                                </div>
+                            </div>
+                            <h4 style="margin-top:28px;">Our Offerings in Industrial Automation Business:</h4>
+                            <ul>
+                                <li>TKIL Industries-Valmet DNA DCS / DDCMIS Systems for new-builds in various industries</li>
+                                <li>Revamp / Retrofit / Upgrades of old / outdated DCS / DDCMIS Systems</li>
+                                <li>SCOBE (Real Time Fuel Analysis for Boiler Performance Optimization)</li>
+                                <li>Advanced Process Control Solutions: Boiler Optimization, Steam Network Optimization, Energy Management, Energy Balance Optimization, Waste-to-Energy Plant Optimization</li>
+                                <li>Boiler Diagnostics Tools: Vibration Monitoring System, Boiler Stress &amp; Life Monitoring Solutions, Emission Monitoring, Furnace IR Camera Solutions</li>
+                                <li>System Performance Assessment using PlantTriage solution</li>
+                                <li>Batch Recipes &amp; Reports for Process Industries as per ISA S88 standards</li>
+                                <li>Field device Management (Asset Management system)</li>
+                                <li>Digital Twin solutions for RE / P2E Market</li>
+                                <li>Training Simulator for O&amp;M staff</li>
+                                <li>Flow Control Solutions &amp; Analysers</li>
+                                <li>Complete E-BOP Package</li>
+                            </ul>
+                        `
+                    }
+                ]
+            }
+        };
 
-            function switchPanel(target) {
-                items.forEach(i => i.classList.remove('active'));
-                panels.forEach(p => p.classList.remove('active'));
-                const activeItem = document.querySelector(`.nd-item[data-target="${target}"]`);
-                const activePanel = document.querySelector(`.nd-panel[data-section="${target}"]`);
-                if (activeItem) activeItem.classList.add('active');
-                if (activePanel) activePanel.classList.add('active');
+            const divHeroImgs = {
+            sugar:            '/images/divisions/SugarOverview.jpg',
+            mining:           '/images/divisions/MiningOverview.jpg',
+            cement:           '/images/divisions/Cementoverview.jpg',
+            energy:           '/images/divisions/EnergyOverview.png',
+            service:          '/images/divisions/ServiceOverview.jpg',
+            'green-hydrogen': '/images/divisions/GreenHydroOverview.png',
+            battery:          '/images/divisions/BatteryOverview.jpg'
+        };
+
+        // State
+        let currentDivision = null;
+        let currentProductItem = null;  // the top-level item clicked
+        let currentSubIndex = 0;        // index within children if any
+
+        // ── Helpers ──
+        function extractFirstImg(html) {
+            if (!html) return null;
+            const m = html.match(/src="([^"]+)"/);
+            return m ? m[1] : null;
+        }
+
+        function getFallbackImg() {
+            return divHeroImgs[currentDivision] || '';
+        }
+
+        // Get all top-level items (for the card grid) — items with children show as a group card
+        function getTopLevelItems(division) {
+            const data = prdData[division];
+            return data ? data.items : [];
+        }
+
+        // ── Build product card grid into a container ──
+        function buildProductCards(items, container, onClickItem) {
+            container.innerHTML = '';
+
+            const heading = document.createElement('h3');
+            heading.className = 'div-prd-cards-heading';
+            heading.textContent = 'Products';
+            container.appendChild(heading);
+
+            const grid = document.createElement('div');
+            grid.className = 'div-prd-cards-grid';
+
+            for (const item of items) {
+                const card = document.createElement('div');
+                card.className = 'div-prd-card';
+
+                // Get a bg image: either from first child's content, or item content, or fallback
+                let bgImg = '';
+                if (item.children && item.children.length) {
+                    // Try to find first image from any leaf
+                    const firstLeaf = flattenLeaves([item])[0];
+                    bgImg = firstLeaf ? (extractFirstImg(firstLeaf.content) || getFallbackImg()) : getFallbackImg();
+                } else {
+                    bgImg = extractFirstImg(item.content) || getFallbackImg();
+                }
+
+                card.style.setProperty('--bg', `url('${bgImg}')`);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'div-prd-card-overlay';
+
+                const title = document.createElement('span');
+                title.className = 'div-prd-card-title';
+                title.textContent = item.title;
+
+                card.appendChild(overlay);
+                card.appendChild(title);
+                card.addEventListener('click', () => onClickItem(item));
+                grid.appendChild(card);
             }
 
-            // Sidebar click → switch panel
-            items.forEach(item => {
-                item.addEventListener('click', () => switchPanel(item.dataset.target));
-            });
+            container.appendChild(grid);
+        }
 
-            // ✅ Check URL hash first, otherwise default to intro
-            const hash = window.location.hash.replace('#', '');
-            if (hash) {
-                switchPanel(hash);
+        function flattenLeaves(items) {
+            const leaves = [];
+            for (const item of items) {
+                if (item.children && item.children.length) {
+                    leaves.push(...flattenLeaves(item.children));
+                } else if (item.content) {
+                    leaves.push(item);
+                }
+            }
+            return leaves;
+        }
+
+        // ── LEVEL 1 → LEVEL 2: Show division ──
+        function showDetail(target) {
+           
+            currentDivision = target;
+            currentProductItem = null;
+
+            document.getElementById('divGrid').style.display    = 'none';
+            document.getElementById('pageHero').style.display   = 'none';
+            document.getElementById('divDetail').style.display  = 'block';
+            document.getElementById('prdDetailView').style.display = 'none';
+
+            // Show correct division panel
+            document.querySelectorAll('#divisionPanels .nd-panel').forEach(p => p.style.display = 'none');
+            const panel = document.querySelector(`#divisionPanels .nd-panel[data-section="${target}"]`);
+            if (panel) panel.style.display = 'block';
+
+            // Build product cards in this division's card container
+            const data = prdData[target];
+            const cardsContainer = document.getElementById(`${target}-cards`);
+            if (data && data.items && data.items.length && cardsContainer) {
+                buildProductCards(data.items, cardsContainer, (item) => showProductDetail(item));
+            }
+
+            // Back button → go to divisions grid
+         
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ── LEVEL 2 → LEVEL 3: Show product detail ──
+        function showProductDetail(item) {
+            document.body.classList.add('on-detail-page');
+            currentProductItem = item;
+            currentSubIndex = 0;
+
+            // Hide division panels, show product detail view
+            document.getElementById('divisionPanels').style.display = 'none';
+            document.getElementById('prdDetailView').style.display  = 'block';
+
+            // If item has children, show first child with prev/next
+            if (item.children && item.children.length) {
+                renderSubProduct(item, 0);
             } else {
-                switchPanel('intro');
+                // Direct content
+                renderDirectProduct(item);
             }
-        });
 
-        // Board accordion
-        document.querySelectorAll('.board-expand-header').forEach(header => {
-            header.addEventListener('click', () => {
-                header.closest('.board-expandable').classList.toggle('open');
+            // Rebuild the same product cards below
+            const repeatContainer = document.getElementById('prdDetailCardsRepeat');
+            const data = prdData[currentDivision];
+            if (data) {
+                buildProductCards(data.items, repeatContainer, (clickedItem) => showProductDetail(clickedItem));
+            }
+
+            // Back button → go back to division page
+         
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getDivisionTitle(division) {
+            const titles = {
+                sugar: 'Sugar & Cogen',
+                mining: 'Mining & MHE',
+                cement: 'Cement',
+                energy: 'Energy',
+                service: 'Service',
+                'green-hydrogen': 'Green Hydrogen',
+                battery: 'Battery & Energy Storage'
+            };
+            return titles[division] || 'Division';
+        }
+
+        function renderDirectProduct(item) {
+            document.getElementById('prdParentLabel').textContent = '';
+            document.getElementById('prdDetailTitle').textContent = item.title;
+            document.getElementById('prdDetailContent').innerHTML = item.content || '';
+
+                    buildThumbStrip(item.content);
+        if (!extractFirstImg(item.content)) {
+            document.getElementById('prdDetailImg').src = getFallbackImg();
+        }
+
+            document.getElementById('prdSubnav').style.display = 'none';
+            wireAccordions();
+        }
+
+        function renderSubProduct(parentItem, index) {
+            // Flatten all leaf children (handles 2 levels deep)
+            const leaves = flattenLeaves(parentItem.children ? [parentItem] : []);
+            // But we want the direct children first — if a child has its own children, treat it as a group
+            // Use direct children for prev/next
+            const children = parentItem.children;
+            currentSubIndex = index;
+
+            const child = children[index];
+
+            // If child itself has children, show first leaf
+            let displayItem = child;
+            let actualContent = child.content;
+            if (!actualContent && child.children) {
+                displayItem = flattenLeaves([child])[0] || child;
+                actualContent = displayItem ? displayItem.content : '';
+            }
+
+            document.getElementById('prdParentLabel').textContent = parentItem.title;
+            document.getElementById('prdDetailTitle').textContent = child.title;
+            document.getElementById('prdDetailContent').innerHTML = actualContent || '';
+
+                  buildThumbStrip(actualContent);
+        if (!extractFirstImg(actualContent)) {
+            document.getElementById('prdDetailImg').src = getFallbackImg();
+        }
+
+            // Prev/Next
+            const subnav = document.getElementById('prdSubnav');
+            subnav.style.display = 'flex';
+            document.getElementById('prdSubnavInfo').textContent = `${index + 1} / ${children.length}`;
+
+            const prevBtn = document.getElementById('prdPrevBtn');
+            const nextBtn = document.getElementById('prdNextBtn');
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === children.length - 1;
+
+            prevBtn.onclick = () => renderSubProduct(parentItem, index - 1);
+            nextBtn.onclick = () => renderSubProduct(parentItem, index + 1);
+
+            wireAccordions();
+        }
+
+              function wireAccordions() {
+            document.querySelectorAll('#prdDetailContent .prd-acc-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const body = btn.nextElementSibling;
+                    const span = btn.querySelector('span');
+                    body.classList.toggle('open');
+                    if (span) span.textContent = body.classList.contains('open') ? '−' : '+';
+                });
+            });
+            // Right image → lightbox
+            const mainImg = document.getElementById('prdDetailImg');
+            mainImg.style.cursor = 'zoom-in';
+            mainImg.onclick = () => { if (mainImg.src) openLightbox(mainImg.src); };
+        }
+        // ── Back to divisions grid ──
+        function showGrid() {
+            document.body.classList.remove('on-detail-page');
+            document.getElementById('divGrid').style.display    = '';
+            document.getElementById('pageHero').style.display   = '';
+            document.getElementById('divDetail').style.display  = 'none';
+            document.getElementById('divisionPanels').style.display = '';
+            history.pushState(null, '', window.location.pathname);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+               document.addEventListener('DOMContentLoaded', () => {
+
+            // ── Single delegated handler for ALL back buttons ──
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.js-div-back-btn');
+                if (!btn) return;
+
+                if (currentProductItem) {
+                    // Level 3 → Level 2
+                    showDetail(currentDivision);
+                } else {
+                    // Level 2 → Level 1
+                    showGrid();
+                }
+            });
+
+            document.querySelectorAll('#divGrid .div-card[data-target]').forEach(card => {
+                card.addEventListener('click', () => {
+                    const target = card.dataset.target;
+                    history.pushState(null, '', '#' + target);
+                    showDetail(target);
+                });
+            });
+
+            const hash = window.location.hash.replace('#', '');
+            if (hash) showDetail(hash);
+
+            window.addEventListener('popstate', () => {
+                const h = window.location.hash.replace('#', '');
+                if (h) showDetail(h);
+                else showGrid();
             });
         });
-    </script>
-}
+                // ── Extract ALL image srcs from HTML string ──
+        function extractAllImgs(html) {
+            if (!html) return [];
+            const matches = [...html.matchAll(/src="([^"]+)"/g)];
+            return matches.map(m => m[1]);
+        }
 
+        // ── Build thumbnail strip and wire right-panel image ──
+                function buildThumbStrip(html) {
+            const mainImg = document.getElementById('prdDetailImg');
+            const strip = document.getElementById('prdThumbStrip');
+            strip.style.display = 'none';
+
+            const imgs = extractAllImgs(html);
+            if (imgs.length === 0) {
+                mainImg.src = getFallbackImg();
+                return;
+            }
+
+            // Set first image on right panel
+            mainImg.src = imgs[0];
+
+            // Wire inline content images to switch the right panel image
+            // Run after content is rendered (short delay for DOM)
+            setTimeout(() => {
+                const contentEl = document.getElementById('prdDetailContent');
+                if (!contentEl) return;
+                const inlineImgs = contentEl.querySelectorAll('img');
+                inlineImgs.forEach((img, i) => {
+                    img.style.cursor = 'pointer';
+                    img.style.border = '2px solid transparent';
+                    img.style.borderRadius = '8px';
+                    img.style.transition = 'border-color 0.2s, opacity 0.2s';
+                    img.style.opacity = i === 0 ? '1' : '0.65';
+                    img.style.borderColor = i === 0 ? '#1a6abf' : 'transparent';
+
+                    img.addEventListener('click', () => {
+                        mainImg.src = imgs[i] || img.src;
+                        inlineImgs.forEach(im => {
+                            im.style.opacity = '0.65';
+                            im.style.borderColor = 'transparent';
+                        });
+                        img.style.opacity = '1';
+                        img.style.borderColor = '#1a6abf';
+                    });
+                });
+            }, 50);
+        }
+
+        // ── Lightbox ──
+            function openLightbox(src) {
+            document.getElementById('imgLightboxImg').src = src;
+            const lb = document.getElementById('imgLightbox');
+            lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            // Click backdrop to close
+            lb.onclick = function(e) {
+                if (e.target === lb) closeLightbox();
+            };
+        }
+        function closeLightbox() {
+            document.getElementById('imgLightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
 }

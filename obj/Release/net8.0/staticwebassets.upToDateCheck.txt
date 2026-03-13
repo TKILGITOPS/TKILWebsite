@@ -264,3 +264,16 @@ wwwroot\pdf\statutory\Notice under section 160 of Mr. Keval Doshi.pdf
 wwwroot\pdf\statutory\Notice under section 160 of Mr. Pradip Shah.pdf
 wwwroot\pdf\TKIL Hyderabad Five Star OSH Audit 2025.pdf
 wwwroot\videos\Union-budget-CII-Panel.mp4
+wwwroot\images\DivisionsBanner1.png
+wwwroot\images\divisions\SugarOverview.jpg
+wwwroot\images\divisions\MiningOverview.jpg
+wwwroot\images\divisions\Cementoverview.jpg
+wwwroot\images\divisions\EnergyOverview.png
+wwwroot\images\divisions\ServiceOverview.JPG
+wwwroot\images\divisions\GreenHydroOverview.png
+wwwroot\images\divisions\BatteryOverview.jpg
+wwwroot\images\divisions\SugarOverview1.jpg
+wwwroot\images\divisions\MiningOverview1.jpg
+wwwroot\images\divisions\Cementoverview1.jpg
+wwwroot\images\divisions\GreenHydroOverview1.png
+wwwroot\images\divisions\BatteryOverview1.jpg

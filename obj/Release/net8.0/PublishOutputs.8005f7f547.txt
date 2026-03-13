@@ -1,0 +1,7 @@
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\TkilWebsite.exe
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\TkilWebsite.dll
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\TkilWebsite.deps.json
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\TkilWebsite.runtimeconfig.json
+D:\Project\TkilWebsitev2\obj\Release\net8.0\PubTmp\Out\TkilWebsite.pdb

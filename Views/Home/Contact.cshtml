@@ -553,6 +553,142 @@
             </div>
         </div><!-- /ctc-content -->
     </div><!-- /ctc-container -->
+    <div class="enq-page">
+        <div class="enq-container">
+
+            <div class="enq-panel-wrap">
+
+                <!-- LEFT INFO PANEL -->
+                <div class="enq-info-panel">
+                    <div class="enq-info-top">
+                        <p class="enq-info-eyebrow">We'd love to hear from you</p>
+                        <h2 class="enq-info-title">Get in Touch</h2>
+                        <p class="enq-info-body">Have a project in mind or want to learn more about our solutions? Send us a message and we'll get back to you shortly.</p>
+                    </div>
+                    <div class="enq-info-bottom">
+                        <div class="enq-info-divider"></div>
+                        <div class="enq-info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span>tkil_Communication@tkil.com</span>
+                        </div>
+                        <div class="enq-info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span>+91-20-27425461/2/3/4</span>
+                        </div>
+                        <div class="enq-info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Pune, Maharashtra, India</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT FORM PANEL -->
+                <div class="enq-form-panel">
+
+                    <form class="enq-form" method="post" asp-action="Enquiry" asp-controller="Home">
+                        @Html.AntiForgeryToken()
+
+                        <p class="enq-section-label">Enquiry Details</p>
+
+                        <!-- Division + Product -->
+                        <div class="enq-row">
+                            <div class="enq-field">
+                                <label for="division">Division</label>
+                                <select id="division" name="Division" class="enq-select">
+                                    <option value="">-- Select Division --</option>
+                                    <option value="General">General</option>
+                                    <option value="Sugar Plants and machinery">Sugar Plants and Machinery</option>
+                                    <option value="Cement">Cement</option>
+                                    <option value="Mining & Bulk Material Handling">Mining &amp; Bulk Material Handling</option>
+                                    <option value="Energy">Energy</option>
+                                </select>
+                            </div>
+
+                            <div class="enq-field">
+                                <label for="product">Product</label>
+                                <select id="product" name="Product" class="enq-select" disabled>
+                                    <option value="">-- Select Product --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="enq-field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="Message" class="enq-textarea" rows="3" placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <p class="enq-section-label enq-section-gap">Contact Information</p>
+
+                        <!-- Name + City -->
+                        <div class="enq-row">
+                            <div class="enq-field">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="Name" class="enq-input" placeholder="Your full name" />
+                            </div>
+                            <div class="enq-field">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="City" class="enq-input" placeholder="Your city" />
+                            </div>
+                        </div>
+
+                        <!-- Email + Phone -->
+                        <div class="enq-row">
+                            <div class="enq-field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="Email" class="enq-input" placeholder="example@email.com" />
+                            </div>
+                            <div class="enq-field">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="Phone" class="enq-input" placeholder="+91 00000 00000" />
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="enq-field">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="Address" class="enq-input" placeholder="Your address" />
+                        </div>
+
+                        <!-- Consent -->
+                        <div class="enq-consent">
+                            <input type="checkbox" id="consent" name="Consent" value="true" required />
+                            <label for="consent">I hereby consent to the use of my own personal data.</label>
+                        </div>
+                        <!-- Captcha -->
+                        <div class="enq-field enq-captcha-field">
+                            <label>Verification</label>
+                            <div class="enq-captcha-wrap">
+                                <canvas id="captchaCanvas" width="140" height="40"></canvas>
+                                <button type="button" class="enq-captcha-refresh" id="captchaRefresh" title="Refresh">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <input type="text" id="captchaAnswer" class="enq-input" placeholder="Enter the characters above" autocomplete="off" maxlength="6" />
+                            <span class="enq-captcha-error" id="captchaError">Incorrect. Please try again.</span>
+                        </div>
+                        <!-- Actions -->
+                        <div class="enq-actions">
+                            <button type="reset" class="enq-btn-secondary">Clear</button>
+                            <button type="submit" class="enq-btn-primary">Send Enquiry</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div><!-- /ctc-page -->
 
 
@@ -912,6 +1048,410 @@
         font-size: 1.3rem;
     }
 }
+
+    /* ─── Two-panel layout ─────────────────────────────────── */
+    .enq-page {
+        background: #f5f0ea;
+        padding: 5rem 1.5rem;
+    }
+
+    .enq-container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .enq-panel-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1.7fr;
+        background: #fdfaf6;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(100, 60, 20, 0.10);
+    }
+
+    /* ─── Left info panel ──────────────────────────────────── */
+    .enq-info-panel {
+        background: #f5f0ea;
+        padding: 3rem 2.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-right: 1px solid #d4c4b0;
+    }
+
+    .enq-info-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--primary, #8b3e1f);
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+
+    .enq-info-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #3a2e26;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .enq-info-body {
+        font-size: 0.88rem;
+        color: #8a7060;
+        line-height: 1.8;
+        font-weight: 300;
+    }
+
+    .enq-info-bottom {
+        margin-top: 2.5rem;
+    }
+
+    .enq-info-divider {
+        width: 36px;
+        height: 2px;
+        background: var(--primary, #8b3e1f);
+        opacity: 0.45;
+        margin-bottom: 1.4rem;
+    }
+
+    .enq-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.65rem;
+        margin-bottom: 0.85rem;
+    }
+
+        .enq-info-item svg {
+            width: 17px;
+            height: 17px;
+            color: #8a7060;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .enq-info-item span {
+            font-size: 0.8rem;
+            color: #8a7060;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+    /* ─── Right form panel ─────────────────────────────────── */
+    .enq-form-panel {
+        padding: 3rem 2.5rem;
+        background: #fdfaf6;
+    }
+
+    .enq-section-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--primary, #8b3e1f);
+        margin-bottom: 1.4rem;
+    }
+
+    .enq-section-gap {
+        margin-top: 1.8rem;
+    }
+
+    .enq-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    .enq-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        margin-bottom: 1.1rem;
+    }
+
+        .enq-field label {
+            font-size: 0.76rem;
+            color: #8a7060;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+    .enq-input,
+    .enq-select,
+    .enq-textarea {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #d4c4b0;
+        padding: 0.45rem 0;
+        font-size: 0.88rem;
+        color: #3a2e26;
+        outline: none;
+        transition: border-color 0.2s;
+        width: 100%;
+        font-family: inherit;
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+
+    .enq-select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a7060'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 4px center;
+        padding-right: 1.2rem;
+        cursor: pointer;
+    }
+
+    .enq-textarea {
+        resize: none;
+        line-height: 1.6;
+    }
+
+        .enq-input:focus,
+        .enq-select:focus,
+        .enq-textarea:focus {
+            border-bottom-color: var(--primary, #8b3e1f);
+        }
+
+        .enq-input::placeholder,
+        .enq-textarea::placeholder {
+            color: #c4b4a4;
+            font-weight: 300;
+        }
+
+    /* ─── Consent ──────────────────────────────────────────── */
+    .enq-consent {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        margin: 1.4rem 0 1.6rem;
+    }
+
+        .enq-consent input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            margin-top: 2px;
+            accent-color: var(--primary, #8b3e1f);
+            flex-shrink: 0;
+            border: none;
+            border-bottom: none;
+        }
+
+        .enq-consent label {
+            font-size: 0.75rem;
+            color: #8a7060;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+    /* ─── Buttons ──────────────────────────────────────────── */
+    .enq-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+
+    .enq-btn-secondary {
+        background: none;
+        border: none;
+        font-size: 0.78rem;
+        color: #8a7060;
+        cursor: pointer;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.5rem 0;
+        font-family: inherit;
+        transition: color 0.2s;
+    }
+
+        .enq-btn-secondary:hover {
+            color: #3a2e26;
+        }
+
+    .enq-btn-primary {
+        background: var(--primary, #8b3e1f);
+        color: #fff;
+        border: none;
+        padding: 0.7rem 2rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.2s, transform 0.1s;
+        border-radius: 2px;
+    }
+
+        .enq-btn-primary:hover {
+            background: #6e2f14;
+        }
+
+        .enq-btn-primary:active {
+            transform: scale(0.98);
+        }
+
+    /* ─── Responsive ───────────────────────────────────────── */
+    @@media (max-width: 700px) {
+        .enq-panel-wrap {
+            grid-template-columns: 1fr;
+        }
+
+        .enq-info-panel {
+            border-right: none;
+            border-bottom: 1px solid #d4c4b0;
+            padding: 2rem 1.5rem;
+        }
+
+        .enq-form-panel {
+            padding: 2rem 1.5rem;
+        }
+
+        .enq-row {
+            grid-template-columns: 1fr;
+        }
+    }
+    /* ─── Captcha ──────────────────────────────────────────── */
+    .enq-captcha-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #captchaCanvas {
+        border-radius: 3px;
+        display: block;
+        border: 1px solid #d4c4b0;
+    }
+
+    .enq-captcha-refresh {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: #8a7060;
+        display: flex;
+        align-items: center;
+        transition: color 0.2s, transform 0.4s;
+        flex-shrink: 0;
+    }
+
+        .enq-captcha-refresh:hover {
+            color: var(--primary, #8b3e1f);
+            transform: rotate(180deg);
+        }
+
+        .enq-captcha-refresh svg {
+            width: 16px;
+            height: 16px;
+        }
+
+    .enq-captcha-error {
+        display: none;
+        font-size: 0.72rem;
+        color: #c0392b;
+        margin-top: 0.3rem;
+    }
+    /* ── Enquiry page — white theme ── */
+    .enq-page {
+        background: #fff;
+    }
+
+    .enq-panel-wrap {
+        background: #fff;
+        box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+    }
+
+    .enq-info-panel {
+        background: #f8f9fb;
+        border-right: 1px solid #e5e7eb;
+    }
+
+    .enq-form-panel {
+        background: #fff;
+    }
+
+    .enq-info-eyebrow,
+    .enq-section-label {
+        color: #1a6abf;
+    }
+
+    .enq-info-title {
+        color: #111827;
+    }
+
+    .enq-info-body,
+    .enq-info-item span,
+    .enq-field label {
+        color: #6b7280;
+    }
+
+    .enq-info-item svg {
+        color: #6b7280;
+    }
+
+    .enq-info-divider {
+        background: #1a6abf;
+        opacity: 0.4;
+    }
+
+    .enq-input,
+    .enq-select,
+    .enq-textarea {
+        color: #111827;
+        border-bottom-color: #e5e7eb;
+    }
+
+        .enq-input:focus,
+        .enq-select:focus,
+        .enq-textarea:focus {
+            border-bottom-color: #1a6abf;
+        }
+
+        .enq-input::placeholder,
+        .enq-textarea::placeholder {
+            color: #d1d5db;
+        }
+
+    .enq-consent label {
+        color: #6b7280;
+    }
+
+    .enq-consent input[type="checkbox"] {
+        accent-color: #1a6abf;
+    }
+
+    .enq-btn-secondary {
+        color: #6b7280;
+    }
+
+        .enq-btn-secondary:hover {
+            color: #111827;
+        }
+
+    .enq-btn-primary {
+        background: #1a6abf;
+    }
+
+        .enq-btn-primary:hover {
+            background: #0d4fa0;
+        }
+
+    #captchaCanvas {
+        border-color: #e5e7eb;
+    }
+
+    .enq-captcha-refresh {
+        color: #6b7280;
+    }
+
+        .enq-captcha-refresh:hover {
+            color: #1a6abf;
+        }
 </style>
 
 <script>
@@ -934,4 +1474,147 @@
         });
     });
 })();
+
+   // ─── Division → Products ────────────────────────────────
+    const divisionProducts = {
+        "General"  : ["  None"  ],
+        "Sugar Plants and machinery"  : [
+            "   Refineries"   , "   Fiberizer"   , "   Shredder"   , "   Rotary Screen"   ,
+            "   Two Roller Mill"   , "   Three Roller Mill"   , "   Four Roller Mill"   ,
+            "   Five Roller Mill"   , "   Six Roller Mill"   , "   Juice Heater"   ,
+            "   Rising Film Evaporator"   , "   Falling Film Evaporator"   ,
+            "   Vaccum Pans"   , "   Crystallisers"   , "   Continuous Centrifugal"   ,
+            "   Batch (Discontinuous) Centrifugal"   
+        ],
+        "Cement"  : [
+            "  Raw Material Preparation"  , "  Clinker Production"  , "  Cement Manufacturing"  ,
+            "  Factory Automation (Products Cement)"  , "  Grinding Plants for Ores and Minerals"  ,
+            "  Pyroprocessing Systems"  , "  Factory Automation (Products Minerals)"  , "  Lime Kiln Plants"   
+        ],
+        "Mining & Bulk Material Handling"  : [
+            "  Stackers"  , "  Bucket Wheel Reclaimers"  , "  Combined Stacker-Reclaimers"  ,
+            "  Crushers"  , "  Feeders & Screens"  , "  Wagon Loading System"  , "  Wagon Tipplers"  ,
+            "  Paddle Feeders"  , "  Process Technology"  , "  Type Ship Unloaders"  ,
+            "  Long-Distance Curved Conveyors"  , "  Pipe Conveyors"  
+        ],
+        "Energy"  : [
+            "  Complete Thermal Power Plants on EPC Basis"  , "  CFBC Boilers"  ,
+            "  Stocker fired boilers"  , "  Waste Heat Recovery Boilers"  , "  Oil / Gas Fired Boilers"  
+        ]
+    };
+
+    function updateProducts() {
+        const Divisionselect = document.getElementById("division");
+        const productSelect = document.getElementById("product");
+        const selectedDivision = Divisionselect.value;
+
+        productSelect.innerHTML = '<option value="">-- Select Product --</option>';
+
+        if (selectedDivision && divisionProducts[selectedDivision]) {
+            divisionProducts[selectedDivision].forEach(product => {
+                const option = document.createElement("option");
+                option.value = product;
+                option.textContent = product;
+                productSelect.appendChild(option);
+            });
+            productSelect.disabled = false;
+        } else {
+            productSelect.disabled = true;
+        }
+    }
+
+    document.getElementById("division").addEventListener("change", updateProducts);
+    updateProducts();
+
+    // ─── Alphanumeric Captcha ───────────────────────────────
+    let captchaText = "";
+
+    function generateCaptcha() {
+        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+        captchaText = "";
+        for (let i = 0; i < 6; i++) {
+            captchaText += chars[Math.floor(Math.random() * chars.length)];
+        }
+
+        const canvas = document.getElementById("captchaCanvas");
+        const ctx = canvas.getContext("2d");
+        const W = canvas.width;
+        const H = canvas.height;
+
+        // Background
+        ctx.fillStyle = "#f5f0ea";
+        ctx.fillRect(0, 0, W, H);
+
+        // Noise dots
+        for (let i = 0; i < 80; i++) {
+            ctx.beginPath();
+            ctx.arc(
+                Math.random() * W,
+                Math.random() * H,
+                Math.random() * 1.5,
+                0, Math.PI * 2
+            );
+            ctx.fillStyle = `rgba(${rand(100,180)},${rand(80,140)},${rand(60,120)},${Math.random().toFixed(2)})`;
+            ctx.fill();
+        }
+
+        // Noise lines
+        for (let i = 0; i < 4; i++) {
+            ctx.beginPath();
+            ctx.moveTo(Math.random() * W, Math.random() * H);
+            ctx.lineTo(Math.random() * W, Math.random() * H);
+            ctx.strokeStyle = `rgba(${rand(140,200)},${rand(100,160)},${rand(80,130)},0.4)`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        // Draw each character individually with slight rotation & position variation
+        const fonts = ["bold 22px Georgia", "bold 22px Arial", "bold 21px 'Times New Roman'"];
+        const colors = ["#5a3020", "#7a4030", "#3a2e26", "#8b3e1f", "#4a3828", "#6b4535"];
+
+        for (let i = 0; i < captchaText.length; i++) {
+            ctx.save();
+            const x = 12 + i * 21;
+            const y = H / 2 + rand(-3, 5);
+            ctx.translate(x, y);
+            ctx.rotate((Math.random() - 0.5) * 0.5);
+            ctx.font = fonts[Math.floor(Math.random() * fonts.length)];
+            ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+            ctx.fillText(captchaText[i], 0, 0);
+            ctx.restore();
+        }
+
+        // Clear input and error
+        document.getElementById("captchaAnswer").value = "";
+        document.getElementById("captchaError").style.display = "none";
+    }
+
+    function rand(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function validateCaptcha() {
+        const userAnswer = document.getElementById("captchaAnswer").value.trim();
+        const errorEl = document.getElementById("captchaError");
+
+        if (userAnswer.toLowerCase() !== captchaText.toLowerCase()) {
+            errorEl.style.display = "block";
+            generateCaptcha();
+            return false;
+        }
+
+        errorEl.style.display = "none";
+        return true;
+    }
+
+    document.getElementById("captchaRefresh").addEventListener("click", generateCaptcha);
+
+    // ─── Form submit guard ──────────────────────────────────
+    document.querySelector(".enq-form").addEventListener("submit", function (e) {
+        if (!validateCaptcha()) {
+            e.preventDefault();
+        }
+    });
+
+    generateCaptcha();
 </script>

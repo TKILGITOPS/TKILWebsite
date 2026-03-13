@@ -1,4 +1,4 @@
-﻿@{
+﻿@* @{
     ViewData["Title"] = "News & Downloads";
 }
 
@@ -258,3 +258,1009 @@
         </main>
     </div>
 </div>
+ *@
+
+@{
+    ViewData["Title"] = "News & Downloads";
+}
+
+<style>
+    /* ═══════════════════════════════════════════════════
+           NEWS & DOWNLOADS — FULL-SCREEN LAYOUT
+           All classes prefixed .nd- to avoid conflicts
+        ═══════════════════════════════════════════════════ */
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    /* Reset page body to be full-width */
+    .nd-page-wrap {
+        width: 100%;
+        min-height: 100vh;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background: #F0F4F8;
+        color: #1F2937;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .nd-hero {
+        position: relative;
+        width: 100%;
+        height: 340px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .nd-hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 40%;
+        filter: brightness(0.45) saturate(0.7);
+    }
+
+    .nd-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient( to top, rgba(0, 18, 45, 0.96) 0%, rgba(0, 18, 45, 0.55) 50%, rgba(0, 30, 60, 0.2) 100% );
+    }
+
+    .nd-hero-body {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 0 5vw 2.5rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .nd-hero-eyebrow {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #00A3D9;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .nd-hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #00A3D9;
+        }
+
+    .nd-hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        margin: 0;
+    }
+
+    .nd-hero-sub {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.55);
+        margin-top: 0.5rem;
+        letter-spacing: 0.05em;
+    }
+
+    .nd-hero-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .nd-stat {
+        text-align: right;
+    }
+
+    .nd-stat-num {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #00A3D9;
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    .nd-stat-label {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.45);
+        margin-top: 2px;
+    }
+
+    /* ── STICKY NAV ───────────────────────────────────── */
+    .nd-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #E2E8F0;
+        display: flex;
+        align-items: center;
+        padding: 0 5vw;
+        height: 52px;
+        gap: 0;
+        box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+    }
+
+    .nd-nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        height: 100%;
+        padding: 0 1.2rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #64748B;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
+        white-space: nowrap;
+    }
+
+        .nd-nav-link:hover,
+        .nd-nav-link.active {
+            color: #0079A7;
+            border-bottom-color: #0079A7;
+        }
+
+    /* ── MAIN BODY ────────────────────────────────────── */
+    .nd-body {
+        width: 100%;
+    }
+
+    /* ── SECTION WRAPPER ─────────────────────────────── */
+    .nd-section {
+        width: 100%;
+        padding: 4rem 5vw;
+    }
+
+        .nd-section:nth-child(even) {
+            background: #fff;
+        }
+
+        .nd-section:nth-child(odd) {
+            background: #F0F4F8;
+        }
+
+    .nd-section-head {
+        margin-bottom: 2.5rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .nd-section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #0079A7;
+        margin-bottom: 0.5rem;
+    }
+
+        .nd-section-tag::before {
+            content: '';
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: #0079A7;
+            border-radius: 2px;
+        }
+
+    .nd-section-title {
+        font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+        font-weight: 800;
+        color: #0F172A;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        margin: 0;
+    }
+
+    .nd-section-desc {
+        font-size: 0.9rem;
+        color: #64748B;
+        margin-top: 0.4rem;
+        max-width: 520px;
+    }
+
+    /* ── AWARDS ───────────────────────────────────────── */
+    .nd-award-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .nd-award-card {
+        background: #fff;
+        border: 1px solid #E2E8F0;
+        padding: 1.75rem;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+        .nd-award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0079A7, #00A3D9);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .nd-award-card:hover {
+            box-shadow: 0 8px 32px rgba(0,121,167,0.12);
+            transform: translateY(-3px);
+        }
+
+            .nd-award-card:hover::before {
+                transform: scaleX(1);
+            }
+
+    .nd-award-year {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #0079A7;
+        background: rgba(0,121,167,0.08);
+        display: inline-block;
+        padding: 3px 10px;
+        margin-bottom: 1rem;
+    }
+
+    .nd-award-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0F172A;
+        margin: 0 0 0.5rem;
+        line-height: 1.3;
+    }
+
+    .nd-award-card p {
+        font-size: 0.85rem;
+        color: #64748B;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ── PRESS RELEASES ──────────────────────────────── */
+    .nd-press-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+        .nd-press-list li a {
+            display: grid;
+            grid-template-columns: 110px 1fr 36px;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.1rem 1.5rem;
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .nd-press-list li a::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: #0079A7;
+                transform: scaleY(0);
+                transform-origin: bottom;
+                transition: transform 0.25s ease;
+            }
+
+            .nd-press-list li a:hover {
+                background: #F8FAFF;
+                border-color: #BAD4E8;
+                transform: translateX(4px);
+            }
+
+                .nd-press-list li a:hover::before {
+                    transform: scaleY(1);
+                }
+
+    .nd-press-date {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #0079A7;
+        white-space: nowrap;
+    }
+
+    .nd-press-title {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: #1E293B;
+        line-height: 1.4;
+    }
+
+    .nd-press-arrow {
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid #CBD5E1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94A3B8;
+        flex-shrink: 0;
+        transition: all 0.2s;
+        justify-self: end;
+    }
+
+    .nd-press-list li a:hover .nd-press-arrow {
+        background: #0079A7;
+        border-color: #0079A7;
+        color: #fff;
+    }
+
+    /* ── EXHIBITIONS ─────────────────────────────────── */
+    .nd-expo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .nd-expo-card {
+        background: #fff;
+        border: 1px solid #E2E8F0;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+        .nd-expo-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0079A7, #00A3D9);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s;
+        }
+
+        .nd-expo-card:hover {
+            box-shadow: 0 8px 32px rgba(0,121,167,0.12);
+            transform: translateY(-3px);
+        }
+
+            .nd-expo-card:hover::after {
+                transform: scaleX(1);
+            }
+
+    .nd-expo-year {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        color: #0079A7;
+        background: rgba(0,121,167,0.08);
+        display: inline-block;
+        padding: 3px 10px;
+        margin-bottom: 1rem;
+    }
+
+    .nd-expo-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #0F172A;
+        margin: 0 0 0.5rem;
+    }
+
+    .nd-expo-card p {
+        font-size: 0.85rem;
+        color: #64748B;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* ── BROCHURES ────────────────────────────────────── */
+    .nd-brochure-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .nd-brochure-card {
+        background: #fff;
+        border: 1px solid #E2E8F0;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        transition: box-shadow 0.3s, transform 0.3s;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .nd-brochure-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0079A7, #00A3D9);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s;
+        }
+
+        .nd-brochure-card:hover {
+            box-shadow: 0 8px 32px rgba(0,121,167,0.12);
+            transform: translateY(-3px);
+        }
+
+            .nd-brochure-card:hover::before {
+                transform: scaleX(1);
+            }
+
+    .nd-brochure-icon {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, #0079A7, #00A3D9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+        .nd-brochure-icon svg {
+            width: 22px;
+            height: 22px;
+            color: #fff;
+        }
+
+    .nd-brochure-card h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #0F172A;
+        margin: 0;
+        line-height: 1.3;
+        flex: 1;
+    }
+
+    .nd-brochure-card p {
+        font-size: 0.8rem;
+        color: #64748B;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .nd-dl-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #0079A7;
+        text-decoration: none;
+        border: 1.5px solid rgba(0,121,167,0.3);
+        padding: 7px 14px;
+        margin-top: auto;
+        transition: all 0.2s;
+        align-self: flex-start;
+    }
+
+        .nd-dl-btn:hover {
+            background: #0079A7;
+            color: #fff;
+            border-color: #0079A7;
+        }
+
+    /* ── SAFETY VIDEO ────────────────────────────────── */
+    .nd-video-container {
+        width: 100%;
+        background: #0A1628;
+        border: 1px solid #1E3A5F;
+        overflow: hidden;
+    }
+
+    .nd-video-header {
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid #1E3A5F;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nd-video-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #00A3D9;
+        animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @@keyframes pulse-dot {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.5;
+            transform: scale(0.8);
+        }
+    }
+
+    .nd-video-header-text {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+    }
+
+    .nd-video-badge {
+        margin-left: auto;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #fff;
+        background: #0079A7;
+        padding: 3px 10px;
+    }
+
+    .nd-video-wrap {
+        padding: 2rem;
+    }
+
+        .nd-video-wrap video {
+            width: 100%;
+            max-height: 580px;
+            display: block;
+            background: #000;
+            outline: none;
+        }
+
+    .nd-video-caption {
+        padding: 1rem 2rem 1.5rem;
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.35);
+        border-top: 1px solid #1E3A5F;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @@media (max-width: 900px) {
+        .nd-hero {
+            height: 280px;
+        }
+
+        .nd-hero-stats {
+            display: none;
+        }
+
+        .nd-nav {
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+            .nd-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+        .nd-nav-link {
+            padding: 0 0.9rem;
+            font-size: 0.72rem;
+        }
+
+        .nd-section {
+            padding: 3rem 4vw;
+        }
+    }
+
+    @@media (max-width: 600px) {
+        .nd-hero {
+            height: 240px;
+        }
+
+        .nd-hero-title {
+            font-size: 1.7rem;
+        }
+
+        .nd-hero-body {
+            padding: 0 4vw 2rem;
+        }
+
+        .nd-section {
+            padding: 2.5rem 4vw;
+        }
+
+        .nd-press-list li a {
+            grid-template-columns: 1fr 28px;
+            gap: 0.75rem;
+        }
+
+        .nd-press-date {
+            display: none;
+        }
+
+        .nd-press-title {
+            font-size: 0.82rem;
+        }
+
+        .nd-section-title {
+            font-size: 1.4rem;
+        }
+    }
+
+    @@media (max-width: 420px) {
+        .nd-award-grid,
+        .nd-expo-grid,
+        .nd-brochure-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="nd-page-wrap">
+
+    <!-- ── HERO ─────────────────────────────────────── -->
+    <div class="nd-hero">
+        <img src="~/images/company/2.jpg" alt="TKIL" class="nd-hero-img" />
+        <div class="nd-hero-overlay"></div>
+        <div class="nd-hero-body">
+            <div>
+                <div class="nd-hero-eyebrow">Media Center</div>
+                <h1 class="nd-hero-title">News &amp; Downloads</h1>
+                <p class="nd-hero-sub">Awards · Press Releases · Exhibitions · Brochures · Safety</p>
+            </div>
+            <div class="nd-hero-stats">
+                <div class="nd-stat">
+                    <span class="nd-stat-num">11</span>
+                    <span class="nd-stat-label">Press Releases</span>
+                </div>
+                <div class="nd-stat">
+                    <span class="nd-stat-num">3</span>
+                    <span class="nd-stat-label">Brochures</span>
+                </div>
+                <div class="nd-stat">
+                    <span class="nd-stat-num">2</span>
+                    <span class="nd-stat-label">Exhibitions</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── STICKY NAV ───────────────────────────────── -->
+    <nav class="nd-nav" id="ndNav">
+        <a href="#nd-awards" class="nd-nav-link active" data-section="nd-awards">Awards</a>
+        <a href="#nd-press" class="nd-nav-link" data-section="nd-press">Press Release</a>
+        <a href="#nd-exhibition" class="nd-nav-link" data-section="nd-exhibition">Exhibition</a>
+        <a href="#nd-brochures" class="nd-nav-link" data-section="nd-brochures">Brochures</a>
+        <a href="#nd-video" class="nd-nav-link" data-section="nd-video">Safety Video</a>
+    </nav>
+
+    <!-- ── BODY ─────────────────────────────────────── -->
+    <div class="nd-body">
+
+        <!-- ── AWARDS ───────────────────────────────── -->
+        <section class="nd-section" id="nd-awards">
+            <div class="nd-section-head">
+                <div>
+                    <div class="nd-section-tag">Recognition</div>
+                    <h2 class="nd-section-title">Awards &amp; Recognition</h2>
+                    <p class="nd-section-desc">TKIL Industries has been recognized globally for engineering excellence and innovation across multiple decades.</p>
+                </div>
+            </div>
+            <div class="nd-award-grid">
+                <div class="nd-award-card">
+                    <div class="nd-award-year">2025</div>
+                    <h3>Best Engineering Firm</h3>
+                    <p>Awarded for outstanding EPC project delivery in South Asia.</p>
+                </div>
+                <div class="nd-award-card">
+                    <div class="nd-award-year">2024</div>
+                    <h3>Innovation Award</h3>
+                    <p>Recognized for pioneering sustainable bio-chemical plant design.</p>
+                </div>
+                <div class="nd-award-card">
+                    <div class="nd-award-year">2023</div>
+                    <h3>Excellence in Manufacturing</h3>
+                    <p>Felicitated for consistent quality in large-scale manufacturing projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PRESS RELEASES ───────────────────────── -->
+        <section class="nd-section" id="nd-press">
+            <div class="nd-section-head">
+                <div>
+                    <div class="nd-section-tag">Media</div>
+                    <h2 class="nd-section-title">Press Releases</h2>
+                    <p class="nd-section-desc">Latest announcements and media coverage from TKIL Industries.</p>
+                </div>
+            </div>
+            <ul class="nd-press-list">
+                <li>
+                    <a href="~/pdf/Release_TKIL Industries Achieves Global Milestone.pdf" target="_blank">
+                        <span class="nd-press-date">2025-12-18</span>
+                        <span class="nd-press-title">Safety Awards from the British Safety Council</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release_TKIL Industries Demonstrates Advanced MACS at EXCON 2025 (002).pdf" target="_blank">
+                        <span class="nd-press-date">2025-12-09</span>
+                        <span class="nd-press-title">TKIL Industries Demonstrates Advanced MACS at EXCON 2025</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Note_TKIL Industries Partners with Germany-based company 2G Energy International.pdf" target="_blank">
+                        <span class="nd-press-date">2025-10-13</span>
+                        <span class="nd-press-title">TKIL Industries Partners with Germany-based 2G Energy International</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release_ TKIL Industries and HOPPECKE Forms Strategic Partnership 2025.05.27.pdf" target="_blank">
+                        <span class="nd-press-date">2025-05-27</span>
+                        <span class="nd-press-title">TKIL Industries and HOPPECKE Form Strategic Partnership</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release_ TKIL Industries  KIS Group Association 2025.04.01.pdf" target="_blank">
+                        <span class="nd-press-date">2025-04-01</span>
+                        <span class="nd-press-title">TKIL Industries &amp; KIS Group Association</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/TKIL Hyderabad Five Star OSH Audit 2025.pdf" target="_blank">
+                        <span class="nd-press-date">Mar 2025</span>
+                        <span class="nd-press-title">British Council Safety – Hyderabad Five Star OSH Audit</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release- Odisha Mining.pdf" target="_blank">
+                        <span class="nd-press-date">2025-03-10</span>
+                        <span class="nd-press-title">Odisha Mining Expo 2025</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release_ British Council safety.pdf" target="_blank">
+                        <span class="nd-press-date">2025-01-22</span>
+                        <span class="nd-press-title">British Council Safety Award</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release Green Hydrogen announcement.pdf" target="_blank">
+                        <span class="nd-press-date">2024-12-03</span>
+                        <span class="nd-press-title">Green Hydrogen Business Announcement</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press_Release_Company_name_to_TKIL_Industries.pdf" target="_blank">
+                        <span class="nd-press-date">2024-07-19</span>
+                        <span class="nd-press-title">Company Name Change to TKIL Industries Pvt. Ltd.</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/pdf/Press Release_Change of tkIL shareholding structure.pdf" target="_blank">
+                        <span class="nd-press-date">2024-02-29</span>
+                        <span class="nd-press-title">Change of TKIL Shareholding Structure</span>
+                        <span class="nd-press-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ── EXHIBITIONS ───────────────────────────── -->
+        <section class="nd-section" id="nd-exhibition">
+            <div class="nd-section-head">
+                <div>
+                    <div class="nd-section-tag">Events</div>
+                    <h2 class="nd-section-title">Exhibitions</h2>
+                    <p class="nd-section-desc">We participate in global industrial exhibitions to showcase TKIL's capabilities.</p>
+                </div>
+            </div>
+            <div class="nd-expo-grid">
+                <div class="nd-expo-card">
+                    <div class="nd-expo-year">2025</div>
+                    <h3>EXCON – Bengaluru</h3>
+                    <p>Showcased latest plant engineering solutions at South Asia's largest construction expo. TKIL demonstrated its Advanced MACS technology to global industry leaders.</p>
+                </div>
+                <div class="nd-expo-card">
+                    <div class="nd-expo-year">2026</div>
+                    <h3>Hannover Messe</h3>
+                    <p>Presenting TKIL's innovation roadmap at the world's leading industrial trade fair — including Green Hydrogen and Battery &amp; Energy Storage solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── BROCHURES ─────────────────────────────── -->
+        <section class="nd-section" id="nd-brochures">
+            <div class="nd-section-head">
+                <div>
+                    <div class="nd-section-tag">Downloads</div>
+                    <h2 class="nd-section-title">Brochures</h2>
+                    <p class="nd-section-desc">Download our product and company brochures for detailed information.</p>
+                </div>
+            </div>
+            <div class="nd-brochure-grid">
+                <div class="nd-brochure-card">
+                    <div class="nd-brochure-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14,2 14,8 20,8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10,9 9,9 8,9" /></svg>
+                    </div>
+                    <h3>Company Profile</h3>
+                    <p>Full overview of TKIL's history, capabilities, and global footprint.</p>
+                    <a href="#" class="nd-dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                        Download PDF
+                    </a>
+                </div>
+                <div class="nd-brochure-card">
+                    <div class="nd-brochure-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
+                    </div>
+                    <h3>Product Catalogue 2025</h3>
+                    <p>Detailed listing of all engineering products and plant solutions.</p>
+                    <a href="#" class="nd-dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                        Download PDF
+                    </a>
+                </div>
+                <div class="nd-brochure-card">
+                    <div class="nd-brochure-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
+                    </div>
+                    <h3>EPC Capabilities</h3>
+                    <p>In-depth brochure on TKIL's end-to-end EPC project delivery model.</p>
+                    <a href="#" class="nd-dl-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SAFETY VIDEO ──────────────────────────── -->
+        <section class="nd-section" id="nd-video">
+            <div class="nd-section-head">
+                <div>
+                    <div class="nd-section-tag">Safety</div>
+                    <h2 class="nd-section-title">Safety Orientation Video</h2>
+                    <p class="nd-section-desc">Mandatory safety training for all contractors and site personnel visiting TKIL facilities.</p>
+                </div>
+            </div>
+            <div class="nd-video-container">
+                <div class="nd-video-header">
+                    <div class="nd-video-dot"></div>
+                    <span class="nd-video-header-text">Safety Orientation — TKIL Industries</span>
+                    <span class="nd-video-badge">Mandatory Viewing</span>
+                </div>
+                <div class="nd-video-wrap">
+                    <video controls preload="metadata">
+                        <source src="~/videos/Union-budget-CII-Panel.mp4" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                </div>
+                <div class="nd-video-caption">
+                    All site visitors and contractors are required to watch this safety orientation before entering any TKIL facility. For queries, contact safety@tkilindustries.com
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- /nd-body -->
+
+</div>
+<!-- /nd-page-wrap -->
+
+<script>
+    (function () {
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nd-nav-link').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var target = document.querySelector('#' + this.dataset.section);
+                if (target) {
+                    var nav = document.getElementById('ndNav');
+                    var offset = nav ? nav.offsetHeight : 52;
+                    var top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Active state on scroll
+        var sections = document.querySelectorAll('.nd-section[id]');
+        var navLinks = document.querySelectorAll('.nd-nav-link');
+        var navH = 52;
+
+        function updateActive() {
+            var scrollY = window.scrollY + navH + 40;
+            var current = '';
+            sections.forEach(function (sec) {
+                if (sec.offsetTop <= scrollY) {
+                    current = sec.id;
+                }
+            });
+            navLinks.forEach(function (lnk) {
+                lnk.classList.toggle('active', lnk.dataset.section === current);
+            });
+        }
+
+        window.addEventListener('scroll', updateActive, { passive: true });
+        updateActive();
+    })();
+</script>

@@ -23,9 +23,8 @@ ViewData["Title"] = "TKIL Industries";
             <h1 class="hero-title">Engineering Excellence</h1>
             <h2 class="hero-subtitle">Delivered Globally</h2>
             <p class="hero-description">Leading EPC for power, industrial, and infrastructure projects worldwide</p>
-
             <div class="hero-buttons">
-                <a href="/Home/Products" class="btn-primary">Explore Products</a>
+                <a href="/Home/Divisions" class="btn-primary">Explore Businesses</a>
                 <a href="/Home/Contact" class="btn-secondary">Get in Touch</a>
             </div>
 
@@ -58,7 +57,7 @@ ViewData["Title"] = "TKIL Industries";
     </div>
 </section>
 <!-- Business Units Section - Rotating Donut -->
-<section class="business-units-section">
+@* <section class="business-units-section">
     <div class="business-container">
         <!-- LEFT: Rotating Donut -->
         <div class="donut-wrapper">
@@ -138,7 +137,160 @@ ViewData["Title"] = "TKIL Industries";
             <a href="/Home/Divisions#sugar" class="know-more-btn" id="unitLink">Know More</a>
         </div>
     </div>
+</section> *@
+
+<section class="business-units-section">
+
+    @* Header *@
+    <div class="bm-header">
+        <div>
+            <div class="bm-eyebrow">What We Do</div>
+            <h2 class="bm-title">Our Business <span>Units</span></h2>
+        </div>
+        <a href="/Home/Divisions" class="bm-view-all">
+            View All Divisions
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    @* Mosaic Grid *@
+    <div class="bm-grid">
+
+        @* 1 — Sugar *@
+        <a class="bm-tile" href="/Home/Divisions#sugar">
+            <div class="bm-tile-bg bm-bg-sugar"
+                 style="background-image:url('/images/divisions/SugarOverview1.jpg'),linear-gradient(145deg,#1c3812,#3d6e24)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Core Business</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">01</span>
+            <div class="bm-content">
+                <div class="bm-name">Sugar, Cogen &amp;<br />Bio-chemicals</div>
+                <div class="bm-desc">Pioneer in turnkey solutions for the sugar industry for over 70 years, including refineries and cogen plants.</div>
+            </div>
+        </a>
+
+        @* 2 — Mining *@
+        <a class="bm-tile" href="/Home/Divisions#mining">
+            <div class="bm-tile-bg bm-bg-mining"
+                 style="background-image:url('/images/divisions/MiningOverview1.jpg'),linear-gradient(145deg,#18243a,#2e4060)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Industrial</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">02</span>
+            <div class="bm-content">
+                <div class="bm-name">Mining, Material<br />Handling &amp; BOP</div>
+                <div class="bm-desc">Engineering powerhouse with exceptional contributions in Bulk Material Handling and Comminution Systems.</div>
+            </div>
+        </a>
+
+        @* 3 — Cement *@
+        <a class="bm-tile" href="/Home/Divisions#cement">
+            <div class="bm-tile-bg bm-bg-cement"
+                 style="background-image:url('/images/divisions/Cementoverview1.jpg'),linear-gradient(145deg,#282420,#4e4840)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Manufacturing</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">03</span>
+            <div class="bm-content">
+                <div class="bm-name">Cement Plants<br />&amp; Equipment</div>
+                <div class="bm-desc">Commissioning integrated cement plants for more than 35 years worldwide.</div>
+            </div>
+        </a>
+
+        @* 4 — Energy *@
+        <a class="bm-tile" href="/Home/Divisions#energy">
+            <div class="bm-tile-bg bm-bg-energy"
+                 style="background-image:url('/images/divisions/EnergyOverview.png'),linear-gradient(145deg,#2a1808,#6e3414)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Power</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">04</span>
+            <div class="bm-content">
+                <div class="bm-name">Energy Business<br />Boiler &amp; Power Plants</div>
+                <div class="bm-desc">Design, manufacture and commissioning of steam and power generation plants.</div>
+            </div>
+        </a>
+
+        @* 5 — Service *@
+        <a class="bm-tile" href="/Home/Divisions#service">
+            <div class="bm-tile-bg bm-bg-service"
+                 style="background-image:url('/images/divisions/ServiceOverview.jpg'),linear-gradient(145deg,#0a1c30,#153858)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Aftermarket</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">05</span>
+            <div class="bm-content">
+                <div class="bm-name">Service<br />Business</div>
+                <div class="bm-desc">360° service — spare parts, O&amp;M, field service, revamps and rejuvenation throughout the asset life cycle.</div>
+            </div>
+        </a>
+
+        @* 6 — Green Hydrogen *@
+        <a class="bm-tile" href="/Home/Divisions#green-hydrogen">
+            <div class="bm-tile-bg bm-bg-hydrogen"
+                 style="background-image:url('/images/divisions/GreenHydroOverview1.png'),linear-gradient(145deg,#062016,#0f5432)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Green Energy</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">06</span>
+            <div class="bm-content">
+                <div class="bm-name">Green Hydrogen<br />Business</div>
+                <div class="bm-desc">Forefront of India's green energy transition via strategic partnership with SoHHytec SA, Switzerland.</div>
+            </div>
+        </a>
+
+        @* 7 — Battery *@
+        <a class="bm-tile" href="/Home/Divisions#battery">
+            <div class="bm-tile-bg bm-bg-battery"
+                 style="background-image:url('/images/divisions/BatteryOverview1.jpg'),linear-gradient(145deg,#100a34,#281c68)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Storage</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">07</span>
+            <div class="bm-content">
+                <div class="bm-name">Battery &amp;<br />Energy Storage</div>
+                <div class="bm-desc">Advanced Railway Battery Systems in partnership with Germany's HOPPECKE Batterie Systeme GmbH.</div>
+            </div>
+        </a>
+
+        @* 8 — Infrastructure *@
+        <a class="bm-tile" href="/Home/Divisions">
+            <div class="bm-tile-bg bm-bg-infra"
+                 style="background-image:url('/images/epc-building1.png'),linear-gradient(145deg,#1c1008,#5e3414)"></div>
+            <div class="bm-tile-overlay"></div>
+            <span class="bm-tag">Development</span>
+            <div class="bm-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10" /></svg>
+            </div>
+            <span class="bm-num">08</span>
+            <div class="bm-content">
+                <div class="bm-name">Infrastructure<br />Solutions</div>
+                <div class="bm-desc">Comprehensive infrastructure development leveraging decades of engineering excellence.</div>
+            </div>
+        </a>
+
+    </div>
+    @* /bm-grid *@
+
 </section>
+
 <!-- Global Presence Section -->
 <section class="global-presence-section">
     <div class="global-presence-container">

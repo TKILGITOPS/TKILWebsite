@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             title.textContent = currentUnit.dataset.title || 'Business Unit';
             description.textContent = currentUnit.dataset.description || 'Description not available';
+            document.getElementById('unitLink').href = currentUnit.dataset.link || '/Home/Divisions'; 
 
             title.style.opacity = '1';
             description.style.opacity = '1';
